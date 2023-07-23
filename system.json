@@ -1,0 +1,27 @@
+{
+  "id": "ryuutama",
+  "title": "Ryuutama",
+  "description": "A system for playing Ryuutama in Foundry VTT.",
+  "version": "1.0.0",
+  "compatibility": {
+    "minimum": "11",
+    "verified": "11",
+    "maximum": "11"
+  },
+  "authors": [
+    {
+      "name": "Petwag",
+      "url": "https://github.com/Petwag-s-Little-Tools",
+      "email": "fhortet.petwag@gmail.com",
+      "discord": "petwag"
+    }
+  ],
+  "scripts": [],
+  "esmodules": ["scripts/test.js"],
+  "styles": [],
+  "packs": [],
+  "socket": false,
+  "url": "https://github.com/Petwag-s-Little-Tools/Ryuutama",
+  "manifest": "https://github.com/Petwag-s-Little-Tools/Ryuutama/blob/main/system.json",
+  "license": "LICENSE"
+}
