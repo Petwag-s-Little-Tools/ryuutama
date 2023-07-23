@@ -5,7 +5,7 @@
   "version": "1.0.0",
   "url": "https://github.com/Petwag-s-Little-Tools/Ryuutama",
   "manifest": "https://github.com/Petwag-s-Little-Tools/Ryuutama/blob/main/system.json",
-  "license": "LICENSE",
+  "license": "LICENSE.txt",
   "compatibility": {
     "minimum": "11",
     "verified": "11",
@@ -27,11 +27,6 @@
       "lang": "en",
       "name": "English",
       "path": "lang/en.json"
-    },
-    {
-      "lang": "pl",
-      "name": "Polski",
-      "path": "lang/pl.json"
     }
   ]
 }
