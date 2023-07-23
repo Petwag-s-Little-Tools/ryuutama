@@ -16,11 +16,7 @@
       "discord": "petwag"
     }
   ],
-  "scripts": [],
-  "esmodules": ["scripts/test.js"],
-  "styles": [],
-  "packs": [],
-  "socket": false,
+  "esmodules": ["module/test.js"],
   "url": "https://github.com/Petwag-s-Little-Tools/Ryuutama",
   "manifest": "https://github.com/Petwag-s-Little-Tools/Ryuutama/blob/main/system.json",
   "license": "LICENSE"
