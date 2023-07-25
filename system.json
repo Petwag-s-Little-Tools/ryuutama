@@ -19,14 +19,8 @@
       "discord": "petwag"
     }
   ],
-  "esmodules": ["module/test.js"],
+  "esmodules": ["modules/ryuutama.mjs"],
   "styles": [],
   "packs": [],
-  "languages": [
-    {
-      "lang": "en",
-      "name": "English",
-      "path": "lang/en.json"
-    }
-  ]
+  "languages": []
 }
