@@ -1,0 +1,22 @@
+.table {
+  border: 5px solid #6b6b6b;
+  border-top-left-radius: 23px;
+  border-top-right-radius: 23px;
+  border-bottom-left-radius: 23px;
+  border-bottom-right-radius: 23px;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  overflow: hidden;
+  width: 500px;
+}
+
+.title {
+  background-color: #d9d9d9;
+  font-style: italic;
+}
+
+.cell {
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}

@@ -1,0 +1,64 @@
+<form class="{{cssClass}}" autocomplete="off">
+  <header class="sheet-header">
+    <img
+      src="{{item.img}}"
+      data-edit="img"
+      title="{{item.name}}"
+      height="64"
+      width="64"
+    />
+    <input
+      name="name"
+      type="text"
+      value="{{item.name}}"
+      placeholder="{{localize 'Name'}}"
+    />
+  </header>
+  <div>
+    <table>
+      <tr>
+        <th>{{localize "ryuutama.spell.magicType"}}</th>
+        <th>{{localize "ryuutama.spell.spellType"}}</th>
+        <th>{{localize "ryuutama.spell.manaCost"}}</th>
+        <th>{{localize "ryuutama.spell.duration"}}</th>
+      </tr>
+      <tr>
+        <td>
+          <input
+            name="system.spellType"
+            type="text"
+            value="{{system.spellType}}"
+          />
+        </td>
+        <td>
+          <select name="system.magicType">
+            {{#select system.magicType}}
+              {{#each config.magicTypes as |name type|}}
+                <option value="{{type}}">{{localize name}}</option>
+              {{/each}}
+            {{/select}}
+          </select>
+        </td>
+        <td>
+          <input
+            name="system.manaCost"
+            type="number"
+            value="{{system.manaCost}}"
+          />
+        </td>
+        <td style="display: flex">
+          <input
+            name="system.duration"
+            type="number"
+            value="{{system.duration}}"
+          />
+          <input
+            name="system.durationUnit"
+            type="text"
+            value="{{system.durationUnit}}"
+          />
+        </td>
+      </tr>
+    </table>
+  </div>
+</form>

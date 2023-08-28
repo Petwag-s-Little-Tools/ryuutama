@@ -1,1 +1,25 @@
-{}
+{
+  "ryuutama": {
+    "magicTypes": {
+      "none": "",
+      "incantation": "Incantation",
+      "spring": "Spring",
+      "summer": "Summer",
+      "autumn": "Autumn",
+      "winter": "Winter"
+    },
+    "spell": {
+      "spell": "Spell",
+      "magicType": "Magic Type",
+      "spellType": "Spell Type",
+      "manaCost": "MP",
+      "duration": "Duration",
+      "range": "Range",
+      "target": "Target"
+    },
+    "item": {
+      "name": "Name",
+      "description": "Description"
+    }
+  }
+}

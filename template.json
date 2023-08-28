@@ -1,32 +1,84 @@
 {
   "Actor": {
     "types": ["character"],
-    "htmlFields": ["biography"],
     "character": {
-      "biography": "",
-      "health": {
-        "value": 10,
-        "min": 0,
-        "max": 10
+      "stats": {
+        "str": {
+          "dice": 4,
+          "bonus": 0
+        },
+        "dex": {
+          "dice": 4,
+          "current": 0
+        },
+        "int": {
+          "dice": 4,
+          "current": 0
+        },
+        "spi": {
+          "dice": 4,
+          "current": 0
+        }
       },
-      "power": {
-        "value": 5,
-        "min": 0,
-        "max": 5
+      "hp": {
+        "current": 0,
+        "max": 0
       },
-      "attributes": {},
-      "groups": {}
+      "mp": {
+        "current": 0,
+        "max": 0
+      },
+      "fumble": 0,
+      "condition": 0,
+      "xp": 0,
+      "level": 1,
+      "bio": {
+        "age": 0,
+        "gender": "",
+        "appearance": "",
+        "hometown": "",
+        "reason": "",
+        "notes": ""
+      },
+      "role": "",
+      "types": [],
+      "classes": [],
+      "skills": [],
+      "masteredWeapons": [],
+      "specializedTerrains": [],
+      "personnalItem": "",
+      "statuses": {
+        "injury": 0,
+        "poison": 0,
+        "sickness": 0,
+        "exhaustion": 0,
+        "muddled": 0,
+        "shock": 0
+      },
+      "carrying": {
+        "current": 0,
+        "max": 0
+      },
+      "equipments": []
     }
   },
   "Item": {
-    "types": ["item"],
-    "htmlFields": ["description"],
-    "item": {
-      "description": "",
-      "quantity": 1,
-      "weight": 0,
-      "attributes": {},
-      "groups": {}
+    "types": ["spell"],
+    "templates": {
+      "coreItem": {
+        "description": ""
+      }
+    },
+    "spell": {
+      "templates": ["coreItem"],
+      "magicType": "",
+      "spellType": "normal",
+      "manaCost": 0,
+      "duration": 0,
+      "durationUnit": "round",
+      "target": "",
+      "range": "",
+      "rolls": []
     }
   }
 }

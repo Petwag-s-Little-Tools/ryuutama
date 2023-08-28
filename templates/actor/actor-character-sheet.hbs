@@ -1,16 +1,104 @@
 <form class="{{cssClass}} flexcol" autocomplete="off">
-  <header style="background-color: aqua;">
-    <p>Fixed Header</p>
+  <header class="sheet-header">
+    <img
+      class="profile-img"
+      src="{{actor.img}}"
+      data-edit="img"
+      title="{{actor.name}}"
+      height="100"
+      width="100"
+    />
+    <p>{{actor.name}}</p>
+    <p>{{system.infos.level}}</p>
+    <p>{{system.infos.xp}}</p>
+    <p>{{system.infos.class}}</p>
+    <p>{{system.infos.type}}</p>
   </header>
+
   <nav class="sheet-tabs tabs" data-group="primary">
     <a class="item" data-tab="stats">Stats</a>
     <a class="item" data-tab="items">Items</a>
     <a class="item" data-tab="magic">Magic</a>
     <a class="item" data-tab="bio">Bio</a>
   </nav>
-  <section>
-    <section>Skills</section>
-    <section>Conditions</section>
-    <section>Status Effects</section>
+
+  <section class="sheet-body">
+    <div class="tab stats" data-group="primary" data-tab="stats">
+      <table>
+        <tr>
+          <th class="vertical">Stats</th>
+          <td>STR d{{system.stats.str.dice}}</td>
+          <td>DEX d{{system.stats.dex.dice}}</td>
+          <td>INT d{{system.stats.int.dice}}</td>
+          <td>SPT d{{system.stats.spt.dice}}</td>
+        </tr>
+        <tr>
+          <th class="vertical">HP</th>
+          <td>{{system.hp.current}}/{{system.hp.max}}</td>
+          <th class="vertical">MP</th>
+          <td>{{system.mp.current}}/{{system.mp.current}}</td>
+        </tr>
+        <tr>
+          <th class="vertical">Condition</th>
+          <td>{{system.condition}}</td>
+          <th class="vertical">Fumble Point</th>
+          <td>{{system.fumble}}</td>
+          <th class="vertical">Init</th>
+          <td>10</td>
+        </tr>
+      </table>
+
+      <section>Skills</section>
+      <ol>
+        {{#each system.skills as |skill|}}
+          <li>test</li>
+        {{/each}}
+      </ol>
+      <section>Status Effects</section>
+      <table>
+        <tr>
+          <th>Body</th>
+          <td>
+            <div style="display: flex">
+              <div>Injury</div>
+              <p>{{system.statuses.injury}}</p>
+            </div>
+          </td>
+          <td><div style="display: flex">
+              <div>Poison</div>
+              <p>{{system.statuses.poison}}</p>
+            </div></td>
+          <td><div style="display: flex">
+              <div>Sickness</div>
+              <p>{{system.statuses.sickness}}</p>
+            </div></td>
+        </tr>
+        <tr>
+          <th>Mind</th>
+          <td><div style="display: flex">
+              <div>Exhaustion</div>
+              <p>{{system.statuses.exhaustion}}</p>
+            </div></td>
+          <td><div style="display: flex">
+              <div>Muddled</div>
+              <p>{{system.statuses.muddled}}</p>
+            </div></td>
+          <td><div style="display: flex">
+              <div>Shock</div>
+              <p>{{system.statuses.shock}}</p>
+            </div></td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="tab items" data-group="primary" data-tab="items">
+      Items
+    </div>
+    <div class="tab magic" data-group="primary" data-tab="magic">
+      Magic
+    </div>
+    <div class="tab bio" data-group="primary" data-tab="bio">
+      Bio
+    </div>
   </section>
 </form>
