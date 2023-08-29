@@ -3,3 +3,26 @@
   text-orientation: mixed;
   transform: scale(-1);
 }
+
+.sheet form {
+  display: flex;
+  flex-direction: column;
+}
+
+.sheet .sheet-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.sheet .sheet-content .editor {
+  height: 100%;
+}
+
+.hidden {
+  display: none;
+}
+
+.flex {
+  display: flex;
+}

@@ -4,20 +4,20 @@
     "character": {
       "stats": {
         "str": {
-          "dice": 4,
-          "bonus": 0
+          "die": "none",
+          "mod": 0
         },
         "dex": {
-          "dice": 4,
-          "current": 0
+          "die": "none",
+          "mod": 0
         },
         "int": {
-          "dice": 4,
-          "current": 0
+          "die": "none",
+          "mod": 0
         },
         "spi": {
-          "dice": 4,
-          "current": 0
+          "die": "none",
+          "mod": 0
         }
       },
       "hp": {
@@ -72,13 +72,14 @@
     "spell": {
       "templates": ["coreItem"],
       "magicType": "",
-      "spellType": "normal",
+      "spellType": "",
       "manaCost": 0,
       "duration": 0,
-      "durationUnit": "round",
+      "durationUnit": "",
       "target": "",
       "range": "",
-      "rolls": []
+      "rolls": [],
+      "spellLevel": ""
     }
   }
 }

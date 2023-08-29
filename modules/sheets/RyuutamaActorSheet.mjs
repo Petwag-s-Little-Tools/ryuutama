@@ -23,8 +23,10 @@ export class RyuutamaActorSheet extends ActorSheet {
   getData() {
     const context = super.getData();
 
-    // hold
-    context.system = foundry.utils.deepClone(this.actor.system);
+    const itemData = context.actor;
+
+    context.config = CONFIG.ryuutama;
+    context.system = itemData.system;
 
     return context;
   }

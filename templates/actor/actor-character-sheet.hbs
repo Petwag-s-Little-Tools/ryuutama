@@ -27,10 +27,23 @@
       <table>
         <tr>
           <th class="vertical">Stats</th>
-          <td>STR d{{system.stats.str.dice}}</td>
-          <td>DEX d{{system.stats.dex.dice}}</td>
-          <td>INT d{{system.stats.int.dice}}</td>
-          <td>SPT d{{system.stats.spt.dice}}</td>
+          <td>{{localize "ryuutama.stats.str"}}
+            {{localize
+              (lookup (lookup config.dice system.stats.str.die) value)
+            }}
+          </td>
+          <td>{{localize "ryuutama.stats.dex"}}
+            {{localize
+              (lookup (lookup config.dice system.stats.dex.die) value)
+            }}</td>
+          <td>{{localize "ryuutama.stats.int"}}
+            {{localize
+              (lookup (lookup config.dice system.stats.int.die) value)
+            }}</td>
+          <td>{{localize "ryuutama.stats.spt"}}
+            {{localize
+              (lookup (lookup config.dice system.stats.spt.die) value)
+            }}</td>
         </tr>
         <tr>
           <th class="vertical">HP</th>

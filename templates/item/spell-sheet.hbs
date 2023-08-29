@@ -14,21 +14,35 @@
       placeholder="{{localize 'Name'}}"
     />
   </header>
-  <div>
+  <div class="sheet-content">
     <table>
       <tr>
-        <th>{{localize "ryuutama.spell.magicType"}}</th>
+        <th>{{localize "ryuutama.spell.spellLevel"}}</th>
         <th>{{localize "ryuutama.spell.spellType"}}</th>
+        <th>{{localize "ryuutama.spell.magicType"}}</th>
         <th>{{localize "ryuutama.spell.manaCost"}}</th>
         <th>{{localize "ryuutama.spell.duration"}}</th>
+        <th>{{localize "ryuutama.spell.target"}}</th>
+        <th>{{localize "ryuutama.spell.range"}}</th>
       </tr>
       <tr>
         <td>
-          <input
-            name="system.spellType"
-            type="text"
-            value="{{system.spellType}}"
-          />
+          <select name="system.spellLevel">
+            {{#select system.spellLevel}}
+              {{#each config.spellLevels as |name type|}}
+                <option value="{{type}}">{{localize name}}</option>
+              {{/each}}
+            {{/select}}
+          </select>
+        </td>
+        <td>
+          <select name="system.spellType">
+            {{#select system.spellType}}
+              {{#each config.spellTypes as |name type|}}
+                <option value="{{type}}">{{localize name}}</option>
+              {{/each}}
+            {{/select}}
+          </select>
         </td>
         <td>
           <select name="system.magicType">
@@ -46,19 +60,45 @@
             value="{{system.manaCost}}"
           />
         </td>
-        <td style="display: flex">
+        <td class="flex">
           <input
+          class="{{#if labels.disableDurationField}}hidden{{/if}}"
             name="system.duration"
             type="number"
             value="{{system.duration}}"
+            {{#if labels.disableDurationField}}disabled{{/if}}
           />
+          <select name="system.durationUnit">
+            {{#select system.durationUnit}}
+              {{#each config.durationUnits as |unit id|}}
+                <option value="{{id}}">{{localize unit.value}}</option>
+              {{/each}}
+            {{/select}}
+          </select>
+        </td>
+        <td>
           <input
-            name="system.durationUnit"
+            name="system.target"
             type="text"
-            value="{{system.durationUnit}}"
+            value="{{system.target}}"
+          />
+        </td>
+        <td>
+          <input
+            name="system.range"
+            type="text"
+            value="{{system.range}}"
           />
         </td>
       </tr>
+
     </table>
+    {{editor
+      system.description
+      target="system.description"
+      button=true
+      owner=owner
+      editable=editable
+    }}
   </div>
 </form>
