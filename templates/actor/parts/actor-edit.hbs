@@ -1,0 +1,59 @@
+Edit
+<table>
+  <tr>
+    <th>
+      {{localize "ryuutama.stats.str"}}
+    </th>
+    <td>
+      <select name="system.stats.str.die">
+        {{#select system.stats.str.die}}
+          {{#each config.dice as |dice id|}}
+            <option value="{{id}}">{{localize dice.value}}</option>
+          {{/each}}
+        {{/select}}
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <th>
+      {{localize "ryuutama.stats.dex"}}
+    </th>
+    <td>
+      <select name="system.stats.dex.die">
+        {{#select system.stats.dex.die}}
+          {{#each config.dice as |dice id|}}
+            <option value="{{id}}">{{localize dice.value}}</option>
+          {{/each}}
+        {{/select}}
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <th>
+      {{localize "ryuutama.stats.int"}}
+    </th>
+    <td>
+      <select name="system.stats.int.die">
+        {{#select system.stats.int.die}}
+          {{#each config.dice as |dice id|}}
+            <option value="{{id}}">{{localize dice.value}}</option>
+          {{/each}}
+        {{/select}}
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <th>
+      {{localize "ryuutama.stats.spi"}}
+    </th>
+    <td>
+      <select name="system.stats.spi.die">
+        {{#select system.stats.spi.die}}
+          {{#each config.dice as |dice id|}}
+            <option value="{{id}}">{{localize dice.value}}</option>
+          {{/each}}
+        {{/select}}
+      </select>
+    </td>
+  </tr>
+</table>

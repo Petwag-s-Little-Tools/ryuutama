@@ -74,39 +74,39 @@ ryuutama.spellLevels = {
 };
 
 ryuutama.dice = {
-  none: {
-    value: "ryuutama.dice.none",
-    next: "d4",
-    previous: "none",
+  0: {
+    value: "ryuutama.dice.d0",
+    next: 4,
+    previous: 0,
   },
-  d4: {
+  4: {
     value: "ryuutama.dice.d4",
-    next: "d6",
-    previous: "d4",
+    next: 6,
+    previous: 4,
   },
-  d6: {
+  6: {
     value: "ryuutama.dice.d6",
-    next: "d8",
-    previous: "d4",
+    next: 8,
+    previous: 4,
   },
-  d8: {
+  8: {
     value: "ryuutama.dice.d8",
-    next: "d10",
-    previous: "d6",
+    next: 10,
+    previous: 6,
   },
-  d10: {
+  10: {
     value: "ryuutama.dice.d10",
-    next: "d12",
-    previous: "d8",
+    next: 12,
+    previous: 8,
   },
-  d12: {
+  12: {
     value: "ryuutama.dice.d12",
-    next: "d20",
-    previous: "d10",
+    next: 20,
+    previous: 10,
   },
-  d20: {
+  20: {
     value: "ryuutama.dice.d20",
-    next: "d20",
-    previous: "d12",
+    next: 20,
+    previous: 12,
   },
 };

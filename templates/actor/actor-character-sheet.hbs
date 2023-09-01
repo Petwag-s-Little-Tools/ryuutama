@@ -8,7 +8,12 @@
       height="100"
       width="100"
     />
-    <p>{{actor.name}}</p>
+    <input
+      name="name"
+      type="text"
+      value="{{actor.name}}"
+      placeholder="{{localize 'Name'}}"
+    />
     <p>{{system.infos.level}}</p>
     <p>{{system.infos.xp}}</p>
     <p>{{system.infos.class}}</p>
@@ -16,88 +21,103 @@
   </header>
 
   <nav class="sheet-tabs tabs" data-group="primary">
-    <a class="item" data-tab="stats">Stats</a>
-    <a class="item" data-tab="items">Items</a>
-    <a class="item" data-tab="magic">Magic</a>
-    <a class="item" data-tab="bio">Bio</a>
+    <a class="item" data-tab="stats">{{localize "ryuutama.character.stats"}}</a>
+    <a class="item" data-tab="items">{{localize "ryuutama.character.items"}}</a>
+    <a class="item" data-tab="magic">{{localize "ryuutama.character.magic"}}</a>
+    <a class="item" data-tab="bio">{{localize "ryuutama.character.bio"}}</a>
+    <a class="item" data-tab="edit">{{localize "ryuutama.character.edit"}}</a>
   </nav>
 
   <section class="sheet-body">
     <div class="tab stats" data-group="primary" data-tab="stats">
       <table>
         <tr>
-          <th class="vertical">Stats</th>
+          <th>{{localize "ryuutama.character.stats"}}</th>
+        </tr>
+        <tr>
           <td>{{localize "ryuutama.stats.str"}}
-            {{localize
-              (lookup (lookup config.dice system.stats.str.die) value)
-            }}
+            {{localize (concat "ryuutama.dice.d" system.stats.str.die)}}
           </td>
           <td>{{localize "ryuutama.stats.dex"}}
-            {{localize
-              (lookup (lookup config.dice system.stats.dex.die) value)
-            }}</td>
+            {{localize (concat "ryuutama.dice.d" system.stats.dex.die)}}
+          </td>
           <td>{{localize "ryuutama.stats.int"}}
-            {{localize
-              (lookup (lookup config.dice system.stats.int.die) value)
-            }}</td>
-          <td>{{localize "ryuutama.stats.spt"}}
-            {{localize
-              (lookup (lookup config.dice system.stats.spt.die) value)
-            }}</td>
+            {{localize (concat "ryuutama.dice.d" system.stats.int.die)}}
+          </td>
+          <td>{{localize "ryuutama.stats.spi"}}
+            {{localize (concat "ryuutama.dice.d" system.stats.spi.die)}}
+          </td>
         </tr>
         <tr>
-          <th class="vertical">HP</th>
-          <td>{{system.hp.current}}/{{system.hp.max}}</td>
-          <th class="vertical">MP</th>
-          <td>{{system.mp.current}}/{{system.mp.current}}</td>
+          <th>{{localize "ryuutama.character.hp"}}</th>
+          <td>
+            <input
+              name="system.hp.current"
+              type="number"
+              value="{{system.hp.current}}"
+            />/{{maxHp}}</td>
+          <th>{{localize "ryuutama.character.mp"}}</th>
+          <td><input
+              name="system.mp.current"
+              type="number"
+              value="{{system.mp.current}}"
+            />/{{maxMp}}</td>
         </tr>
         <tr>
-          <th class="vertical">Condition</th>
+          <th>{{localize "ryuutama.character.condition"}}</th>
           <td>{{system.condition}}</td>
-          <th class="vertical">Fumble Point</th>
+          <td>
+            <a class="condition-roll"><i class="fas fa-dice"></i></a>
+          </td>
+        </tr>
+        <tr>
+          <th>{{localize "ryuutama.character.fumble"}}</th>
           <td>{{system.fumble}}</td>
-          <th class="vertical">Init</th>
+        </tr>
+        <tr>
+          <th>{{localize "ryuutama.character.init"}}</th>
           <td>10</td>
+
         </tr>
       </table>
 
-      <section>Skills</section>
+      <section>{{localize "ryuutama.character.skills"}}</section>
       <ol>
         {{#each system.skills as |skill|}}
           <li>test</li>
         {{/each}}
       </ol>
-      <section>Status Effects</section>
+      <section>{{localize "ryuutama.character.statusEffects"}}</section>
       <table>
         <tr>
-          <th>Body</th>
+          <th>{{localize "ryuutama.statuses.body"}}</th>
           <td>
             <div style="display: flex">
-              <div>Injury</div>
+              <div>{{localize "ryuutama.statuses.injury"}}</div>
               <p>{{system.statuses.injury}}</p>
             </div>
           </td>
           <td><div style="display: flex">
-              <div>Poison</div>
+              <div>{{localize "ryuutama.statuses.poison"}}</div>
               <p>{{system.statuses.poison}}</p>
             </div></td>
           <td><div style="display: flex">
-              <div>Sickness</div>
+              <div>{{localize "ryuutama.statuses.sickness"}}</div>
               <p>{{system.statuses.sickness}}</p>
             </div></td>
         </tr>
         <tr>
-          <th>Mind</th>
+          <th>{{localize "ryuutama.statuses.mind"}}</th>
           <td><div style="display: flex">
-              <div>Exhaustion</div>
+              <div>{{localize "ryuutama.statuses.exhaustion"}}</div>
               <p>{{system.statuses.exhaustion}}</p>
             </div></td>
           <td><div style="display: flex">
-              <div>Muddled</div>
+              <div>{{localize "ryuutama.statuses.muddled"}}</div>
               <p>{{system.statuses.muddled}}</p>
             </div></td>
           <td><div style="display: flex">
-              <div>Shock</div>
+              <div>{{localize "ryuutama.statuses.shock"}}</div>
               <p>{{system.statuses.shock}}</p>
             </div></td>
         </tr>
@@ -105,13 +125,31 @@
     </div>
 
     <div class="tab items" data-group="primary" data-tab="items">
-      Items
+      {{localize "ryuutama.character.items"}}
     </div>
+
     <div class="tab magic" data-group="primary" data-tab="magic">
-      Magic
+      {{localize "ryuutama.character.magic"}}
+      {{#each spells as |spell|}}
+        <div class="spell">
+          <img
+            src="{{spell.img}}"
+            data-edit="img"
+            title="{{spell.name}}"
+            height="100"
+            width="100"
+          />
+          <div class="spell-name">{{spell.name}}</div>
+        </div>
+      {{/each}}
     </div>
+
     <div class="tab bio" data-group="primary" data-tab="bio">
-      Bio
+      {{localize "ryuutama.character.bio"}}
+    </div>
+
+    <div class="tab edit" data-group="primary" data-tab="edit">
+      {{> "ryuutama.actor-edit" sections=edit}}
     </div>
   </section>
 </form>

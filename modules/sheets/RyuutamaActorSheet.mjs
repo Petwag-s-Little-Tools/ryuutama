@@ -16,18 +16,44 @@ export class RyuutamaActorSheet extends ActorSheet {
   }
 
   get template() {
-    console.log("ryuutama |", "actor", this.actor);
     return `systems/ryuutama/templates/actor/actor-${this.actor.type}-sheet.hbs`;
   }
 
   getData() {
     const context = super.getData();
 
-    const itemData = context.actor;
+    const itemData = this.actor;
 
     context.config = CONFIG.ryuutama;
     context.system = itemData.system;
+    context.spells = this._getSpells(itemData.items);
+    context.maxHp = this._getMaxHp(itemData.system);
+    context.maxMp = this._getMaxMp(itemData.system);
 
     return context;
+  }
+
+  activateListeners(html) {
+    if (this.actor.isOwner) {
+      html.find(".condition-roll").click(this._onConditionRoll.bind(this));
+    }
+  }
+
+  // Data Getter
+  _getSpells(items) {
+    return items.filter((item) => item.type === "spell");
+  }
+
+  _getMaxHp(system) {
+    return system.stats.str.die * 2;
+  }
+
+  _getMaxMp(system) {
+    return system.stats.spi.die * 2;
+  }
+
+  // Event Handlers
+  _onConditionRoll(event) {
+    this.actor.rollCondition();
   }
 }

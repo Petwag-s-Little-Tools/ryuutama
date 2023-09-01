@@ -45,10 +45,6 @@ export class RyuutamaItemSheet extends ItemSheet {
       return !CONFIG.ryuutama.durationUnits["none"].hasNumericValue;
     }
 
-    console.log(
-      durationUnit,
-      !CONFIG.ryuutama.durationUnits[durationUnit].hasNumericValue
-    );
     return !CONFIG.ryuutama.durationUnits[durationUnit].hasNumericValue;
   }
 }

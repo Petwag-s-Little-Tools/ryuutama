@@ -4,29 +4,29 @@
     "character": {
       "stats": {
         "str": {
-          "die": "none",
+          "die": "0",
           "mod": 0
         },
         "dex": {
-          "die": "none",
+          "die": "0",
           "mod": 0
         },
         "int": {
-          "die": "none",
+          "die": "0",
           "mod": 0
         },
         "spi": {
-          "die": "none",
+          "die": "0",
           "mod": 0
         }
       },
       "hp": {
         "current": 0,
-        "max": 0
+        "bonus": 0
       },
       "mp": {
         "current": 0,
-        "max": 0
+        "bonus": 0
       },
       "fumble": 0,
       "condition": 0,
