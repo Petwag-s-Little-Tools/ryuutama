@@ -1,0 +1,92 @@
+<table>
+  <tr>
+    <th>{{localize "ryuutama.character.stats"}}</th>
+  </tr>
+  <tr>
+    <td>{{localize "ryuutama.stats.str"}}
+      {{localize (concat "ryuutama.dice.d" system.stats.str.die)}}
+    </td>
+    <td>{{localize "ryuutama.stats.dex"}}
+      {{localize (concat "ryuutama.dice.d" system.stats.dex.die)}}
+    </td>
+    <td>{{localize "ryuutama.stats.int"}}
+      {{localize (concat "ryuutama.dice.d" system.stats.int.die)}}
+    </td>
+    <td>{{localize "ryuutama.stats.spi"}}
+      {{localize (concat "ryuutama.dice.d" system.stats.spi.die)}}
+    </td>
+  </tr>
+  <tr>
+    <th>{{localize "ryuutama.character.hp"}}</th>
+    <td>
+      <input
+        name="system.hp.current"
+        type="number"
+        value="{{system.hp.current}}"
+      />/{{maxHp}}</td>
+    <th>{{localize "ryuutama.character.mp"}}</th>
+    <td><input
+        name="system.mp.current"
+        type="number"
+        value="{{system.mp.current}}"
+      />/{{maxMp}}</td>
+  </tr>
+  <tr>
+    <th>{{localize "ryuutama.character.condition"}}</th>
+    <td>{{system.condition}}</td>
+    <td>
+      <a class="condition-roll"><i class="fas fa-dice"></i></a>
+    </td>
+  </tr>
+  <tr>
+    <th>{{localize "ryuutama.character.fumble"}}</th>
+    <td>{{system.fumble}}</td>
+  </tr>
+  <tr>
+    <th>{{localize "ryuutama.character.init"}}</th>
+    <td>10</td>
+
+  </tr>
+</table>
+
+<section>{{localize "ryuutama.character.skills"}}</section>
+<table>
+  {{#each skills as |skill|}}
+    <tr>test</tr>
+  {{/each}}
+</table>
+<section>{{localize "ryuutama.character.statusEffects"}}</section>
+<table>
+  <tr>
+    <th>{{localize "ryuutama.statuses.body"}}</th>
+    <td>
+      <div style="display: flex">
+        <div>{{localize "ryuutama.statuses.injury"}}</div>
+        <p>{{system.statuses.injury}}</p>
+      </div>
+    </td>
+    <td><div style="display: flex">
+        <div>{{localize "ryuutama.statuses.poison"}}</div>
+        <p>{{system.statuses.poison}}</p>
+      </div></td>
+    <td><div style="display: flex">
+        <div>{{localize "ryuutama.statuses.sickness"}}</div>
+        <p>{{system.statuses.sickness}}</p>
+      </div></td>
+  </tr>
+  <tr>
+    <th>{{localize "ryuutama.statuses.mind"}}</th>
+    <td><div style="display: flex">
+        <div>{{localize "ryuutama.statuses.exhaustion"}}</div>
+        <p>{{system.statuses.exhaustion}}</p>
+      </div></td>
+    <td><div style="display: flex">
+        <div>{{localize "ryuutama.statuses.muddled"}}</div>
+        <p>{{system.statuses.muddled}}</p>
+      </div></td>
+    <td><div style="display: flex">
+        <div>{{localize "ryuutama.statuses.shock"}}</div>
+        <p>{{system.statuses.shock}}</p>
+      </div></td>
+  </tr>
+</table>

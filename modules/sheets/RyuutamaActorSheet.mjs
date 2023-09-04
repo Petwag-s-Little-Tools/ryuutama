@@ -27,6 +27,7 @@ export class RyuutamaActorSheet extends ActorSheet {
     context.config = CONFIG.ryuutama;
     context.system = itemData.system;
     context.spells = this._getSpells(itemData.items);
+    context.skills = this._getSkills(itemData.items);
     context.maxHp = this._getMaxHp(itemData.system);
     context.maxMp = this._getMaxMp(itemData.system);
 
@@ -42,6 +43,10 @@ export class RyuutamaActorSheet extends ActorSheet {
   // Data Getter
   _getSpells(items) {
     return items.filter((item) => item.type === "spell");
+  }
+
+  _getSkills(items) {
+    return items.filter((item) => item.type === "skill");
   }
 
   _getMaxHp(system) {

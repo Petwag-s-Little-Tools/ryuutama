@@ -56,4 +56,14 @@ Edit
       </select>
     </td>
   </tr>
+  {{#each system.statuses as |value id|}}
+    <tr>
+      <th>
+        {{localize (concat "ryuutama.statuses." id)}}
+      </th>
+      <td>
+        <input name="system.statuses.{{id}}" type="number" value="{{value}}" />
+      </td>
+    </tr>
+  {{/each}}
 </table>
