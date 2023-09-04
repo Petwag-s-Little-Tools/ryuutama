@@ -63,7 +63,7 @@
     }
   },
   "Item": {
-    "types": ["spell"],
+    "types": ["spell", "skill"],
     "templates": {
       "coreItem": {
         "description": ""
@@ -80,6 +80,17 @@
       "range": "",
       "rolls": [],
       "spellLevel": ""
+    },
+    "skill": {
+      "templates": ["coreItem"],
+      "skillEffect": "",
+      "statUsed": {
+        "statA": "",
+        "statB": "",
+        "alternative": ""
+      },
+      "targetNumber": "",
+      "usableCircumstances": ""
     }
   }
 }

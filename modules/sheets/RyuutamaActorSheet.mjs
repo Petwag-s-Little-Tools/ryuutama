@@ -31,10 +31,13 @@ export class RyuutamaActorSheet extends ActorSheet {
     context.maxHp = this._getMaxHp(itemData.system);
     context.maxMp = this._getMaxMp(itemData.system);
 
+    console.log(context.system);
     return context;
   }
 
   activateListeners(html) {
+    super.activateListeners(html);
+
     if (this.actor.isOwner) {
       html.find(".condition-roll").click(this._onConditionRoll.bind(this));
     }
@@ -58,7 +61,7 @@ export class RyuutamaActorSheet extends ActorSheet {
   }
 
   // Event Handlers
-  _onConditionRoll(event) {
+  _onConditionRoll() {
     this.actor.rollCondition();
   }
 }

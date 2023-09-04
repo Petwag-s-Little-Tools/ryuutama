@@ -73,6 +73,12 @@
       "target": "Target",
       "rolls": "Rolls"
     },
+    "skill": {
+      "skillEffect": "Skill Effect",
+      "usableCircumstances": "Usable Circumstances",
+      "statUsed": "Stat Used",
+      "targetNumber": "Target Number"
+    },
     "item": {
       "name": "Name",
       "description": "Description"

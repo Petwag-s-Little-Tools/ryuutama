@@ -56,37 +56,11 @@
   {{/each}}
 </table>
 <section>{{localize "ryuutama.character.statusEffects"}}</section>
-<table>
-  <tr>
-    <th>{{localize "ryuutama.statuses.body"}}</th>
-    <td>
-      <div style="display: flex">
-        <div>{{localize "ryuutama.statuses.injury"}}</div>
-        <p>{{system.statuses.injury}}</p>
-      </div>
-    </td>
-    <td><div style="display: flex">
-        <div>{{localize "ryuutama.statuses.poison"}}</div>
-        <p>{{system.statuses.poison}}</p>
-      </div></td>
-    <td><div style="display: flex">
-        <div>{{localize "ryuutama.statuses.sickness"}}</div>
-        <p>{{system.statuses.sickness}}</p>
-      </div></td>
-  </tr>
-  <tr>
-    <th>{{localize "ryuutama.statuses.mind"}}</th>
-    <td><div style="display: flex">
-        <div>{{localize "ryuutama.statuses.exhaustion"}}</div>
-        <p>{{system.statuses.exhaustion}}</p>
-      </div></td>
-    <td><div style="display: flex">
-        <div>{{localize "ryuutama.statuses.muddled"}}</div>
-        <p>{{system.statuses.muddled}}</p>
-      </div></td>
-    <td><div style="display: flex">
-        <div>{{localize "ryuutama.statuses.shock"}}</div>
-        <p>{{system.statuses.shock}}</p>
-      </div></td>
-  </tr>
-</table>
+<div id="statuses">
+  {{#each system.statuses as |value id|}}
+    <div>
+      <div>{{localize (concat "ryuutama.statuses." id)}}</div>
+      <p>{{value}}</p>
+    </div>
+  {{/each}}
+</div>
