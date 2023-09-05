@@ -1,20 +1,66 @@
+<h3>{{localize "ryuutama.character.stats"}}</h3>
+<div id="stats">
+  <div class="stat-item" data-stat="str">
+    <div>
+      <h4>{{localize "ryuutama.stats.str"}}</h4>
+      <p> {{localize (concat "ryuutama.dice.d" system.stats.str.die)}}</p>
+    </div>
+    <div
+      class="stat-image"
+      tabindex="0"
+      role="button"
+      aria-label="{{actor.name}}"
+      style="background-image: url('{{actor.img}}')"
+    ></div>
+  </div>
+  <div class="stat-item" data-stat="dex">
+    <div>
+      <h4>{{localize "ryuutama.stats.dex"}}</h4>
+      <p>{{localize (concat "ryuutama.dice.d" system.stats.dex.die)}}</p>
+    </div>
+    <div
+      class="stat-image"
+      tabindex="0"
+      role="button"
+      aria-label="{{actor.name}}"
+      style="background-image: url('{{actor.img}}')"
+    ></div>
+  </div>
+  <div class="stat-item" data-stat="int">
+    <div>
+      <h4>{{localize "ryuutama.stats.int"}}</h4>
+      <p> {{localize (concat "ryuutama.dice.d" system.stats.int.die)}}</p>
+    </div>
+    <div
+      class="stat-image"
+      tabindex="0"
+      role="button"
+      aria-label="{{actor.name}}"
+      style="background-image: url('{{actor.img}}')"
+    ></div>
+  </div>
+  <div class="stat-item" data-stat="spi">
+    <div>
+      <h4>{{localize "ryuutama.stats.spi"}}</h4>
+      <p>{{localize (concat "ryuutama.dice.d" system.stats.spi.die)}}</p>
+    </div>
+    <div
+      class="stat-image"
+      tabindex="0"
+      role="button"
+      aria-label="{{actor.name}}"
+      style="background-image: url('{{actor.img}}')"
+    ></div>
+  </div>
+  <a class="stats-roll"><i class="fas fa-dice"></i></a>
+
+</div>
 <table>
   <tr>
     <th>{{localize "ryuutama.character.stats"}}</th>
   </tr>
   <tr>
-    <td>{{localize "ryuutama.stats.str"}}
-      {{localize (concat "ryuutama.dice.d" system.stats.str.die)}}
-    </td>
-    <td>{{localize "ryuutama.stats.dex"}}
-      {{localize (concat "ryuutama.dice.d" system.stats.dex.die)}}
-    </td>
-    <td>{{localize "ryuutama.stats.int"}}
-      {{localize (concat "ryuutama.dice.d" system.stats.int.die)}}
-    </td>
-    <td>{{localize "ryuutama.stats.spi"}}
-      {{localize (concat "ryuutama.dice.d" system.stats.spi.die)}}
-    </td>
+
   </tr>
   <tr>
     <th>{{localize "ryuutama.character.hp"}}</th>
@@ -50,11 +96,24 @@
 </table>
 
 <section>{{localize "ryuutama.character.skills"}}</section>
-<table>
+<ol>
   {{#each skills as |skill|}}
-    <tr>test</tr>
+    <li class="skill flexrow" data-item-id="{{skill.id}}">
+      <div class="skill-name">
+        <div
+          class="skill-image"
+          tabindex="0"
+          role="button"
+          aria-label="{{skill.name}}"
+          style="background-image: url('{{skill.img}}')"
+        ></div>
+        <h4>
+          {{skill.name}}
+        </h4>
+      </div>
+    </li>
   {{/each}}
-</table>
+</ol>
 <section>{{localize "ryuutama.character.statusEffects"}}</section>
 <div id="statuses">
   {{#each system.statuses as |value id|}}

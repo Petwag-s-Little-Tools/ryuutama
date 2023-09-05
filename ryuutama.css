@@ -4,6 +4,47 @@
   transform: scale(-1);
 }
 
+.flexrow {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+#stats {
+  display: grid;
+  grid-template-columns: repeat(4, 3fr) 2fr;
+}
+
+.stat-item {
+  display: flex;
+}
+
+.skill-name {
+  display: flex;
+  cursor: pointer;
+  flex: 2;
+  margin: 0;
+  overflow: hidden;
+  font-size: 13px;
+  text-align: left;
+  align-items: center;
+}
+
+.skill-name h4 {
+  line-height: 30px;
+}
+
+.skill-image,
+.stat-image {
+  flex: 0 0 30px;
+  height: 30px;
+  background-size: cover;
+  background-position: 50% 0;
+  border: none;
+  margin-right: 5px;
+}
+
 .sheet form {
   display: flex;
   flex-direction: column;
