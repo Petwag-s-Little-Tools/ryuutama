@@ -4,19 +4,19 @@
     "character": {
       "stats": {
         "str": {
-          "die": "0",
+          "die": 0,
           "mod": 0
         },
         "dex": {
-          "die": "0",
+          "die": 0,
           "mod": 0
         },
         "int": {
-          "die": "0",
+          "die": 0,
           "mod": 0
         },
         "spi": {
-          "die": "0",
+          "die": 0,
           "mod": 0
         }
       },
@@ -47,6 +47,7 @@
       "masteredWeapons": [],
       "specializedTerrains": [],
       "personnalItem": "",
+      "selectedStat": [],
       "statuses": {
         "injury": 0,
         "poison": 0,

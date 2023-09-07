@@ -1,9 +1,18 @@
 export class RyuutamaActor extends Actor {
   /** @override */
   prepareData() {
-    this.selectedStat = [];
-
+    console.log("prepareData");
     super.prepareData();
+  }
+
+  prepareDerivedData() {
+    console.log("prepareDerivedData");
+    super.prepareDerivedData();
+  }
+
+  prepareEmbeddedDocuments() {
+    console.log("prepareEmbeddedDocuments");
+    super.prepareEmbeddedDocuments();
   }
 
   rollCondition() {
@@ -24,19 +33,42 @@ export class RyuutamaActor extends Actor {
   }
 
   selectStat(stat) {
-    console.log(stat, this.selectedStat);
-    if (this.selectedStat.includes(stat)) {
-      this.selectedStat = this.selectedStat.filter((s) => s !== stat);
+    let selectedStat = this.system.selectedStat;
+
+    if (selectedStat.includes(stat)) {
+      selectedStat = selectedStat.filter((s) => s !== stat);
     } else {
-      if (this.selectedStat.length >= 2) {
-        this.selectedStat.shift();
+      if (selectedStat.length >= 2) {
+        selectedStat.shift();
       }
 
-      this.selectedStat.push(stat);
+      selectedStat.push(stat);
     }
 
-    console.log(this.selectedStat);
+    this.update({ "system.selectedStat": selectedStat });
+  }
 
-    this.update({ selectedStat: this.selectedStat });
+  roll() {
+    const selectedStat = this.system.selectedStat;
+
+    if (selectedStat.length <= 0) return;
+
+    const stat1 = selectedStat[0];
+    const stat2 = selectedStat.length < 2 ? selectedStat[0] : selectedStat[1];
+
+    const die1 = this.system.stats[stat1].die;
+    const die2 = this.system.stats[stat2].die;
+
+    const roll = new Roll(`1d${die1} + 1d${die2}`);
+
+    roll.evaluate().then(() => {
+      const total = roll.total;
+
+      return ChatMessage.create({
+        user: game.user._id,
+        speaker: ChatMessage.getSpeaker({ actor: game.user._id }),
+        content: `Rolling ${selectedStat[0]} + ${selectedStat[1]} for ${this.name}... [${total}]`,
+      });
+    });
   }
 }

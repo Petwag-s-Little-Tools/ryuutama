@@ -1,57 +1,22 @@
 <h3>{{localize "ryuutama.character.stats"}}</h3>
 <div id="stats">
-  <div class="stat-item" data-stat="str">
-    <div>
-      <h4>{{localize "ryuutama.stats.str"}}</h4>
-      <p> {{localize (concat "ryuutama.dice.d" system.stats.str.die)}}</p>
+  {{#each system.stats as |stat id|}}
+    <div class="stat-item {{#ifIn ../system.selectedStat id}}selected{{/ifIn}}" data-stat="{{id}}">
+      <div class="stat-box">
+        <div>
+          <h4>{{localize (concat "ryuutama.stats." id)}}</h4>
+          <p> {{localize (concat "ryuutama.dice.d" stat.die)}}</p>
+        </div>
+        <div
+          class="stat-image"
+          tabindex="0"
+          role="button"
+          aria-label="{{../actor.name}}"
+          style="background-image: url('{{../actor.img}}')"
+        ></div>
+      </div>
     </div>
-    <div
-      class="stat-image"
-      tabindex="0"
-      role="button"
-      aria-label="{{actor.name}}"
-      style="background-image: url('{{actor.img}}')"
-    ></div>
-  </div>
-  <div class="stat-item" data-stat="dex">
-    <div>
-      <h4>{{localize "ryuutama.stats.dex"}}</h4>
-      <p>{{localize (concat "ryuutama.dice.d" system.stats.dex.die)}}</p>
-    </div>
-    <div
-      class="stat-image"
-      tabindex="0"
-      role="button"
-      aria-label="{{actor.name}}"
-      style="background-image: url('{{actor.img}}')"
-    ></div>
-  </div>
-  <div class="stat-item" data-stat="int">
-    <div>
-      <h4>{{localize "ryuutama.stats.int"}}</h4>
-      <p> {{localize (concat "ryuutama.dice.d" system.stats.int.die)}}</p>
-    </div>
-    <div
-      class="stat-image"
-      tabindex="0"
-      role="button"
-      aria-label="{{actor.name}}"
-      style="background-image: url('{{actor.img}}')"
-    ></div>
-  </div>
-  <div class="stat-item" data-stat="spi">
-    <div>
-      <h4>{{localize "ryuutama.stats.spi"}}</h4>
-      <p>{{localize (concat "ryuutama.dice.d" system.stats.spi.die)}}</p>
-    </div>
-    <div
-      class="stat-image"
-      tabindex="0"
-      role="button"
-      aria-label="{{actor.name}}"
-      style="background-image: url('{{actor.img}}')"
-    ></div>
-  </div>
+  {{/each}}
   <a class="stats-roll"><i class="fas fa-dice"></i></a>
 
 </div>

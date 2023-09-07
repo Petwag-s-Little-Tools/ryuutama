@@ -30,4 +30,9 @@ Hooks.once("init", () => {
 
   // Preload Handlebars templates
   preloadHandlerbarsTemplates();
+
+  // Handerbars helpers
+  Handlebars.registerHelper("ifIn", function (list, value, options) {
+    if (list.includes(value)) return options.fn(this);
+  });
 });

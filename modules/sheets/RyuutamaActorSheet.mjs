@@ -30,9 +30,6 @@ export class RyuutamaActorSheet extends ActorSheet {
     context.skills = this.getSkills(itemData.items);
     context.maxHp = this.getMaxHp(itemData.system);
     context.maxMp = this.getMaxMp(itemData.system);
-    context.selectedStat = itemData.selectedStat;
-
-    console.log(itemData.selectedStat);
     return context;
   }
 
@@ -42,6 +39,7 @@ export class RyuutamaActorSheet extends ActorSheet {
     if (this.actor.isOwner) {
       html.find(".condition-roll").click(this.onConditionRoll.bind(this));
       html.find(".stat-item").click(this.onStatSelect.bind(this));
+      html.find(".stats-roll").click(this.onStatRoll.bind(this));
     }
   }
 
@@ -75,5 +73,9 @@ export class RyuutamaActorSheet extends ActorSheet {
     const stat = dataStat.value;
 
     this.actor.selectStat(stat);
+  }
+
+  onStatRoll() {
+    this.actor.roll();
   }
 }

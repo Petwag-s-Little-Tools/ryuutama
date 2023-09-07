@@ -18,6 +18,18 @@
 
 .stat-item {
   display: flex;
+  justify-content: center;
+}
+
+.stat-item.selected > .stat-box {
+  background-color: #ff0;
+}
+
+.stat-box {
+  display: flex;
+  border: black 1px solid;
+  height: 60px;
+  width: 60px;
 }
 
 .skill-name {
