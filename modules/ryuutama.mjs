@@ -5,6 +5,10 @@ import { ryuutama } from "./config.mjs";
 
 import { RyuutamaActor } from "./documents/RyuutamaActor.mjs";
 
+import { RyuutamaCombat } from "./combat/RyuutamaCombat.mjs";
+import { RyuutamaCombatTracker } from "./combat/RyuutamaCombatTracker.mjs";
+import { RyuutamaCombatant } from "./combat/RyuutamaCombatant.mjs";
+import { RyuutamaCombatantConfig } from "./combat/RyuutamaCombatantConfig.mjs";
 import { preloadHandlerbarsTemplates } from "./utils.mjs";
 
 Hooks.once("init", () => {
@@ -19,6 +23,12 @@ Hooks.once("init", () => {
   };
 
   CONFIG.Actor.documentClass = RyuutamaActor;
+
+  // Combat
+  CONFIG.Combat.documentClass = RyuutamaCombat;
+  CONFIG.ui.combat = RyuutamaCombatTracker;
+  CONFIG.Combatant.documentClass = RyuutamaCombatant;
+  CONFIG.Combatant.sheetClass = RyuutamaCombatantConfig;
 
   // Register Actor sheets
   Actors.unregisterSheet("core", ActorSheet);

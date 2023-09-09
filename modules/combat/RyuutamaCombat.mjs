@@ -1,4 +1,4 @@
-export default class RyuutamaCombat extends Combat {
+export class RyuutamaCombat extends Combat {
   /**
    * @override
    */
@@ -18,5 +18,10 @@ export default class RyuutamaCombat extends Combat {
     if (typeA === "character") return -1;
 
     if (typeB === "character") return 1;
+  }
+
+  _onCreate(data, options, userId) {
+    console.log("WAGABOBOB");
+    super._onCreate(data, options, userId);
   }
 }
