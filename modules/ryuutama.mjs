@@ -29,6 +29,7 @@ Hooks.once("init", () => {
   CONFIG.ui.combat = RyuutamaCombatTracker;
   CONFIG.Combatant.documentClass = RyuutamaCombatant;
   CONFIG.Combatant.sheetClass = RyuutamaCombatantConfig;
+  CONFIG.Combat.initiative.formula = "1d@stats.dex.die + 1d@stats.int.die";
 
   // Register Actor sheets
   Actors.unregisterSheet("core", ActorSheet);

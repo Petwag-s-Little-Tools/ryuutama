@@ -11,12 +11,10 @@ export class RyuutamaCombatTracker extends CombatTracker {
   }
 
   _onCombatantControl(event) {
-    console.log("PROTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT");
     super._onCombatantControl(event);
   }
 
   _onCombatCreate(event) {
-    console.log("PROTT");
     super._onCombatCreate(event);
   }
 }
