@@ -79,6 +79,14 @@
       "statUsed": "Stat Used",
       "targetNumber": "Target Number"
     },
+    "objectTypes": {
+      "item": "Item",
+      "weapon": "Weapon",
+      "armor": "Armor",
+      "shield": "Shield",
+      "gear": "Gear",
+      "other": "Other"
+    },
     "item": {
       "name": "Name",
       "description": "Description"

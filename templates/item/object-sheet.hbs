@@ -1,0 +1,25 @@
+<form class="{{cssClass}}" autocomplete="off">
+  <header class="sheet-header">
+    <img
+      src="{{item.img}}"
+      data-edit="img"
+      title="{{item.name}}"
+      height="64"
+      width="64"
+    />
+    <input
+      name="name"
+      type="text"
+      value="{{item.name}}"
+      placeholder="{{localize 'Name'}}"
+    />
+  </header>
+  <select name="system.objectType">
+    {{#select system.objectType}}
+      {{#each config.objectTypes as |value id|}}
+        <option value="{{id}}">{{localize value}}</option>
+      {{/each}}
+    {{/select}}
+  </select>
+  {{> (concat "ryuutama.item-" system.objectType)}}
+</form>

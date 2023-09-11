@@ -64,7 +64,7 @@
     }
   },
   "Item": {
-    "types": ["spell", "skill"],
+    "types": ["spell", "skill", "object"],
     "templates": {
       "coreItem": {
         "description": ""
@@ -92,6 +92,33 @@
       },
       "targetNumber": "",
       "usableCircumstances": ""
+    },
+    "object": {
+      "templates": ["coreItem"],
+      "price": 0,
+      "size": 0,
+      "objectType": "",
+      "weapon": {
+        "equip": "",
+        "accuracy": "",
+        "damage": ""
+      },
+      "armor": {
+        "equip": "",
+        "defense": 0,
+        "penalty": 0
+      },
+      "shield": {
+        "dodge": ""
+      },
+      "gear": {
+        "type": "",
+        "bonus": ""
+      },
+      "other": {
+        "type": "",
+        "values": {}
+      }
     }
   }
 }
