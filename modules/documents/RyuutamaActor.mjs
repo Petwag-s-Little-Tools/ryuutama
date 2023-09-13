@@ -1,17 +1,14 @@
 export class RyuutamaActor extends Actor {
   /** @override */
   prepareData() {
-    console.log("prepareData");
     super.prepareData();
   }
 
   prepareDerivedData() {
-    console.log("prepareDerivedData");
     super.prepareDerivedData();
   }
 
   prepareEmbeddedDocuments() {
-    console.log("prepareEmbeddedDocuments");
     super.prepareEmbeddedDocuments();
   }
 

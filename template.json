@@ -98,6 +98,7 @@
       "price": 0,
       "size": 0,
       "objectType": "",
+      "active": false,
       "weapon": {
         "equip": "",
         "accuracy": "",

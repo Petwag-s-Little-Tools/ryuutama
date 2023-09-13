@@ -89,7 +89,10 @@
     },
     "item": {
       "name": "Name",
-      "description": "Description"
+      "description": "Description",
+      "effects": "Effects",
+      "effectEdit": "Edit",
+      "effectDelete": "Delete"
     },
     "character": {
       "statusEffects": "Status Effects",

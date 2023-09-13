@@ -1,6 +1,10 @@
 import { ryuutama } from "./config.mjs";
 
 export const preloadHandlerbarsTemplates = async function () {
+  const generalTemplates = [
+    "systems/ryuutama/templates/parts/active-effects.hbs",
+  ];
+
   const actorTemplates = [
     "systems/ryuutama/templates/actor/parts/actor-edit.hbs",
     "systems/ryuutama/templates/actor/parts/actor-stats.hbs",
@@ -15,7 +19,7 @@ export const preloadHandlerbarsTemplates = async function () {
     }
   );
 
-  const partials = [...actorTemplates, ...itemTemplates];
+  const partials = [...actorTemplates, ...itemTemplates, ...generalTemplates];
 
   const paths = {};
 

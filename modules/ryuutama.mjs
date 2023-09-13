@@ -4,6 +4,7 @@ import { RyuutamaItemSheet } from "./sheets/RyuutamaItemSheet.mjs";
 import { ryuutama } from "./config.mjs";
 
 import { RyuutamaActor } from "./documents/RyuutamaActor.mjs";
+import { RyuutamaItem } from "./documents/RyuutamaItem.mjs";
 
 import { RyuutamaCombat } from "./combat/RyuutamaCombat.mjs";
 import { RyuutamaCombatTracker } from "./combat/RyuutamaCombatTracker.mjs";
@@ -20,9 +21,11 @@ Hooks.once("init", () => {
   // Not sure what is this for
   game.ryuutama = {
     RyuutamaActor,
+    RyuutamaItem,
   };
 
   CONFIG.Actor.documentClass = RyuutamaActor;
+  CONFIG.Item.documentClass = RyuutamaItem;
 
   // Combat
   CONFIG.Combat.documentClass = RyuutamaCombat;

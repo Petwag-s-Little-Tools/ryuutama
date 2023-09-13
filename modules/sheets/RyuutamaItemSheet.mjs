@@ -23,15 +23,23 @@ export class RyuutamaItemSheet extends ItemSheet {
     context.flags = itemData.flags;
 
     return foundry.utils.mergeObject(context, {
-      labels: this._getLabels(itemData),
+      labels: this.getLabels(itemData),
+      effects: context.item.getEmbeddedCollection("ActiveEffect"),
     });
   }
 
-  _getLabels(itemData) {
+  activateListeners(html) {
+    super.activateListeners(html);
+    if (this.isEditable) {
+      html.find(".effect-control").click(this.onEffectControl.bind(this));
+    }
+  }
+
+  getLabels(itemData) {
     switch (this.item.type) {
       case "spell":
         return {
-          disableDurationField: this._disableDurationField(
+          disableDurationField: this.isDurationFieldDisabled(
             itemData.system.durationUnit
           ),
         };
@@ -40,11 +48,41 @@ export class RyuutamaItemSheet extends ItemSheet {
     }
   }
 
-  _disableDurationField(durationUnit) {
+  isDurationFieldDisabled(durationUnit) {
     if (!durationUnit) {
       return !CONFIG.ryuutama.durationUnits["none"].hasNumericValue;
     }
 
     return !CONFIG.ryuutama.durationUnits[durationUnit].hasNumericValue;
+  }
+
+  onEffectControl(event) {
+    event.preventDefault();
+    const owner = this.item;
+    const a = event.currentTarget;
+    const li = a.closest("li");
+    const effect = li?.dataset.effectId
+      ? owner.effects.get(li.dataset.effectId)
+      : null;
+    switch (a.dataset.action) {
+      case "create":
+        if (this.item.isEmbedded) {
+          return ui.notifications.error(
+            "Managing embedded Documents which are not direct descendants of a primary Document is un-supported at this time."
+          );
+        }
+        return owner.createEmbeddedDocuments("ActiveEffect", [
+          {
+            label: "New Effect",
+            icon: "icons/svg/aura.svg",
+            origin: owner.uuid,
+            disabled: true,
+          },
+        ]);
+      case "edit":
+        return effect.sheet.render(true);
+      case "delete":
+        return effect.delete();
+    }
   }
 }

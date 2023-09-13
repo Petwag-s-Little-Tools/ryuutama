@@ -28,6 +28,7 @@ export class RyuutamaActorSheet extends ActorSheet {
     context.system = itemData.system;
     context.spells = this.getSpells(itemData.items);
     context.skills = this.getSkills(itemData.items);
+    context.items = this.getItems(itemData.items);
     context.maxHp = this.getMaxHp(itemData.system);
     context.maxMp = this.getMaxMp(itemData.system);
     return context;
@@ -40,12 +41,17 @@ export class RyuutamaActorSheet extends ActorSheet {
       html.find(".condition-roll").click(this.onConditionRoll.bind(this));
       html.find(".stat-item").click(this.onStatSelect.bind(this));
       html.find(".stats-roll").click(this.onStatRoll.bind(this));
+      html.find(".equip-toggle").click(this.onEquipItem.bind(this));
     }
   }
 
   // Data Getter
   getSpells(items) {
     return items.filter((item) => item.type === "spell");
+  }
+
+  getItems(items) {
+    return items.filter((item) => item.type === "object");
   }
 
   getSkills(items) {
@@ -77,5 +83,22 @@ export class RyuutamaActorSheet extends ActorSheet {
 
   onStatRoll() {
     this.actor.roll();
+  }
+
+  async onEquipItem(event) {
+    const itemID = event.currentTarget.closest(".item").dataset.itemId;
+    const item = this.actor.items.get(itemID);
+    const effects = this.actor.getEmbeddedCollection("ActiveEffect");
+    const effect = effects.filter((effect) =>
+      effect.origin.endsWith(itemID)
+    )[0];
+
+    if (effect === undefined) return;
+
+    const newStatus = !item.system.active;
+
+    await effect.update({ disabled: !newStatus });
+
+    return item.equip(newStatus);
   }
 }

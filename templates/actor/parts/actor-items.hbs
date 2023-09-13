@@ -1,1 +1,13 @@
 {{localize "ryuutama.character.items"}}
+{{#each items as |item|}}
+  <div class="item" data-item-id="{{_id}}">
+    <img
+      src="{{item.img}}"
+      data-edit="img"
+      title="{{item.name}}"
+      height="100"
+      width="100"
+    />
+    <div class="item-name equip-toggle">{{item.name}}</div>
+  </div>
+{{/each}}
