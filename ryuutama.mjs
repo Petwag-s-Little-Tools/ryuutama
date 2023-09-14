@@ -1,18 +1,18 @@
-import { RyuutamaActorSheet } from "./sheets/RyuutamaActorSheet.mjs";
-import { RyuutamaItemSheet } from "./sheets/RyuutamaItemSheet.mjs";
+import { RyuutamaActorSheet } from "./modules/sheets/RyuutamaActorSheet.mjs";
+import { RyuutamaItemSheet } from "./modules/sheets/RyuutamaItemSheet.mjs";
 
-import { ryuutama } from "./config.mjs";
+import { ryuutama } from "./modules/config.mjs";
 
-import { RyuutamaActor } from "./documents/RyuutamaActor.mjs";
-import { RyuutamaItem } from "./documents/RyuutamaItem.mjs";
+import { RyuutamaActor } from "./modules/documents/RyuutamaActor.mjs";
+import { RyuutamaItem } from "./modules/documents/RyuutamaItem.mjs";
 
-import { RyuutamaCombat } from "./combat/RyuutamaCombat.mjs";
-import { RyuutamaCombatTracker } from "./combat/RyuutamaCombatTracker.mjs";
-import { RyuutamaCombatant } from "./combat/RyuutamaCombatant.mjs";
-import { RyuutamaCombatantConfig } from "./combat/RyuutamaCombatantConfig.mjs";
-import { preloadHandlerbarsTemplates } from "./utils.mjs";
+import { RyuutamaCombat } from "./modules/combat/RyuutamaCombat.mjs";
+import { RyuutamaCombatTracker } from "./modules/combat/RyuutamaCombatTracker.mjs";
+import { RyuutamaCombatant } from "./modules/combat/RyuutamaCombatant.mjs";
+import { RyuutamaCombatantConfig } from "./modules/combat/RyuutamaCombatantConfig.mjs";
+import { preloadHandlerbarsTemplates } from "./modules/utils.mjs";
 
-import { RyuutamaActiveEffect } from "./documents/RyuutamaActiveEffect.mjs";
+import { RyuutamaActiveEffect } from "./modules/documents/RyuutamaActiveEffect.mjs";
 
 Hooks.once("init", () => {
   console.log("ryuutama | Starting Ryuutama System");

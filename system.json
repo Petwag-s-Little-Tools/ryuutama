@@ -19,7 +19,7 @@
       "discord": "petwag"
     }
   ],
-  "esmodules": ["modules/ryuutama.mjs"],
+  "esmodules": ["ryuutama.mjs"],
   "styles": ["ryuutama.css"],
   "packs": [],
   "languages": [

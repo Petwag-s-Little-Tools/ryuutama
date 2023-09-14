@@ -1,27 +1,5 @@
-.vertical {
-  writing-mode: vertical-lr;
-  text-orientation: mixed;
-  transform: scale(-1);
-}
-
-.flexrow {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-}
-
-.hidden {
-  display: none;
-}
-
-.flex {
-  display: flex;
-}
-
-#actor .items .item {
-  background-color: blue;
-}
+@import "utils.scss";
+@import "actor/actor.scss";
 
 #stats {
   display: grid;
@@ -88,5 +66,3 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
-
-/*# sourceMappingURL=ryuutama.css.map */

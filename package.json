@@ -1,0 +1,13 @@
+{
+  "name": "ryuutama",
+  "version": "1.0.0",
+  "description": "FoundryVTT system for Ryuutama TTRPG",
+  "scripts": {
+    "sass": "sass --watch styles/ryuutama.scss ryuutama.css"
+  },
+  "author": "Petwag <https://github.com/Petwag>",
+  "license": "ISC",
+  "devDependencies": {
+    "sass": "^1.67.0"
+  }
+}
