@@ -32,6 +32,7 @@ export class RyuutamaItemSheet extends ItemSheet {
     super.activateListeners(html);
     if (this.isEditable) {
       html.find(".effect-control").click(this.onEffectControl.bind(this));
+      html.find(".test").change(this.onTestChange.bind(this));
     }
   }
 
@@ -71,7 +72,7 @@ export class RyuutamaItemSheet extends ItemSheet {
             "Managing embedded Documents which are not direct descendants of a primary Document is un-supported at this time."
           );
         }
-        return owner.createEmbeddedDocuments("ActiveEffect", [
+        const a = owner.createEmbeddedDocuments("ActiveEffect", [
           {
             label: "New Effect",
             icon: "icons/svg/aura.svg",
@@ -79,10 +80,24 @@ export class RyuutamaItemSheet extends ItemSheet {
             disabled: true,
           },
         ]);
+        a.then((effect) => {
+          console.log(effect);
+        });
+        return a;
       case "edit":
         return effect.sheet.render(true);
       case "delete":
         return effect.delete();
     }
   }
+
+  onTestChange(event) {
+    console.log(event);
+  }
 }
+
+// TODO
+/**
+ * On item creation, create the Active Effect
+ * On item update, update the Active Effect
+ */

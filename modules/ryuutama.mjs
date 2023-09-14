@@ -12,6 +12,8 @@ import { RyuutamaCombatant } from "./combat/RyuutamaCombatant.mjs";
 import { RyuutamaCombatantConfig } from "./combat/RyuutamaCombatantConfig.mjs";
 import { preloadHandlerbarsTemplates } from "./utils.mjs";
 
+import { RyuutamaActiveEffect } from "./documents/RyuutamaActiveEffect.mjs";
+
 Hooks.once("init", () => {
   console.log("ryuutama | Starting Ryuutama System");
 
@@ -26,6 +28,10 @@ Hooks.once("init", () => {
 
   CONFIG.Actor.documentClass = RyuutamaActor;
   CONFIG.Item.documentClass = RyuutamaItem;
+
+  // Active Effects
+  // CONFIG.ActiveEffect.sheetClass = RyuutamaActiveEffectConfig; // To modify the ActiveEffect sheet
+  CONFIG.ActiveEffect.documentClass = RyuutamaActiveEffect;
 
   // Combat
   CONFIG.Combat.documentClass = RyuutamaCombat;
