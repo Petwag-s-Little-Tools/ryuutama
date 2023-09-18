@@ -1,13 +1,41 @@
-{{localize "ryuutama.character.items"}}
-{{#each items as |item|}}
-  <div class="item" data-item-id="{{_id}}">
-    <img
-      src="{{item.img}}"
-      data-edit="img"
-      title="{{item.name}}"
-      height="100"
-      width="100"
-    />
-    <div class="item-name equip-toggle">{{item.name}}</div>
-  </div>
-{{/each}}
+<div id="actor-item">
+  {{localize "ryuutama.itemTypes.gear"}}
+  {{#each items.gear as |item|}}
+    <div class="item" data-item-id="{{_id}}">
+      <img
+        src="{{item.img}}"
+        data-edit="img"
+        title="{{item.name}}"
+        height="100"
+        width="100"
+      />
+      <div class="item-name equip-toggle">{{item.name}}</div>
+    </div>
+  {{/each}}
+  {{localize "ryuutama.itemTypes.weapon"}}
+  {{#each items.weapon as |item|}}
+    <div class="item" data-item-id="{{_id}}">
+      <img
+        src="{{item.img}}"
+        data-edit="img"
+        title="{{item.name}}"
+        height="100"
+        width="100"
+      />
+      <div class="item-name equip-toggle">{{item.name}}</div>
+    </div>
+  {{/each}}
+  {{localize "ryuutama.itemTypes.armor"}}
+  {{#each items.armor as |item|}}
+    <div class="item" data-item-id="{{_id}}">
+      <img
+        src="{{item.img}}"
+        data-edit="img"
+        title="{{item.name}}"
+        height="100"
+        width="100"
+      />
+      <div class="item-name equip-toggle">{{item.name}}</div>
+    </div>
+  {{/each}}
+</div>

@@ -13,7 +13,7 @@ export const preloadHandlerbarsTemplates = async function () {
     "systems/ryuutama/templates/actor/parts/actor-bio.hbs",
   ];
 
-  const itemTemplates = Array.from(Object.keys(ryuutama.objectTypes)).map(
+  const itemTemplates = Array.from(Object.keys(ryuutama.itemTypes)).map(
     (type) => {
       return `systems/ryuutama/templates/item/parts/item-${type}.hbs`;
     }

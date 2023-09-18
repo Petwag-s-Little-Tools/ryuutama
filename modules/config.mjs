@@ -73,12 +73,12 @@ ryuutama.spellLevels = {
   high: "ryuutama.spellLevels.high",
 };
 
-ryuutama.objectTypes = {
-  armor: "ryuutama.objectTypes.armor",
-  gear: "ryuutama.objectTypes.gear",
-  shield: "ryuutama.objectTypes.shield",
-  weapon: "ryuutama.objectTypes.weapon",
-  other: "ryuutama.objectTypes.other",
+ryuutama.itemTypes = {
+  armor: "ryuutama.itemTypes.armor",
+  gear: "ryuutama.itemTypes.gear",
+  shield: "ryuutama.itemTypes.shield",
+  weapon: "ryuutama.itemTypes.weapon",
+  other: "ryuutama.itemTypes.other",
 };
 
 ryuutama.dice = {

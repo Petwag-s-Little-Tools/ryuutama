@@ -29,6 +29,9 @@ export class RyuutamaActorSheet extends ActorSheet {
     context.spells = this.getSpells(itemData.items);
     context.skills = this.getSkills(itemData.items);
     context.items = this.getItems(itemData.items);
+
+    console.log(context.items);
+
     context.maxHp = this.getMaxHp(itemData.system);
     context.maxMp = this.getMaxMp(itemData.system);
     return context;
@@ -51,7 +54,21 @@ export class RyuutamaActorSheet extends ActorSheet {
   }
 
   getItems(items) {
-    return items.filter((item) => item.type === "object");
+    const itemMap = new Map();
+
+    items.forEach((item) => {
+      if (item.type !== "item") return;
+
+      const key = item.system.itemType;
+
+      if (!itemMap.has(key)) {
+        itemMap.set(key, []);
+      }
+
+      itemMap.get(key).push(item);
+    });
+
+    return Object.fromEntries(itemMap);
   }
 
   getSkills(items) {

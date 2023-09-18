@@ -14,12 +14,12 @@
       placeholder="{{localize 'Name'}}"
     />
   </header>
-  <select name="system.objectType">
-    {{#select system.objectType}}
-      {{#each config.objectTypes as |value id|}}
+  <select name="system.itemType">
+    {{#select system.itemType}}
+      {{#each config.itemTypes as |value id|}}
         <option value="{{id}}">{{localize value}}</option>
       {{/each}}
     {{/select}}
   </select>
-  {{> (concat "ryuutama.item-" system.objectType)}}
+  {{> (concat "ryuutama.item-" system.itemType)}}
 </form>

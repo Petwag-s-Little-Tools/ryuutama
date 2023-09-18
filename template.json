@@ -64,7 +64,7 @@
     }
   },
   "Item": {
-    "types": ["spell", "skill", "object"],
+    "types": ["spell", "skill", "item"],
     "templates": {
       "coreItem": {
         "description": ""
@@ -93,11 +93,11 @@
       "targetNumber": "",
       "usableCircumstances": ""
     },
-    "object": {
+    "item": {
       "templates": ["coreItem"],
       "price": 0,
       "size": 0,
-      "objectType": "",
+      "itemType": "gear",
       "active": false,
       "weapon": {
         "equip": "",
