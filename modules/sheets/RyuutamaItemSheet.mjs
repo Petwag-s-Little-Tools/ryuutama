@@ -19,7 +19,6 @@ export class RyuutamaItemSheet extends ItemSheet {
     context.config = CONFIG.ryuutama;
     context.system = itemData.system;
 
-    // TODO: check what are the flags
     context.flags = itemData.flags;
 
     return foundry.utils.mergeObject(context, {

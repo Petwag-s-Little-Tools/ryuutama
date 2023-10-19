@@ -1,3 +1,5 @@
+import { ActionRoll } from "../dice/ActionRoll.mjs";
+
 export class RyuutamaActor extends Actor {
   /** @override */
   prepareData() {
@@ -12,7 +14,7 @@ export class RyuutamaActor extends Actor {
     super.prepareEmbeddedDocuments();
   }
 
-  rollCondition() {
+  async rollCondition() {
     const strDice = this.system.stats.str.die;
     const spiDice = this.system.stats.spi.die;
 
@@ -45,7 +47,7 @@ export class RyuutamaActor extends Actor {
     this.update({ "system.selectedStat": selectedStat });
   }
 
-  roll() {
+  async roll() {
     const selectedStat = this.system.selectedStat;
 
     if (selectedStat.length <= 0) return;
@@ -56,16 +58,24 @@ export class RyuutamaActor extends Actor {
     const die1 = this.system.stats[stat1].die;
     const die2 = this.system.stats[stat2].die;
 
-    const roll = new Roll(`1d${die1} + 1d${die2}`);
+    const roll = new ActionRoll(`1d${die1} + 1d${die2}`);
 
-    roll.evaluate().then(() => {
-      const total = roll.total;
+    const configured = await roll.configureDialog({ title: "test" });
 
-      return ChatMessage.create({
-        user: game.user._id,
-        speaker: ChatMessage.getSpeaker({ actor: game.user._id }),
-        content: `Rolling ${selectedStat[0]} + ${selectedStat[1]} for ${this.name}... [${total}]`,
-      });
-    });
+    if (configured === null) return null;
+
+    await roll.evaluate({ async: true });
+
+    await roll.toMessage({ flavor: "test" });
+
+    // roll.evaluate().then(() => {
+    //   const total = roll.total;
+
+    //   return ChatMessage.create({
+    //     user: game.user._id,
+    //     speaker: ChatMessage.getSpeaker({ actor: game.user._id }),
+    //     content: `Rolling ${selectedStat[0]} + ${selectedStat[1]} for ${this.name}... [${total}]`,
+    //   });
+    // });
   }
 }

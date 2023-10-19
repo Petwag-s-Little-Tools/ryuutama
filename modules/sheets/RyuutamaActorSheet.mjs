@@ -84,8 +84,8 @@ export class RyuutamaActorSheet extends ActorSheet {
   }
 
   // Event Handlers
-  onConditionRoll() {
-    this.actor.rollCondition();
+  async onConditionRoll() {
+    await this.actor.rollCondition();
   }
 
   onStatSelect(event) {
@@ -98,8 +98,8 @@ export class RyuutamaActorSheet extends ActorSheet {
     this.actor.selectStat(stat);
   }
 
-  onStatRoll() {
-    this.actor.roll();
+  async onStatRoll() {
+    await this.actor.roll();
   }
 
   async onEquipItem(event) {

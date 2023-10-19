@@ -12,6 +12,7 @@ import { RyuutamaCombatant } from "./modules/combat/RyuutamaCombatant.mjs";
 import { RyuutamaCombatantConfig } from "./modules/combat/RyuutamaCombatantConfig.mjs";
 import { preloadHandlerbarsTemplates } from "./modules/utils.mjs";
 
+import { ActionRoll } from "./modules/dice/ActionRoll.mjs";
 import { RyuutamaActiveEffect } from "./modules/documents/RyuutamaActiveEffect.mjs";
 
 Hooks.once("init", () => {
@@ -39,6 +40,10 @@ Hooks.once("init", () => {
   CONFIG.Combatant.documentClass = RyuutamaCombatant;
   CONFIG.Combatant.sheetClass = RyuutamaCombatantConfig;
   CONFIG.Combat.initiative.formula = "1d@stats.dex.die + 1d@stats.int.die";
+
+  // Dices & Rolls
+  CONFIG.Dice.ActionRoll = ActionRoll;
+  CONFIG.Dice.rolls.push(ActionRoll);
 
   // Register Actor sheets
   Actors.unregisterSheet("core", ActorSheet);

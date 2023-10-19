@@ -107,6 +107,9 @@
       "condition": "Condition",
       "fumble": "Fumble",
       "init": "Init"
-    }
+    },
+    "roll": "Roll",
+    "bonus": "Bonus",
+    "formula": "Formula"
   }
 }
