@@ -6,4 +6,17 @@ export class RyuutamaItem extends Item {
 
     this.update({ "system.active": enabled });
   }
+
+  use() {
+    switch (this.type) {
+      case "skill":
+        return this.useSkill();
+      default:
+        throw new Error(`No use function for this type: ${this.type}`);
+    }
+  }
+
+  useSkill() {
+    console.log("skill used");
+  }
 }

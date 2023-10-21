@@ -45,6 +45,9 @@ export class RyuutamaActorSheet extends ActorSheet {
       html.find(".stat-item").click(this.onStatSelect.bind(this));
       html.find(".stats-roll").click(this.onStatRoll.bind(this));
       html.find(".equip-toggle").click(this.onEquipItem.bind(this));
+
+      // Skills
+      html.find(".rollable .item-image").click(this.onItemUse.bind(this));
     }
   }
 
@@ -106,11 +109,11 @@ export class RyuutamaActorSheet extends ActorSheet {
   }
 
   async onEquipItem(event) {
-    const itemID = event.currentTarget.closest(".item").dataset.itemId;
-    const item = this.actor.items.get(itemID);
+    const itemId = event.currentTarget.closest(".item").dataset.itemId;
+    const item = this.actor.items.get(itemId);
     const effects = this.actor.getEmbeddedCollection("ActiveEffect");
     const effect = effects.filter((effect) =>
-      effect.origin.endsWith(itemID)
+      effect.origin.endsWith(itemId)
     )[0];
 
     if (effect === undefined) return;
@@ -120,5 +123,12 @@ export class RyuutamaActorSheet extends ActorSheet {
     await effect.update({ disabled: !newStatus });
 
     return item.equip(newStatus);
+  }
+
+  async onItemUse(event) {
+    const itemId = event.currentTarget.closest(".item").dataset.itemId;
+    const item = this.actor.items.get(itemId);
+
+    return item.use();
   }
 }
