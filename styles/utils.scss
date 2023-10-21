@@ -1,14 +1,11 @@
-.vertical {
-  writing-mode: vertical-lr;
-  text-orientation: mixed;
-  transform: scale(-1);
-}
-
 .flexrow {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
+}
+.flexrow > * {
+  flex: 1;
 }
 
 .hidden {
@@ -17,4 +14,63 @@
 
 .flex {
   display: flex;
+}
+
+.ryuutama.sheet {
+  .editable {
+    .rollable:hover {
+      cursor: pointer;
+
+      h4 {
+        color: #000;
+        text-shadow: 0 0 10px red;
+      }
+    }
+  }
+}
+
+.item-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  .item {
+    align-items: center;
+    padding: 0 2px;
+    border-bottom: 1px solid #c9c7b8;
+
+    .item-name {
+      color: #191813;
+
+      h4 {
+        margin: 0;
+        white-space: nowrap;
+        overflow-x: hidden;
+        line-height: 30px;
+      }
+
+      &.rollable:hover {
+        .item-image {
+          background-image: url("../../icons/svg/d20-grey.svg") !important;
+
+          &:hover {
+            background-image: url("../../icons/svg/d20-black.svg") !important;
+          }
+        }
+      }
+
+      .item-image {
+        flex: 0 0 30px;
+        height: 30px;
+        background-size: cover;
+        background-position: 50% 0;
+        border: none;
+        margin-right: 5px;
+      }
+    }
+  }
+
+  .item:last-child {
+    border-bottom: none;
+  }
 }

@@ -1,14 +1,12 @@
-.vertical {
-  writing-mode: vertical-lr;
-  text-orientation: mixed;
-  transform: scale(-1);
-}
-
 .flexrow {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
+}
+
+.flexrow > * {
+  flex: 1;
 }
 
 .hidden {
@@ -19,8 +17,49 @@
   display: flex;
 }
 
-#actor #actor-items .item {
-  background-color: blue;
+.ryuutama.sheet .editable .rollable:hover {
+  cursor: pointer;
+}
+.ryuutama.sheet .editable .rollable:hover h4 {
+  color: #000;
+  text-shadow: 0 0 10px red;
+}
+
+.item-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.item-list .item {
+  align-items: center;
+  padding: 0 2px;
+  border-bottom: 1px solid #c9c7b8;
+}
+.item-list .item .item-name {
+  color: #191813;
+}
+.item-list .item .item-name h4 {
+  margin: 0;
+  white-space: nowrap;
+  overflow-x: hidden;
+  line-height: 30px;
+}
+.item-list .item .item-name.rollable:hover .item-image {
+  background-image: url("../../icons/svg/d10-grey.svg") !important;
+}
+.item-list .item .item-name.rollable:hover .item-image:hover {
+  background-image: url("../../icons/svg/d20-black.svg") !important;
+}
+.item-list .item .item-name .item-image {
+  flex: 0 0 30px;
+  height: 30px;
+  background-size: cover;
+  background-position: 50% 0;
+  border: none;
+  margin-right: 5px;
+}
+.item-list .item:last-child {
+  border-bottom: none;
 }
 
 #stats {

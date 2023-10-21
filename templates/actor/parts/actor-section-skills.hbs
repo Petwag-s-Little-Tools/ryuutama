@@ -1,0 +1,20 @@
+<section>{{localize "ryuutama.character.skills"}}</section>
+<ol class="item-list">
+  {{#each skills as |skill iid|}}
+    <li class="item flexrow" data-item-id="{{skill.id}}">
+      <div class="item-name flexrow {{@root.rollableClass}}">
+        <div
+          class="item-image"
+          tabindex="0"
+          role="button"
+          aria-label="{{skill.name}}"
+          style="background-image: url('{{skill.img}}')"
+        ></div>
+        <h4>
+          {{skill.name}}
+        </h4>
+      </div>
+    </li>
+  {{/each}}
+</ol>
+<section>{{localize "ryuutama.character.statusEffects"}}</section>

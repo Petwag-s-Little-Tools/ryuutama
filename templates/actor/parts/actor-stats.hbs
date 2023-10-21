@@ -60,26 +60,8 @@
   </tr>
 </table>
 
-<section>{{localize "ryuutama.character.skills"}}</section>
-<ol>
-  {{#each skills as |skill|}}
-    <li class="skill flexrow" data-item-id="{{skill.id}}">
-      <div class="skill-name">
-        <div
-          class="skill-image"
-          tabindex="0"
-          role="button"
-          aria-label="{{skill.name}}"
-          style="background-image: url('{{skill.img}}')"
-        ></div>
-        <h4>
-          {{skill.name}}
-        </h4>
-      </div>
-    </li>
-  {{/each}}
-</ol>
-<section>{{localize "ryuutama.character.statusEffects"}}</section>
+{{> "ryuutama.actor-section-skills"}}
+
 <div id="statuses">
   {{#each system.statuses as |value id|}}
     <div>

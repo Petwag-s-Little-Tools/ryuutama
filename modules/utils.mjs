@@ -11,6 +11,7 @@ export const preloadHandlerbarsTemplates = async function () {
     "systems/ryuutama/templates/actor/parts/actor-items.hbs",
     "systems/ryuutama/templates/actor/parts/actor-magic.hbs",
     "systems/ryuutama/templates/actor/parts/actor-bio.hbs",
+    "systems/ryuutama/templates/actor/parts/actor-section-skills.hbs",
   ];
 
   const itemTemplates = Array.from(Object.keys(ryuutama.itemTypes)).map(

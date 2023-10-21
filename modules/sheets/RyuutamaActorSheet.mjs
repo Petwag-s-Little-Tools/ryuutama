@@ -25,12 +25,12 @@ export class RyuutamaActorSheet extends ActorSheet {
     const itemData = this.actor;
 
     context.config = CONFIG.ryuutama;
+    context.rollableClass = this.isEditable ? "rollable" : "";
+
     context.system = itemData.system;
     context.spells = this.getSpells(itemData.items);
     context.skills = this.getSkills(itemData.items);
     context.items = this.getItems(itemData.items);
-
-    console.log(context.items);
 
     context.maxHp = this.getMaxHp(itemData.system);
     context.maxMp = this.getMaxMp(itemData.system);
@@ -50,7 +50,9 @@ export class RyuutamaActorSheet extends ActorSheet {
 
   // Data Getter
   getSpells(items) {
-    return items.filter((item) => item.type === "spell");
+    const owner = this.actor.isOwner;
+    const spells = items.filter((item) => item.type === "spell");
+    return spells;
   }
 
   getItems(items) {
@@ -72,7 +74,8 @@ export class RyuutamaActorSheet extends ActorSheet {
   }
 
   getSkills(items) {
-    return items.filter((item) => item.type === "skill");
+    const skills = items.filter((item) => item.type === "skill");
+    return skills;
   }
 
   getMaxHp(system) {
