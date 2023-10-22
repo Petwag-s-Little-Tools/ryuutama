@@ -129,6 +129,6 @@ export class RyuutamaActorSheet extends ActorSheet {
     const itemId = event.currentTarget.closest(".item").dataset.itemId;
     const item = this.actor.items.get(itemId);
 
-    return item.use();
+    return await item.use();
   }
 }

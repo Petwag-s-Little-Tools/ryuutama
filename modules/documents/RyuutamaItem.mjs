@@ -7,13 +7,46 @@ export class RyuutamaItem extends Item {
     this.update({ "system.active": enabled });
   }
 
-  use() {
+  async use() {
     switch (this.type) {
       case "skill":
-        return this.useSkill();
+        return await this.displayInChat();
       default:
         throw new Error(`No use function for this type: ${this.type}`);
     }
+  }
+
+  /**
+   * Display the item card
+   * @param {{}} [options={}]
+   * @returns {ChatMessage}
+   */
+  async displayInChat(options = {}) {
+    const token = this.actor.token;
+    const templateData = {};
+
+    const html = await renderTemplate(
+      "systems/ryuutama/templates/chat/item-card.hbs",
+      templateData
+    );
+
+    // create chat message
+    const chatData = {
+      user: game.user.id,
+      type: CONST.CHAT_MESSAGE_TYPES.OTHER,
+      content: html,
+      flavor: this.name,
+      speaker: ChatMessage.getSpeaker({ actor: this.actor, token }),
+      flags: { "core.canPopout": true },
+    };
+
+    // Apply correct visibility
+    ChatMessage.applyRollMode(chatData, game.settings.get("core", "rollMode"));
+
+    // Create the card
+    const card = await ChatMessage.create(chatData);
+
+    return card;
   }
 
   async useSkill() {
