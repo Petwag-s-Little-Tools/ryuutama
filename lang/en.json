@@ -47,6 +47,7 @@
       "d20": "D20"
     },
     "stats": {
+      "none": "",
       "dex": "DEX",
       "str": "STR",
       "int": "INT",

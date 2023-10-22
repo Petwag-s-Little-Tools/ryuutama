@@ -86,9 +86,9 @@
       "templates": ["coreItem"],
       "skillEffect": "",
       "statUsed": {
-        "statA": "",
-        "statB": "",
-        "alternative": ""
+        "statA": "none",
+        "statB": "none",
+        "alternative": "none"
       },
       "targetNumber": "",
       "usableCircumstances": ""

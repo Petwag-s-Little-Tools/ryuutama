@@ -119,4 +119,4 @@ ryuutama.dice = {
   },
 };
 
-ryuutama.stats = ["dex", "str", "int", "spi"];
+ryuutama.stats = ["none", "dex", "str", "int", "spi"];
