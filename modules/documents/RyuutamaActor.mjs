@@ -52,26 +52,31 @@ export class RyuutamaActor extends Actor {
 
     if (selectedStat.length <= 0) return;
 
-    return await this.roll(selectedStat[0], selectedStat[1]);
+    return await this.roll(
+      selectedStat[0],
+      selectedStat[1],
+      `roll for ${selectedStat}`
+    );
   }
 
   /**
    *
    * @param {string} stat1
    * @param {string | undefined} stat2
+   * @param {string} title
    */
-  async roll(stat1, stat2) {
+  async roll(stat1, stat2, title) {
     const die1 = this.system.stats[stat1].die;
     const die2 = this.system.stats[stat2 ? stat2 : stat1].die;
 
     const roll = new ActionRoll(`1d${die1} + 1d${die2}`);
 
-    const configured = await roll.configureDialog({ title: "test" });
+    const configured = await roll.configureDialog({ title });
 
     if (configured === null) return null;
 
     await roll.evaluate({ async: true });
 
-    await roll.toMessage({ flavor: "test" });
+    await roll.toMessage({ flavor: title });
   }
 }

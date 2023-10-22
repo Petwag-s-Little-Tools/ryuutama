@@ -21,6 +21,6 @@ export class RyuutamaItem extends Item {
 
     if (statA === undefined || statA === "") return;
 
-    return await this.actor.roll(statA, statB);
+    return await this.actor.roll(statA, statB, this.name);
   }
 }
