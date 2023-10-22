@@ -16,7 +16,11 @@ export class RyuutamaItem extends Item {
     }
   }
 
-  useSkill() {
-    console.log("skill used");
+  async useSkill() {
+    const { statA, statB } = this.system.statUsed;
+
+    if (statA === undefined || statA === "") return;
+
+    return await this.actor.roll(statA, statB);
   }
 }

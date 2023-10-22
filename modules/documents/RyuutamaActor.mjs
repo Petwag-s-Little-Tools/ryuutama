@@ -47,16 +47,22 @@ export class RyuutamaActor extends Actor {
     this.update({ "system.selectedStat": selectedStat });
   }
 
-  async roll() {
+  async rollAction() {
     const selectedStat = this.system.selectedStat;
 
     if (selectedStat.length <= 0) return;
 
-    const stat1 = selectedStat[0];
-    const stat2 = selectedStat.length < 2 ? selectedStat[0] : selectedStat[1];
+    return await this.roll(selectedStat[0], selectedStat[1]);
+  }
 
+  /**
+   *
+   * @param {string} stat1
+   * @param {string | undefined} stat2
+   */
+  async roll(stat1, stat2) {
     const die1 = this.system.stats[stat1].die;
-    const die2 = this.system.stats[stat2].die;
+    const die2 = this.system.stats[stat2 ? stat2 : stat1].die;
 
     const roll = new ActionRoll(`1d${die1} + 1d${die2}`);
 
@@ -67,15 +73,5 @@ export class RyuutamaActor extends Actor {
     await roll.evaluate({ async: true });
 
     await roll.toMessage({ flavor: "test" });
-
-    // roll.evaluate().then(() => {
-    //   const total = roll.total;
-
-    //   return ChatMessage.create({
-    //     user: game.user._id,
-    //     speaker: ChatMessage.getSpeaker({ actor: game.user._id }),
-    //     content: `Rolling ${selectedStat[0]} + ${selectedStat[1]} for ${this.name}... [${total}]`,
-    //   });
-    // });
   }
 }

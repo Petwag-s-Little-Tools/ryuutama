@@ -118,3 +118,5 @@ ryuutama.dice = {
     previous: 12,
   },
 };
+
+ryuutama.stats = ["dex", "str", "int", "spi"];

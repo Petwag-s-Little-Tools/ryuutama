@@ -105,7 +105,7 @@ export class RyuutamaActorSheet extends ActorSheet {
   }
 
   async onStatRoll() {
-    await this.actor.roll();
+    await this.actor.rollAction();
   }
 
   async onEquipItem(event) {
