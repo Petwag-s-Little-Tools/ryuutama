@@ -48,6 +48,8 @@ export class RyuutamaActorSheet extends ActorSheet {
 
       // Skills
       html.find(".rollable .item-image").click(this.onItemUse.bind(this));
+      html.find(".item-delete").click(this.onItemDelete.bind(this));
+      html.find(".item-edit").click(this.onItemEdit.bind(this));
     }
   }
 
@@ -130,5 +132,28 @@ export class RyuutamaActorSheet extends ActorSheet {
     const item = this.actor.items.get(itemId);
 
     return await item.use();
+  }
+
+  onItemDelete(event) {
+    const item = this.getItem(event);
+
+    if (item === undefined) return;
+
+    return item.deleteDialog();
+  }
+
+  onItemEdit(event) {
+    const item = this.getItem(event);
+
+    if (item === undefined) return;
+
+    return item.sheet.render(true);
+  }
+
+  // helpers
+
+  getItem(event) {
+    const itemId = event.currentTarget.closest(".item").dataset.itemId;
+    return this.actor.items.get(itemId);
   }
 }

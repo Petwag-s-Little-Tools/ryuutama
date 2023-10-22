@@ -45,7 +45,7 @@
   line-height: 30px;
 }
 .item-list .item .item-name.rollable:hover .item-image {
-  background-image: url("../../icons/svg/d10-grey.svg") !important;
+  background-image: url("../../icons/svg/d20-grey.svg") !important;
 }
 .item-list .item .item-name.rollable:hover .item-image:hover {
   background-image: url("../../icons/svg/d20-black.svg") !important;
@@ -57,6 +57,16 @@
   background-position: 50% 0;
   border: none;
   margin-right: 5px;
+}
+.item-list .item .item-controls {
+  flex: 0 0 68px;
+}
+.item-list .item .item-controls .item-control {
+  color: #b5b3a4;
+}
+.item-list .item .item-controls .item-control a {
+  text-align: center;
+  font-size: 12px;
 }
 .item-list .item:last-child {
   border-bottom: none;

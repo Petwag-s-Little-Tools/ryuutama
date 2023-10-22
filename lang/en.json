@@ -111,6 +111,8 @@
     },
     "roll": "Roll",
     "bonus": "Bonus",
-    "formula": "Formula"
+    "formula": "Formula",
+    "itemDelete": "Delete Item",
+    "itemEdit": "Edit Item"
   }
 }

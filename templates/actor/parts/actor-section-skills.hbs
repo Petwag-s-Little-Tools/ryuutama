@@ -14,6 +14,22 @@
           {{skill.name}}
         </h4>
       </div>
+      <div class="item-controls flexrow">
+        <a
+          class="item-control item-edit"
+          data-action="itemEdit"
+          data-tooltip="ryuutama.itemEdit"
+        >
+          <i class="fas fa-edit"></i>
+        </a>
+        <a
+          class="item-control item-delete"
+          data-action="itemDelete"
+          data-tooltip="ryuutama.itemDelete"
+        >
+          <i class="fas fa-trash"></i>
+        </a>
+      </div>
     </li>
   {{/each}}
 </ol>
