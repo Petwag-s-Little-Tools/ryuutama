@@ -113,6 +113,9 @@ export class RyuutamaActorSheet extends ActorSheet {
   async onEquipItem(event) {
     const itemId = event.currentTarget.closest(".item").dataset.itemId;
     const item = this.actor.items.get(itemId);
+
+    if (item === undefined) return;
+
     const effects = this.actor.getEmbeddedCollection("ActiveEffect");
     const effect = effects.filter((effect) =>
       effect.origin.endsWith(itemId)
@@ -128,8 +131,9 @@ export class RyuutamaActorSheet extends ActorSheet {
   }
 
   async onItemUse(event) {
-    const itemId = event.currentTarget.closest(".item").dataset.itemId;
-    const item = this.actor.items.get(itemId);
+    const item = this.getItem(event);
+
+    if (item === undefined) return;
 
     return await item.use();
   }

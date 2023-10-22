@@ -1,16 +1,16 @@
 <ol class="item-list">
-  {{#each skills as |skill|}}
-    <li class="item flexrow" data-item-id="{{skill.id}}">
+  {{#each items as |item|}}
+    <li class="item flexrow" data-item-id="{{item.id}}">
       <div class="item-name flexrow {{@root.rollableClass}}">
         <div
           class="item-image"
           tabindex="0"
           role="button"
-          aria-label="{{skill.name}}"
-          style="background-image: url('{{skill.img}}')"
+          aria-label="{{item.name}}"
+          style="background-image: url('{{item.img}}')"
         ></div>
         <h4>
-          {{skill.name}}
+          {{item.name}}
         </h4>
       </div>
       <div class="item-controls flexrow">

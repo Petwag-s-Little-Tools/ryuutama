@@ -1,13 +1,2 @@
 {{localize "ryuutama.character.magic"}}
-{{#each spells as |spell|}}
-  <div class="spell">
-    <img
-      src="{{spell.img}}"
-      data-edit="img"
-      title="{{spell.name}}"
-      height="100"
-      width="100"
-    />
-    <div class="spell-name">{{spell.name}}</div>
-  </div>
-{{/each}}
+{{> "ryuutama.actor-section-items" items=spells}}
