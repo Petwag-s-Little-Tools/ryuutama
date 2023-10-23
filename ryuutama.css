@@ -72,6 +72,47 @@
   border-bottom: none;
 }
 
+.chat-card {
+  font-style: normal;
+  font-size: 12px;
+}
+.chat-card .card-header {
+  padding: 3px 0;
+  border-top: 2px groove #ffffff;
+  border-bottom: 2px groove #ffffff;
+}
+.chat-card .card-header img {
+  flex: 0 0 36px;
+  margin-right: 5px;
+}
+.chat-card .card-header h3 {
+  flex: 1;
+  margin: 0;
+  line-height: 36px;
+  font-family: "Modesto Condensed", "Palatino Linotype", serif;
+  font-size: 20px;
+  color: #4b4a44;
+}
+.chat-card .card-header h3:hover {
+  color: #111111;
+  text-shadow: 0 0 10px red;
+}
+.chat-card .card-content {
+  margin: 5px 0;
+  border-bottom: 2px groove #ffffff;
+}
+.chat-card .card-content h3 {
+  font-size: 12px;
+  margin: 0;
+  font-weight: bold;
+}
+.chat-card .card-content > * {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
 #stats {
   display: grid;
   grid-template-columns: repeat(4, 3fr) 2fr;

@@ -21,9 +21,28 @@ export class RyuutamaItem extends Item {
    * @param {{}} [options={}]
    * @returns {ChatMessage}
    */
-  async displayInChat(options = {}) {
+  async displayInChat() {
     const token = this.actor.token;
-    const templateData = {};
+
+    const isRollable =
+      this.system.statUsed.statA !== "none" ||
+      this.system.statUsed.alternative !== "none";
+
+    const isRollableStandard =
+      isRollable && this.system.statUsed.statA !== "none";
+
+    const templateData = {
+      actor: this.actor,
+      item: this,
+      tokenId: token?.uuid || null,
+      system: this.system,
+      setup: {
+        isRollable,
+        isRollableStandard,
+      },
+    };
+
+    console.log(this.system);
 
     const html = await renderTemplate(
       "systems/ryuutama/templates/chat/item-card.hbs",
@@ -35,7 +54,7 @@ export class RyuutamaItem extends Item {
       user: game.user.id,
       type: CONST.CHAT_MESSAGE_TYPES.OTHER,
       content: html,
-      flavor: this.name,
+      flavor: this.system.flavor,
       speaker: ChatMessage.getSpeaker({ actor: this.actor, token }),
       flags: { "core.canPopout": true },
     };
