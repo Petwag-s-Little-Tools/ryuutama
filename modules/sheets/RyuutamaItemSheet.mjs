@@ -17,7 +17,6 @@ export class RyuutamaItemSheet extends ItemSheet {
     const itemData = context.item;
 
     context.config = CONFIG.ryuutama;
-    console.log(context.config);
     context.system = itemData.system;
 
     context.flags = itemData.flags;

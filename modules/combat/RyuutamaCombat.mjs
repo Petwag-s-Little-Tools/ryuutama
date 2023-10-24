@@ -21,7 +21,6 @@ export class RyuutamaCombat extends Combat {
   }
 
   _onCreate(data, options, userId) {
-    console.log("WAGABOBOB");
     super._onCreate(data, options, userId);
   }
 }

@@ -42,8 +42,6 @@ export class RyuutamaItem extends Item {
       },
     };
 
-    console.log(this.system);
-
     const html = await renderTemplate(
       "systems/ryuutama/templates/chat/item-card.hbs",
       templateData
@@ -66,6 +64,23 @@ export class RyuutamaItem extends Item {
     const card = await ChatMessage.create(chatData);
 
     return card;
+  }
+
+  /**
+   * Apply listeners for the item
+   * @param {*} html
+   */
+  static chatListeners(html) {
+    html.on("click", ".card-buttons button", this.onChatCardAction.bind(this));
+    html.on("click", ".item-name", this.onChatCardToggleContent.bind(this));
+  }
+
+  static onChatCardAction(event) {
+    console.log("card action");
+  }
+
+  static onChatCardToggleContent(event) {
+    console.log("toggle content");
   }
 
   async useSkill() {

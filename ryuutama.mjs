@@ -61,3 +61,11 @@ Hooks.once("init", () => {
     if (list.includes(value)) return options.fn(this);
   });
 });
+
+// // Other Hooks
+Hooks.on("renderChatLog", (app, html, data) =>
+  RyuutamaItem.chatListeners(html)
+);
+Hooks.on("renderChatPopout", (app, html, data) =>
+  RyuutamaItem.chatListeners(html)
+);
