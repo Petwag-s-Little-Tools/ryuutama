@@ -11,6 +11,9 @@ export class RyuutamaItemSheet extends ItemSheet {
     return `systems/ryuutama/templates/item/${this.item.type}-sheet.hbs`;
   }
 
+  /**
+   * DATA
+   */
   getData() {
     const context = super.getData();
 
@@ -25,14 +28,6 @@ export class RyuutamaItemSheet extends ItemSheet {
       labels: this.getLabels(itemData),
       effects: context.item.getEmbeddedCollection("ActiveEffect"),
     });
-  }
-
-  activateListeners(html) {
-    super.activateListeners(html);
-    if (this.isEditable) {
-      html.find(".effect-control").click(this.onEffectControl.bind(this));
-      html.find(".test").change(this.onTestChange.bind(this));
-    }
   }
 
   getLabels(itemData) {
@@ -56,8 +51,21 @@ export class RyuutamaItemSheet extends ItemSheet {
     return !CONFIG.ryuutama.durationUnits[durationUnit].hasNumericValue;
   }
 
+  /**
+   * LISTENERS
+   */
+  activateListeners(html) {
+    super.activateListeners(html);
+    if (this.isEditable) {
+      html.find(".effect-control").click(this.onEffectControl.bind(this));
+      html.find(".test").change(this.onTestChange.bind(this));
+    }
+  }
+
+  /**
+   * ACTIONS
+   */
   onEffectControl(event) {
-    event.preventDefault();
     const owner = this.item;
     const a = event.currentTarget;
     const li = a.closest("li");
