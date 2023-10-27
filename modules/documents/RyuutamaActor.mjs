@@ -67,7 +67,10 @@ export class RyuutamaActor extends Actor {
    */
   async roll(stat1, stat2, title) {
     const die1 = this.system.stats[stat1].die;
-    const die2 = this.system.stats[stat2 ? stat2 : stat1].die;
+    const die2 =
+      this.system.stats[
+        stat2 !== undefined && stat2 !== "" && stat2 !== "none" ? stat2 : stat1
+      ].die;
 
     const roll = new ActionRoll(`1d${die1} + 1d${die2}`);
 

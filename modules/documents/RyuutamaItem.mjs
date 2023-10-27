@@ -75,18 +75,55 @@ export class RyuutamaItem extends Item {
     html.on("click", ".item-name", this.onChatCardToggleContent.bind(this));
   }
 
-  static onChatCardAction(event) {
-    console.log("card action");
+  static async onChatCardAction(event) {
+    const button = event.currentTarget;
+    button.disabled = true;
+    const card = button.closest(".chat-card");
+    const messageId = card.closest(".message").dataset.messageId;
+    const message = game.messages.get(messageId);
+    const action = button.dataset.action;
+
+    const actor = await this.getChatCardActor(card);
+    if (!actor) return;
+
+    // Validate permission to proceed with the roll
+    if (!(game.user.isGM || actor.isOwner)) return;
+
+    const item = actor.items.get(card.dataset.itemId);
+
+    console.log({ messageId, message, action, actor, item });
+
+    if (!item) return;
+
+    await item.useSkill();
+
+    button.disabled = false;
   }
 
   static onChatCardToggleContent(event) {
-    console.log("toggle content");
+    const header = event.currentTarget;
+    const card = header.closest(".chat-card");
+    const content = card.querySelector(".card-content");
+    content.style.display = content.style.display === "none" ? "block" : "none";
+  }
+
+  static async getChatCardActor(card) {
+    // Case 1 - a synthetic actor from a Token
+    if (card.dataset.tokenId) {
+      const token = await fromUuid(card.dataset.tokenId);
+      if (!token) return null;
+      return token.actor;
+    }
+
+    // Case 2 - use Actor ID directory
+    const actorId = card.dataset.actorId;
+    return game.actors.get(actorId) || null;
   }
 
   async useSkill() {
     const { statA, statB } = this.system.statUsed;
 
-    if (statA === undefined || statA === "") return;
+    if (statA === undefined || statA === "" || statA === "none") return;
 
     return await this.actor.roll(statA, statB, this.name);
   }
