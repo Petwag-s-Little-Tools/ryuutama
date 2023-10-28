@@ -13,6 +13,8 @@ export class RyuutamaItem extends Item {
     switch (this.type) {
       case "skill":
         return await this.displayInChat();
+      //TODO: Allow usage of spell
+      //TODO: Allow equipment ?
       default:
         throw new Error(`No use function for this type: ${this.type}`);
     }

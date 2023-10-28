@@ -22,7 +22,7 @@ Hooks.once("init", () => {
   console.log("ryuutama | Starting Ryuutama System");
 
   // TODO: remove when done
-  CONFIG.debug.hooks = true;
+  // CONFIG.debug.hooks = true;
 
   // Make config available
   CONFIG.ryuutama = ryuutama;
@@ -73,3 +73,6 @@ Hooks.on("renderChatLog", (app, html, data) =>
 Hooks.on("renderChatPopout", (app, html, data) =>
   RyuutamaItem.chatListeners(html)
 );
+Hooks.on("onFumble", (app, html, data) => {
+  RyuutamaActor.onFumble();
+});

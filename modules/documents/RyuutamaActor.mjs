@@ -31,9 +31,10 @@ export class RyuutamaActor extends Actor {
     this.update({ "system.selectedStat": selectedStat });
   }
 
-  // Rolls
+  // ROLL //
+
   async rollCondition() {
-    const roll = await this.roll("str", "spi", "Condition for the day");
+    const roll = await this.roll("str", "spi", "Condition for the day", false);
 
     this.update({ "system.condition": roll.total });
   }
@@ -56,20 +57,42 @@ export class RyuutamaActor extends Actor {
    * @param {string | undefined} stat2
    * @param {string} title
    */
-  async roll(stat1, stat2, title) {
+  async roll(stat1, stat2, title, fumblullable = true) {
     const die1 = this.system.stats[stat1].die;
     const die2 = this.system.stats[!isNull(stat2) ? stat2 : stat1].die;
 
     const roll = new ActionRoll(`1d${die1} + 1d${die2}`);
 
+    // TODO: allow concentration in dialog with MP or fumble
     const configured = await roll.configureDialog({ title });
 
     if (configured === null) return null;
 
     await configured.evaluate({ async: true });
 
+    if (fumblullable) {
+      let isFumble = true;
+      configured.terms.forEach((term) => {
+        if (term instanceof Die && term.total !== 1) {
+          isFumble = false;
+        }
+      });
+      if (isFumble) Hooks.callAll("onFumble");
+
+      // TODO: add logic for critical success
+    }
+
     await configured.toMessage({ flavor: title });
 
     return configured;
+  }
+
+  // HOOKS
+  static async onFumble() {
+    game.actors.forEach((actor) => {
+      const fumble = actor.system.fumble;
+      actor.update({ "system.fumble": fumble + 1 });
+      // TODO: display message on fumble
+    });
   }
 }
