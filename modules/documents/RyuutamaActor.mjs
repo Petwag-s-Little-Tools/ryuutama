@@ -1,4 +1,5 @@
 import { ActionRoll } from "../dice/ActionRoll.mjs";
+import { isNull } from "../utils.mjs";
 
 export class RyuutamaActor extends Actor {
   /** @override */
@@ -12,23 +13,6 @@ export class RyuutamaActor extends Actor {
 
   prepareEmbeddedDocuments() {
     super.prepareEmbeddedDocuments();
-  }
-
-  async rollCondition() {
-    const strDice = this.system.stats.str.die;
-    const spiDice = this.system.stats.spi.die;
-
-    const roll = new Roll(`1d${strDice} + 1d${spiDice}`);
-
-    roll.evaluate().then(() => {
-      this.update({ "system.condition": roll.total });
-
-      return ChatMessage.create({
-        user: game.user._id,
-        speaker: ChatMessage.getSpeaker({ actor: game.user._id }),
-        content: `Rolling Condition for ${this.name}... [STR + SPI]`,
-      });
-    });
   }
 
   selectStat(stat) {
@@ -45,6 +29,13 @@ export class RyuutamaActor extends Actor {
     }
 
     this.update({ "system.selectedStat": selectedStat });
+  }
+
+  // Rolls
+  async rollCondition() {
+    const roll = await this.roll("str", "spi", "Condition for the day");
+
+    this.update({ "system.condition": roll.total });
   }
 
   async rollAction() {
@@ -67,19 +58,20 @@ export class RyuutamaActor extends Actor {
    */
   async roll(stat1, stat2, title) {
     const die1 = this.system.stats[stat1].die;
-    const die2 =
-      this.system.stats[
-        stat2 !== undefined && stat2 !== "" && stat2 !== "none" ? stat2 : stat1
-      ].die;
+    const die2 = this.system.stats[!isNull(stat2) ? stat2 : stat1].die;
 
     const roll = new ActionRoll(`1d${die1} + 1d${die2}`);
 
     const configured = await roll.configureDialog({ title });
 
+    console.log(configured);
+
     if (configured === null) return null;
 
-    await roll.evaluate({ async: true });
+    await configured.evaluate({ async: true });
 
-    await roll.toMessage({ flavor: title });
+    await configured.toMessage({ flavor: title });
+
+    return configured;
   }
 }

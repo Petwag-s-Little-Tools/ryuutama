@@ -1,5 +1,14 @@
 import { ryuutama } from "./config.mjs";
 
+export const isNull = function (value) {
+  if (value === "none") return true;
+  if (value === undefined) return true;
+  if (value === null) return true;
+  if (value === "") return true;
+
+  return false;
+};
+
 export const preloadHandlerbarsTemplates = async function () {
   const generalTemplates = [
     "systems/ryuutama/templates/parts/active-effects.hbs",
@@ -31,4 +40,20 @@ export const preloadHandlerbarsTemplates = async function () {
   });
 
   return loadTemplates(paths);
+};
+
+export const registerHandleBarsHelpers = function () {
+  // check if a value is in a list
+  Handlebars.registerHelper("ifIn", function (list, value, options) {
+    if (list.includes(value)) return options.fn(this);
+  });
+
+  // check if a value is equal to another
+  Handlebars.registerHelper("isEqual", function (valueA, valueB, options) {
+    if (valueA === valueB) {
+      return options.fn(this);
+    } else {
+      return options.inverse(this);
+    }
+  });
 };

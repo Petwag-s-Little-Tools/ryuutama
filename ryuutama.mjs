@@ -10,7 +10,10 @@ import { RyuutamaCombat } from "./modules/combat/RyuutamaCombat.mjs";
 import { RyuutamaCombatTracker } from "./modules/combat/RyuutamaCombatTracker.mjs";
 import { RyuutamaCombatant } from "./modules/combat/RyuutamaCombatant.mjs";
 import { RyuutamaCombatantConfig } from "./modules/combat/RyuutamaCombatantConfig.mjs";
-import { preloadHandlerbarsTemplates } from "./modules/utils.mjs";
+import {
+  preloadHandlerbarsTemplates,
+  registerHandleBarsHelpers,
+} from "./modules/utils.mjs";
 
 import { ActionRoll } from "./modules/dice/ActionRoll.mjs";
 import { RyuutamaActiveEffect } from "./modules/documents/RyuutamaActiveEffect.mjs";
@@ -57,9 +60,7 @@ Hooks.once("init", () => {
   preloadHandlerbarsTemplates();
 
   // Handerbars helpers
-  Handlebars.registerHelper("ifIn", function (list, value, options) {
-    if (list.includes(value)) return options.fn(this);
-  });
+  registerHandleBarsHelpers();
 });
 
 // // Other Hooks

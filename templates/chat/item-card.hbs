@@ -11,15 +11,17 @@
     </div>
 
     <div class="card-buttons">
-        {{#if setup.isRollable}}
-            {{#if setup.isRollableStandard}}
-                <p>{{system.statUsed.statA}}</p>
-                <p>{{system.statUsed.statB}}</p>
-            {{else}}
-                <p>{{system.statUsed.alternative}}</p>     
-            {{/if}}
+        {{#isEqual setup.rollType "oneStat"}}
+            <p>[{{system.statUsed.statA}} + {{system.statUsed.statA}}]</p>
             <button data-action="roll">{{ localize "ryuutama.roll" }}</button>
-        {{/if}}
+        {{/isEqual}}
+        {{#isEqual setup.rollType "twoStat"}}
+            <p>[{{system.statUsed.statA}} + {{system.statUsed.statB}}]</p>
+            <button data-action="roll">{{ localize "ryuutama.roll" }}</button>
+        {{/isEqual}}
+        {{#isEqual setup.rollType "alternative"}}
+            <p>alternate roll</p>
+        {{/isEqual}}
 
         {{#if hasDamage}}
         <button data-action="damage">

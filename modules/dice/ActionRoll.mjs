@@ -1,3 +1,5 @@
+import { isNull } from "../utils.mjs";
+
 export class ActionRoll extends Roll {
   get template() {
     return `systems/ryuutama/templates/dialog/action-roll.hbs`;
@@ -5,6 +7,10 @@ export class ActionRoll extends Roll {
 
   constructor(formula, data, options) {
     super(formula, data, options);
+  }
+
+  configureModifiers() {
+    this._formula = this.constructor.getFormula(this.terms);
   }
 
   async configureDialog({ title }) {
@@ -19,7 +25,7 @@ export class ActionRoll extends Roll {
         buttons: {
           roll: {
             label: game.i18n.localize("ryuutama.roll"),
-            callback: (html) => resolve(this._onRollSubmit(html)),
+            callback: (html) => resolve(this.onRollSubmit(html)),
           },
         },
         default: "roll",
@@ -28,16 +34,18 @@ export class ActionRoll extends Roll {
     });
   }
 
-  _onRollSubmit(html) {
+  onRollSubmit(html) {
     const form = html[0].querySelector("form");
 
-    if (form.bonus.value) {
+    if (!isNull(form.bonus.value)) {
       const bonus = new Roll(form.bonus.value, this.data);
       if (!(bonus.terms[0] instanceof OperatorTerm))
         this.terms.push(new OperatorTerm({ operator: "+" }));
       this.terms = this.terms.concat(bonus.terms);
+      console.log(this.terms);
     }
 
+    this.configureModifiers();
     return this;
   }
 }

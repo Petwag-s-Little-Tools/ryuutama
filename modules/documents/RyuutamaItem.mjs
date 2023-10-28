@@ -1,3 +1,5 @@
+import { isNull } from "../utils.mjs";
+
 export class RyuutamaItem extends Item {
   equip(enabled) {
     const owner = this.owner;
@@ -24,12 +26,17 @@ export class RyuutamaItem extends Item {
   async displayInChat() {
     const token = this.actor.token;
 
-    const isRollable =
-      this.system.statUsed.statA !== "none" ||
-      this.system.statUsed.alternative !== "none";
+    let rollType;
 
-    const isRollableStandard =
-      isRollable && this.system.statUsed.statA !== "none";
+    if (!isNull(this.system.statUsed.statA)) {
+      if (isNull(this.system.statUsed.statB)) {
+        rollType = "oneStat";
+      } else {
+        rollType = "twoStat";
+      }
+    } else if (!isNull(this.system.statUsed.alternative)) {
+      rollType = "alternative";
+    }
 
     const templateData = {
       actor: this.actor,
@@ -37,8 +44,7 @@ export class RyuutamaItem extends Item {
       tokenId: token?.uuid || null,
       system: this.system,
       setup: {
-        isRollable,
-        isRollableStandard,
+        rollType,
       },
     };
 
