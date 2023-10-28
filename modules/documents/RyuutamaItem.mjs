@@ -97,8 +97,6 @@ export class RyuutamaItem extends Item {
 
     const item = actor.items.get(card.dataset.itemId);
 
-    console.log({ messageId, message, action, actor, item });
-
     if (!item) return;
 
     await item.useSkill();

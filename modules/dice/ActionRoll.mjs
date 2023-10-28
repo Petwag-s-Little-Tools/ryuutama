@@ -9,6 +9,32 @@ export class ActionRoll extends Roll {
     super(formula, data, options);
   }
 
+  async getTooltip() {
+    // TODO: use new type of roll instead of overriding the result
+    const parts = this.dice.map((d) => d.getTooltipData());
+
+    const overridenParts = parts.map((p) => {
+      const rolls = p.rolls.map((r) => {
+        const splittedClassed = r.classes.split(" ");
+
+        if (!splittedClassed.includes("max") && r.result === "6") {
+          splittedClassed.push("max");
+        }
+        return {
+          ...r,
+          classes: splittedClassed.join(" "),
+        };
+      });
+      return {
+        ...p,
+        rolls,
+      };
+    });
+    return renderTemplate(this.constructor.TOOLTIP_TEMPLATE, {
+      parts: overridenParts,
+    });
+  }
+
   configureModifiers() {
     this._formula = this.constructor.getFormula(this.terms);
   }
@@ -42,7 +68,6 @@ export class ActionRoll extends Roll {
       if (!(bonus.terms[0] instanceof OperatorTerm))
         this.terms.push(new OperatorTerm({ operator: "+" }));
       this.terms = this.terms.concat(bonus.terms);
-      console.log(this.terms);
     }
 
     this.configureModifiers();

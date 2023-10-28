@@ -64,8 +64,6 @@ export class RyuutamaActor extends Actor {
 
     const configured = await roll.configureDialog({ title });
 
-    console.log(configured);
-
     if (configured === null) return null;
 
     await configured.evaluate({ async: true });

@@ -21,6 +21,9 @@ import { RyuutamaActiveEffect } from "./modules/documents/RyuutamaActiveEffect.m
 Hooks.once("init", () => {
   console.log("ryuutama | Starting Ryuutama System");
 
+  // TODO: remove when done
+  CONFIG.debug.hooks = true;
+
   // Make config available
   CONFIG.ryuutama = ryuutama;
 
@@ -63,7 +66,7 @@ Hooks.once("init", () => {
   registerHandleBarsHelpers();
 });
 
-// // Other Hooks
+// Other Hooks
 Hooks.on("renderChatLog", (app, html, data) =>
   RyuutamaItem.chatListeners(html)
 );
