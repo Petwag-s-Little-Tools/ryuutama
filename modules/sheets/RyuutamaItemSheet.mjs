@@ -103,7 +103,7 @@ export class RyuutamaItemSheet extends ItemSheet {
   }
 }
 
-// TODO
+// TODO:
 /**
  * On item creation, create the Active Effect
  * On item update, update the Active Effect

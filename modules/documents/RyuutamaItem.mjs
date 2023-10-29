@@ -12,22 +12,16 @@ export class RyuutamaItem extends Item {
   async use() {
     switch (this.type) {
       case "skill":
-        return await this.displayInChat();
-      //TODO: Allow usage of spell
+        return await this.displaySkillInChat();
+      case "spell":
+        return await this.displaySpellInChat();
       //TODO: Allow equipment ?
       default:
         throw new Error(`No use function for this type: ${this.type}`);
     }
   }
 
-  /**
-   * Display the item card
-   * @param {{}} [options={}]
-   * @returns {ChatMessage}
-   */
-  async displayInChat() {
-    const token = this.actor.token;
-
+  async displaySkillInChat() {
     let rollType;
 
     if (!isNull(this.system.statUsed.statA)) {
@@ -40,16 +34,31 @@ export class RyuutamaItem extends Item {
       rollType = "alternative";
     }
 
+    return await this.displayInChat({ rollType });
+  }
+
+  async displaySpellInChat() {
+    //TODO: Put correct setup information
+    return await this.displayInChat();
+  }
+
+  /**
+   * Display the item card
+   * @param {{}} [setup={}]
+   * @returns {ChatMessage}
+   */
+  async displayInChat(setup = {}) {
+    const token = this.actor.token;
+
     const templateData = {
       actor: this.actor,
       item: this,
       tokenId: token?.uuid || null,
       system: this.system,
-      setup: {
-        rollType,
-      },
+      setup,
     };
 
+    // TODO: use different template for each type of item?
     const html = await renderTemplate(
       "systems/ryuutama/templates/chat/item-card.hbs",
       templateData
@@ -80,7 +89,6 @@ export class RyuutamaItem extends Item {
    */
   static chatListeners(html) {
     html.on("click", ".card-buttons button", this.onChatCardAction.bind(this));
-    html.on("click", ".item-name", this.onChatCardToggleContent.bind(this));
   }
 
   static async onChatCardAction(event) {
@@ -104,13 +112,6 @@ export class RyuutamaItem extends Item {
     await item.useSkill();
 
     button.disabled = false;
-  }
-
-  static onChatCardToggleContent(event) {
-    const header = event.currentTarget;
-    const card = header.closest(".chat-card");
-    const content = card.querySelector(".card-content");
-    content.style.display = content.style.display === "none" ? "block" : "none";
   }
 
   static async getChatCardActor(card) {

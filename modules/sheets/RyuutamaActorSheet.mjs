@@ -1,4 +1,7 @@
 export class RyuutamaActorSheet extends ActorSheet {
+  // TODO: Allow to choose character type
+  // TODO: Allow to choose character class
+  // TODO: deal with damage roll + damage reducing HP
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       classes: ["ryuutama", "sheet", "actor"],
