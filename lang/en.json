@@ -113,6 +113,10 @@
     "bonus": "Bonus",
     "formula": "Formula",
     "itemDelete": "Delete Item",
-    "itemEdit": "Edit Item"
+    "itemEdit": "Edit Item",
+    "concentration": "Concentration",
+    "useFumble": "Use Fumble",
+    "useMp": "Use Mp",
+    "useMpAndFumble": "Use Mp plus Fumble"
   }
 }

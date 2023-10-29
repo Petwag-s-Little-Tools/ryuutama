@@ -31,10 +31,44 @@ export class RyuutamaActor extends Actor {
     this.update({ "system.selectedStat": selectedStat });
   }
 
+  /**
+   * Update the fumble value of a user by the increment value
+   * It can be a positive or negative value
+   * @param {number} increment
+   */
+  incrementFumble(increment) {
+    const fumble = this.system.fumble;
+    this.update({ "system.fumble": fumble + increment });
+  }
+
+  /**
+   * Update the current Mp value of a user by the increment value
+   * It can be a positive or negative value
+   * @param {number} increment
+   */
+  incrementMp(increment) {
+    const mp = this.system.mp.current;
+    this.update({ "system.mp.current": mp + increment });
+  }
+
+  /**
+   * Use half of the remaining Mp of the actor rounded up
+   */
+  useHalfMp() {
+    const halfMp = Math.round(this.system.mp.current / 2);
+    this.incrementMp(-halfMp);
+  }
+
   // ROLL //
 
   async rollCondition() {
-    const roll = await this.roll("str", "spi", "Condition for the day", false);
+    const roll = await this.roll(
+      "str",
+      "spi",
+      "Condition for the day",
+      false,
+      false
+    );
 
     this.update({ "system.condition": roll.total });
   }
@@ -52,19 +86,26 @@ export class RyuutamaActor extends Actor {
   }
 
   /**
-   *
    * @param {string} stat1
    * @param {string | undefined} stat2
    * @param {string} title
    */
-  async roll(stat1, stat2, title, fumblullable = true) {
-    const die1 = this.system.stats[stat1].die;
-    const die2 = this.system.stats[!isNull(stat2) ? stat2 : stat1].die;
+  async roll(stat1, stat2, title, fumblullable = true, concentrable = true) {
+    const { fumble, stats, mp } = this.system;
+
+    const die1 = stats[stat1].die;
+    const die2 = stats[!isNull(stat2) ? stat2 : stat1].die;
 
     const roll = new ActionRoll(`1d${die1} + 1d${die2}`);
 
-    // TODO: allow concentration in dialog with MP or fumble
-    const configured = await roll.configureDialog({ title });
+    const concentrationFumble = concentrable && fumble > 0;
+    const concentrationMp = concentrable && mp.current > 0;
+
+    const configured = await roll.configureDialog(
+      title,
+      concentrationFumble,
+      concentrationMp
+    );
 
     if (configured === null) return null;
 
@@ -82,6 +123,16 @@ export class RyuutamaActor extends Actor {
       // TODO: add logic for critical success
     }
 
+    // if concentration has been used reduce whatever value
+    if (configured.concentration === "fumble") {
+      this.incrementFumble(-1);
+    } else if (configured.concentration === "mp") {
+      this.useHalfMp();
+    } else if (configured.concentration === "dual") {
+      this.incrementFumble(-1);
+      this.useHalfMp();
+    }
+
     await configured.toMessage({ flavor: title });
 
     return configured;
@@ -90,8 +141,7 @@ export class RyuutamaActor extends Actor {
   // HOOKS
   static async onFumble() {
     game.actors.forEach((actor) => {
-      const fumble = actor.system.fumble;
-      actor.update({ "system.fumble": fumble + 1 });
+      actor.updateFumble(1);
       // TODO: display message on fumble
     });
   }

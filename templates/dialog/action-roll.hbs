@@ -7,4 +7,22 @@
     <label>{{localize "ryuutama.bonus"}}</label>
     <input type="text" name="bonus" value="" placeholder="" />
   </div>
+  {{#if concentration}}
+    <div class="form-group">
+      <label>{{localize "ryuutama.concentration"}}</label>
+      <select name="concentration">
+        <option value=""></option>
+        {{#if concentrationMp}}
+          <option value="mp">{{localize "ryuutama.useMp"}}</option>
+        {{/if}}
+        {{#if concentrationFumble}}
+          <option value="fumble">{{localize "ryuutama.useFumble"}}</option>
+        {{/if}}
+        {{#if dualConcentration}}
+          <option value="dual">{{localize "ryuutama.useMpAndFumble"}}</option>
+        {{/if}}
+      </select>
+    </div>
+
+  {{/if}}
 </form>

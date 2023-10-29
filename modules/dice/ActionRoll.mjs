@@ -5,6 +5,10 @@ export class ActionRoll extends Roll {
     return `systems/ryuutama/templates/dialog/action-roll.hbs`;
   }
 
+  get concentration() {
+    return this.options.concentration ?? "";
+  }
+
   constructor(formula, data, options) {
     super(formula, data, options);
   }
@@ -35,13 +39,24 @@ export class ActionRoll extends Roll {
     });
   }
 
-  configureModifiers() {
+  configureModifiers(concentration = "") {
     this._formula = this.constructor.getFormula(this.terms);
+    this.options = {
+      ...this.options,
+      concentration,
+    };
   }
 
-  async configureDialog({ title }) {
+  async configureDialog(title, concentrationFumble, concentrationMp) {
+    const concentration = concentrationFumble || concentrationMp;
+    const dualConcentration = concentrationFumble && concentrationMp;
+
     const content = await renderTemplate(this.template, {
       formula: `${this.formula} + @bonus`,
+      concentration,
+      concentrationFumble,
+      concentrationMp,
+      dualConcentration,
     });
 
     return new Promise((resolve) => {
@@ -63,14 +78,30 @@ export class ActionRoll extends Roll {
   onRollSubmit(html) {
     const form = html[0].querySelector("form");
 
-    if (!isNull(form.bonus.value)) {
-      const bonus = new Roll(form.bonus.value, this.data);
+    const concentration = form.concentration?.value;
+    let concentrationBonus = "";
+
+    if (concentration === "fumble" || concentration === "mp")
+      concentrationBonus = "1";
+    if (concentration === "dual") concentrationBonus = "2";
+
+    if (concentrationBonus !== "") {
+      const bonus = new Roll(concentrationBonus, this.data);
+
       if (!(bonus.terms[0] instanceof OperatorTerm))
         this.terms.push(new OperatorTerm({ operator: "+" }));
       this.terms = this.terms.concat(bonus.terms);
     }
 
-    this.configureModifiers();
+    if (!isNull(form.bonus.value)) {
+      const bonus = new Roll(form.bonus.value, this.data);
+
+      if (!(bonus.terms[0] instanceof OperatorTerm))
+        this.terms.push(new OperatorTerm({ operator: "+" }));
+      this.terms = this.terms.concat(bonus.terms);
+    }
+
+    this.configureModifiers(concentration);
     return this;
   }
 }
