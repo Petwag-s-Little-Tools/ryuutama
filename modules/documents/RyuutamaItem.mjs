@@ -88,6 +88,7 @@ export class RyuutamaItem extends Item {
    * @param {*} html
    */
   static chatListeners(html) {
+    // TODO: add different listener per type of item or add logic in the onChatCardAction function
     html.on("click", ".card-buttons button", this.onChatCardAction.bind(this));
   }
 
