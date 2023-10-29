@@ -1,12 +1,24 @@
 import { isNull } from "../utils.mjs";
 
 export class ActionRoll extends Roll {
+  _isFumble = undefined;
+
   get template() {
     return `systems/ryuutama/templates/dialog/action-roll.hbs`;
   }
 
   get concentration() {
     return this.options.concentration ?? "";
+  }
+
+  get isFumble() {
+    return true;
+    if (this._isFumble === undefined) {
+      this._isFumble = !this.terms.some((term) => {
+        return term instanceof Die && term.total !== 1;
+      });
+    }
+    return this._isFumble;
   }
 
   constructor(formula, data, options) {
@@ -45,6 +57,7 @@ export class ActionRoll extends Roll {
       ...this.options,
       concentration,
     };
+    this._isFumble = undefined;
   }
 
   async configureDialog(title, concentrationFumble, concentrationMp) {

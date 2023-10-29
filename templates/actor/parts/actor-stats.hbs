@@ -1,6 +1,6 @@
 <h3>{{localize "ryuutama.character.stats"}}</h3>
 <div id="stats">
-  {{#each system.stats as |stat id|}}
+  {{#each stats as |stat id|}}
     <div class="stat-item {{#ifIn ../system.selectedStat id}}selected{{/ifIn}}" data-stat="{{id}}">
       <div class="stat-box">
         <div>

@@ -59,8 +59,9 @@ export class RyuutamaActor extends Actor {
     this.incrementMp(-halfMp);
   }
 
-  // ROLL //
-
+  /**
+   * ROLLS
+   **/
   async rollCondition() {
     const roll = await this.roll(
       "str",
@@ -69,6 +70,11 @@ export class RyuutamaActor extends Actor {
       false,
       false
     );
+
+    if (roll.total === 2) {
+      // TODO: Display condition choice on fumble
+      // this.update({ "system.stats.str.condition": 0 });
+    }
 
     this.update({ "system.condition": roll.total });
   }
@@ -111,14 +117,8 @@ export class RyuutamaActor extends Actor {
 
     await configured.evaluate({ async: true });
 
-    if (fumblullable) {
-      let isFumble = true;
-      configured.terms.forEach((term) => {
-        if (term instanceof Die && term.total !== 1) {
-          isFumble = false;
-        }
-      });
-      if (isFumble) Hooks.callAll("onFumble");
+    if (fumblullable && configured.isFumble) {
+      Hooks.callAll("onFumble");
 
       // TODO: add logic for critical success
     }
@@ -138,10 +138,12 @@ export class RyuutamaActor extends Actor {
     return configured;
   }
 
-  // HOOKS
+  /**
+   * HOOKS
+   **/
   static async onFumble() {
     game.actors.forEach((actor) => {
-      actor.updateFumble(1);
+      actor.incrementFumble(1);
       // TODO: display message on fumble
     });
   }

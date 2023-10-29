@@ -5,28 +5,34 @@
       "stats": {
         "str": {
           "die": 0,
-          "mod": 0
+          "mod": 0,
+          "condition": 0
         },
         "dex": {
           "die": 0,
-          "mod": 0
+          "mod": 0,
+          "condition": 0
         },
         "int": {
           "die": 0,
-          "mod": 0
+          "mod": 0,
+          "condition": 0
         },
         "spi": {
           "die": 0,
-          "mod": 0
+          "mod": 0,
+          "condition": 0
         }
       },
       "hp": {
         "current": 0,
-        "bonus": 0
+        "bonus": 0,
+        "temporary": 0
       },
       "mp": {
         "current": 0,
-        "bonus": 0
+        "bonus": 0,
+        "temporary": 0
       },
       "fumble": 0,
       "condition": 0,

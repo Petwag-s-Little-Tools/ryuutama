@@ -1,6 +1,6 @@
+import { ryuutama } from "../config.mjs";
+
 export class RyuutamaActorSheet extends ActorSheet {
-  // TODO: Allow to choose character type
-  // TODO: Allow to choose character class
   // TODO: deal with damage roll + damage reducing HP
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
@@ -25,45 +25,46 @@ export class RyuutamaActorSheet extends ActorSheet {
   getData() {
     const context = super.getData();
 
-    const itemData = this.actor;
-
     context.config = CONFIG.ryuutama;
     context.rollableClass = this.isEditable ? "rollable" : "";
 
-    context.system = itemData.system;
-    context.spells = this.getSpells(itemData.items);
-    context.skills = this.getSkills(itemData.items);
-    context.items = this.getItems(itemData.items);
+    this.stats;
 
-    context.maxHp = this.getMaxHp(itemData.system);
-    context.maxMp = this.getMaxMp(itemData.system);
+    context.system = this.system;
+    context.spells = this.spells;
+    context.skills = this.skills;
+    context.items = this.items;
+    context.stats = this.stats;
+
+    context.maxHp = this.maxHp;
+    context.maxMp = this.maxMp;
     return context;
   }
 
-  activateListeners(html) {
-    super.activateListeners(html);
-
-    if (this.actor.isOwner) {
-      html.find(".condition-roll").click(this.onConditionRoll.bind(this));
-      html.find(".stat-item").click(this.onStatSelect.bind(this));
-      html.find(".stats-roll").click(this.onStatRoll.bind(this));
-      html.find(".equip-toggle").click(this.onEquipItem.bind(this));
-
-      // Skills
-      html.find(".rollable .item-image").click(this.onItemUse.bind(this));
-      html.find(".item-delete").click(this.onItemDelete.bind(this));
-      html.find(".item-edit").click(this.onItemEdit.bind(this));
-    }
+  /** @override */
+  async _onDropItemCreate(itemData) {
+    // TODO: Make Item type Character Type Magic/Warrior/...
+    // TODO: Make Item type Class
+    // TODO: Make level an item? Or make XP an item?
+    // TODO: Deal with level and xp in actor
+    console.log(itemData);
+    itemData = itemData instanceof Array ? itemData : [itemData];
+    return this.actor.createEmbeddedDocuments("Item", itemData);
   }
 
   // Data Getter
-  getSpells(items) {
-    const owner = this.actor.isOwner;
+  get system() {
+    return this.actor.system;
+  }
+
+  get spells() {
+    const items = this.actor.items;
     const spells = items.filter((item) => item.type === "spell");
     return spells;
   }
 
-  getItems(items) {
+  get items() {
+    const items = this.actor.items;
     const itemMap = new Map();
 
     items.forEach((item) => {
@@ -81,20 +82,54 @@ export class RyuutamaActorSheet extends ActorSheet {
     return Object.fromEntries(itemMap);
   }
 
-  getSkills(items) {
+  get skills() {
+    const items = this.actor.items;
     const skills = items.filter((item) => item.type === "skill");
     return skills;
   }
 
-  getMaxHp(system) {
-    return system.stats.str.die * 2;
+  get maxHp() {
+    return this.system.stats.str.die * 2;
   }
 
-  getMaxMp(system) {
-    return system.stats.spi.die * 2;
+  get maxMp() {
+    return this.system.stats.spi.die * 2;
   }
 
-  // Event Handlers
+  get stats() {
+    const system = this.system;
+
+    const stats = {};
+    // TODO: add status effects (poison, etc) as modifier for stats
+    Object.entries(system.stats).forEach(([key, data]) => {
+      const modifier = data.mod + data.condition;
+      stats[key] = {
+        die: this.modifyDice(data.die, modifier),
+      };
+    });
+
+    return stats;
+  }
+
+  /**
+   * EVENTS
+   **/
+  activateListeners(html) {
+    super.activateListeners(html);
+
+    if (this.actor.isOwner) {
+      html.find(".condition-roll").click(this.onConditionRoll.bind(this));
+      html.find(".stat-item").click(this.onStatSelect.bind(this));
+      html.find(".stats-roll").click(this.onStatRoll.bind(this));
+      html.find(".equip-toggle").click(this.onEquipItem.bind(this));
+
+      // Skills
+      html.find(".rollable .item-image").click(this.onItemUse.bind(this));
+      html.find(".item-delete").click(this.onItemDelete.bind(this));
+      html.find(".item-edit").click(this.onItemEdit.bind(this));
+    }
+  }
+
   async onConditionRoll() {
     await this.actor.rollCondition();
   }
@@ -157,10 +192,35 @@ export class RyuutamaActorSheet extends ActorSheet {
     return item.sheet.render(true);
   }
 
-  // helpers
-
   getItem(event) {
     const itemId = event.currentTarget.closest(".item").dataset.itemId;
     return this.actor.items.get(itemId);
+  }
+
+  /**
+   * HELPERS
+   **/
+  modifyDice(die, modifier) {
+    if (modifier === 0) return die;
+
+    const dice = ryuutama.dice;
+
+    let jumps = modifier;
+    let currentDie = die;
+
+    while (true) {
+      console.log(jumps, currentDie);
+      if (jumps === 0) {
+        break;
+      } else if (jumps < 0) {
+        currentDie = dice[currentDie].previous;
+        jumps += 1;
+      } else if (jumps > 0) {
+        currentDie = dice[currentDie].next;
+        jumps -= 1;
+      }
+    }
+
+    return currentDie;
   }
 }
