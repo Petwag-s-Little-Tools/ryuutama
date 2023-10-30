@@ -119,4 +119,18 @@ ryuutama.dice = {
   },
 };
 
-ryuutama.stats = ["none", "dex", "str", "int", "spi"];
+ryuutama.stats = {
+  none: {},
+  dex: {
+    statuses: ["injury", "sickness", "shock"],
+  },
+  str: {
+    statuses: ["poison", "sickness", "shock"],
+  },
+  int: {
+    statuses: ["muddled", "sickness", "shock"],
+  },
+  spi: {
+    statuses: ["exhaustion", "sickness", "shock"],
+  },
+};

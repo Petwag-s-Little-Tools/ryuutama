@@ -12,7 +12,6 @@ export class ActionRoll extends Roll {
   }
 
   get isFumble() {
-    return true;
     if (this._isFumble === undefined) {
       this._isFumble = !this.terms.some((term) => {
         return term instanceof Die && term.total !== 1;

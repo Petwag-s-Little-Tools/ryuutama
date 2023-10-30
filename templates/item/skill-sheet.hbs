@@ -35,18 +35,18 @@
     <h3>{{localize "ryuutama.skill.statUsed"}}</h3>
     <select name="system.statUsed.statA">
       {{#select system.statUsed.statA}}
-        {{#each config.stats}}
-          <option value="{{this}}">{{localize
-              (concat "ryuutama.stats." this)
+        {{#each config.stats as |stat id|}}
+          <option value="{{id}}">{{localize
+              (concat "ryuutama.stats." id)
             }}</option>
         {{/each}}
       {{/select}}
     </select>
     <select name="system.statUsed.statB">
       {{#select system.statUsed.statB}}
-        {{#each config.stats}}
-          <option value="{{this}}">{{localize
-              (concat "ryuutama.stats." this)
+        {{#each config.stats as |stat id|}}
+          <option value="{{id}}">{{localize
+              (concat "ryuutama.stats." id)
             }}</option>
         {{/each}}
       {{/select}}
