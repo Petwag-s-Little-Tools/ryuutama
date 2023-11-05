@@ -99,10 +99,17 @@ export class RyuutamaActorSheet extends ActorSheet {
   get stats() {
     const system = this.system;
 
+    // TODO: Add cache and flag for refresh when change happens
     const stats = {};
-    // TODO: add status effects (poison, etc) as modifier for stats
     Object.entries(system.stats).forEach(([key, data]) => {
-      const modifier = data.mod + data.condition;
+      const conditions = ryuutama.stats[key].statuses;
+
+      const conditionModifier = conditions.reduce((accumulator, condition) => {
+        return accumulator + system.statuses[condition];
+      }, 0);
+
+      const modifier = data.mod + data.condition - conditionModifier;
+
       stats[key] = {
         die: this.modifyDice(data.die, modifier),
       };
@@ -209,7 +216,6 @@ export class RyuutamaActorSheet extends ActorSheet {
     let currentDie = die;
 
     while (true) {
-      console.log(jumps, currentDie);
       if (jumps === 0) {
         break;
       } else if (jumps < 0) {
