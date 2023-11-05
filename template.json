@@ -49,7 +49,6 @@
       "role": "",
       "types": [],
       "classes": [],
-      "skills": [],
       "masteredWeapons": [],
       "specializedTerrains": [],
       "personnalItem": "",
@@ -70,7 +69,14 @@
     }
   },
   "Item": {
-    "types": ["spell", "skill", "item"],
+    "types": [
+      "spell",
+      "skill",
+      "item",
+      "xp",
+      "characterClass",
+      "characterType"
+    ],
     "templates": {
       "coreItem": {
         "description": ""
@@ -126,6 +132,16 @@
         "type": "",
         "values": {}
       }
+    },
+    "xp": {
+      "amount": 0
+    },
+    "characterClass": {
+      "templates": ["coreItem"],
+      "skills": []
+    },
+    "characterType": {
+      "templates": ["coreItem"]
     }
   }
 }

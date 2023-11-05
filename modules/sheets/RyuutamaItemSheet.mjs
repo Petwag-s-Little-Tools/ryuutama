@@ -4,6 +4,7 @@ export class RyuutamaItemSheet extends ItemSheet {
       classes: ["ryuutama", "sheet", "item"],
       width: 600,
       height: 400,
+      dragDrop: [{ dragSelector: null, dropSelector: null }],
     });
   }
 
@@ -49,6 +50,30 @@ export class RyuutamaItemSheet extends ItemSheet {
     }
 
     return !CONFIG.ryuutama.durationUnits[durationUnit].hasNumericValue;
+  }
+
+  /** @inheritdoc */
+  async _onDrop(event) {
+    const data = TextEditor.getDragEventData(event);
+    const actor = this.item.type;
+    // TODO: check is action is autorized (GM or owner?)
+
+    if (actor === "characterClass") return this._onDropOnCharacterClass(data);
+
+    return;
+  }
+
+  async _onDropOnCharacterClass(data) {
+    if (!this.item.isOwner) return;
+    // TODO: check is action is autorized (GM or owner?)
+
+    const item = await Item.implementation.fromDropData(data);
+
+    if (item.type !== "skill") return;
+
+    const itemData = item.toObject();
+    // TODO: use skills list in template.json
+    // TODO: create proper types for all Items with separated logic (check if we can do that)
   }
 
   /**

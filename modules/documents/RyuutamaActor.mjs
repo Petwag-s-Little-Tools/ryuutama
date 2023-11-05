@@ -82,6 +82,20 @@ export class RyuutamaActor extends Actor {
   }
 
   /**
+   * Update the xp value of a user by the increment value
+   * It can be a positive or negative value
+   * @param {number} increment
+   */
+  incrementXP(increment) {
+    const xp = this.system.xp;
+    // XP can't go under 0
+    // TODO: Deal with loosing level if decreasing XP
+    // TODO: Deal with level up
+    const newXp = Math.max(xp + increment, 0);
+    this.update({ "system.xp": newXp });
+  }
+
+  /**
    * Use half of the remaining Mp of the actor rounded up
    */
   useHalfMp() {

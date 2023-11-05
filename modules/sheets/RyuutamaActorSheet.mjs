@@ -41,16 +41,29 @@ export class RyuutamaActorSheet extends ActorSheet {
 
   /** @override */
   async _onDropItemCreate(itemData) {
-    // TODO: Make Item type Character Type Magic/Warrior/...
-    // TODO: Make Item type Class
-    // TODO: Make level an item? Or make XP an item?
-    // TODO: Deal with level and xp in actor
-    console.log(itemData);
-    itemData = itemData instanceof Array ? itemData : [itemData];
-    return this.actor.createEmbeddedDocuments("Item", itemData);
+    switch (itemData.type) {
+      case "xp":
+        const xpAmount = itemData.system.amount;
+        if (xpAmount !== 0) this.actor.incrementXP(xpAmount);
+        break;
+      case "characterClass":
+        // TODO: Make Item type Class
+        console.log("Class", itemData);
+        break;
+      case "characterType":
+        // TODO: Make Item type Character Type Magic/Warrior/...
+        console.log("type", itemData);
+        break;
+      default:
+        console.log(itemData);
+        itemData = itemData instanceof Array ? itemData : [itemData];
+        return this.actor.createEmbeddedDocuments("Item", itemData);
+    }
   }
 
-  // Data Getter
+  /**
+   * GETTER
+   **/
   get system() {
     return this.actor.system;
   }
@@ -118,6 +131,7 @@ export class RyuutamaActorSheet extends ActorSheet {
       html.find(".stat-item").click(this.onStatSelect.bind(this));
       html.find(".stats-roll").click(this.onStatRoll.bind(this));
       html.find(".equip-toggle").click(this.onEquipItem.bind(this));
+      //  TODO: Add on Init roll
 
       // Skills
       html.find(".rollable .item-image").click(this.onItemUse.bind(this));
