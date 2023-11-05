@@ -1,3 +1,4 @@
+import { ryuutama } from "../config.mjs";
 import { ActionRoll } from "../dice/ActionRoll.mjs";
 import { isNull } from "../utils.mjs";
 
@@ -13,6 +14,35 @@ export class RyuutamaActor extends Actor {
 
   prepareEmbeddedDocuments() {
     super.prepareEmbeddedDocuments();
+  }
+
+  /**
+   * @returns {{die: number, actual: number}[]}
+   */
+  get stats() {
+    const system = this.system;
+
+    // TODO: Add cache and flag for refresh when change happens
+    const stats = {};
+    Object.entries(system.stats).forEach(([key, data]) => {
+      const statusEffects = ryuutama.stats[key].statuses;
+
+      const statusEffectsModifier = statusEffects.reduce(
+        (accumulator, statusEffect) => {
+          return accumulator + system.statuses[statusEffect];
+        },
+        0
+      );
+
+      const modifier = data.mod + data.condition - statusEffectsModifier;
+
+      stats[key] = {
+        die: data.die,
+        actual: this.modifyDice(data.die, modifier),
+      };
+    });
+
+    return stats;
   }
 
   selectStat(stat) {
@@ -97,10 +127,12 @@ export class RyuutamaActor extends Actor {
    * @param {string} title
    */
   async roll(stat1, stat2, title, fumblullable = true, concentrable = true) {
-    const { fumble, stats, mp } = this.system;
+    const { fumble, mp } = this.system;
 
-    const die1 = stats[stat1].die;
-    const die2 = stats[!isNull(stat2) ? stat2 : stat1].die;
+    const stats = this.stats;
+
+    const die1 = stats[stat1].actual;
+    const die2 = stats[!isNull(stat2) ? stat2 : stat1].actual;
 
     const roll = new ActionRoll(`1d${die1} + 1d${die2}`);
 
@@ -146,5 +178,31 @@ export class RyuutamaActor extends Actor {
       actor.incrementFumble(1);
       // TODO: display message on fumble
     });
+  }
+
+  /**
+   * HELPERS
+   **/
+  modifyDice(die, modifier) {
+    if (modifier === 0) return die;
+
+    const dice = ryuutama.dice;
+
+    let jumps = modifier;
+    let currentDie = die;
+
+    while (true) {
+      if (jumps === 0) {
+        break;
+      } else if (jumps < 0) {
+        currentDie = dice[currentDie].previous;
+        jumps += 1;
+      } else if (jumps > 0) {
+        currentDie = dice[currentDie].next;
+        jumps -= 1;
+      }
+    }
+
+    return currentDie;
   }
 }

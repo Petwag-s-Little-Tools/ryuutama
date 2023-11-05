@@ -1,5 +1,3 @@
-import { ryuutama } from "../config.mjs";
-
 export class RyuutamaActorSheet extends ActorSheet {
   // TODO: deal with damage roll + damage reducing HP
   static get defaultOptions() {
@@ -88,34 +86,25 @@ export class RyuutamaActorSheet extends ActorSheet {
     return skills;
   }
 
-  get maxHp() {
-    return this.system.stats.str.die * 2;
-  }
-
-  get maxMp() {
-    return this.system.stats.spi.die * 2;
-  }
-
+  /**
+   * @returns {{die: number, actual: number}[]}
+   */
   get stats() {
-    const system = this.system;
+    return this.actor.stats;
+  }
 
-    // TODO: Add cache and flag for refresh when change happens
-    const stats = {};
-    Object.entries(system.stats).forEach(([key, data]) => {
-      const conditions = ryuutama.stats[key].statuses;
+  /**
+   * @returns {number}
+   */
+  get maxHp() {
+    return this.stats.str.die * 2;
+  }
 
-      const conditionModifier = conditions.reduce((accumulator, condition) => {
-        return accumulator + system.statuses[condition];
-      }, 0);
-
-      const modifier = data.mod + data.condition - conditionModifier;
-
-      stats[key] = {
-        die: this.modifyDice(data.die, modifier),
-      };
-    });
-
-    return stats;
+  /**
+   * @returns {number}
+   */
+  get maxMp() {
+    return this.stats.spi.die * 2;
   }
 
   /**
@@ -202,31 +191,5 @@ export class RyuutamaActorSheet extends ActorSheet {
   getItem(event) {
     const itemId = event.currentTarget.closest(".item").dataset.itemId;
     return this.actor.items.get(itemId);
-  }
-
-  /**
-   * HELPERS
-   **/
-  modifyDice(die, modifier) {
-    if (modifier === 0) return die;
-
-    const dice = ryuutama.dice;
-
-    let jumps = modifier;
-    let currentDie = die;
-
-    while (true) {
-      if (jumps === 0) {
-        break;
-      } else if (jumps < 0) {
-        currentDie = dice[currentDie].previous;
-        jumps += 1;
-      } else if (jumps > 0) {
-        currentDie = dice[currentDie].next;
-        jumps -= 1;
-      }
-    }
-
-    return currentDie;
   }
 }
