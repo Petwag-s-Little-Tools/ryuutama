@@ -56,7 +56,6 @@ export class RyuutamaItemSheet extends ItemSheet {
   async _onDrop(event) {
     const data = TextEditor.getDragEventData(event);
     const actor = this.item.type;
-    // TODO: check is action is autorized (GM or owner?)
 
     if (actor === "characterClass") return this._onDropOnCharacterClass(data);
 
@@ -65,15 +64,12 @@ export class RyuutamaItemSheet extends ItemSheet {
 
   async _onDropOnCharacterClass(data) {
     if (!this.item.isOwner) return;
-    // TODO: check is action is autorized (GM or owner?)
 
     const item = await Item.implementation.fromDropData(data);
 
     if (item.type !== "skill") return;
 
     const itemData = item.toObject();
-    // TODO: use skills list in template.json
-    // TODO: create proper types for all Items with separated logic (check if we can do that)
   }
 
   /**
@@ -127,9 +123,3 @@ export class RyuutamaItemSheet extends ItemSheet {
     console.log(event);
   }
 }
-
-// TODO:
-/**
- * On item creation, create the Active Effect
- * On item update, update the Active Effect
- */

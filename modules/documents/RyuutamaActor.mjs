@@ -22,7 +22,6 @@ export class RyuutamaActor extends Actor {
   get stats() {
     const system = this.system;
 
-    // TODO: Add cache and flag for refresh when change happens
     const stats = {};
     Object.entries(system.stats).forEach(([key, data]) => {
       const statusEffects = ryuutama.stats[key].statuses;
@@ -88,9 +87,8 @@ export class RyuutamaActor extends Actor {
    */
   incrementXP(increment) {
     const xp = this.system.xp;
+
     // XP can't go under 0
-    // TODO: Deal with loosing level if decreasing XP
-    // TODO: Deal with level up
     const newXp = Math.max(xp + increment, 0);
     this.update({ "system.xp": newXp });
   }
@@ -116,8 +114,6 @@ export class RyuutamaActor extends Actor {
     );
 
     if (roll.total === 2) {
-      // TODO: Display condition choice on fumble
-      // this.update({ "system.stats.str.condition": 0 });
     }
 
     this.update({ "system.condition": roll.total });
@@ -165,8 +161,6 @@ export class RyuutamaActor extends Actor {
 
     if (fumblullable && configured.isFumble) {
       Hooks.callAll("onFumble");
-
-      // TODO: add logic for critical success
     }
 
     // if concentration has been used reduce whatever value
@@ -190,7 +184,6 @@ export class RyuutamaActor extends Actor {
   static async onFumble() {
     game.actors.forEach((actor) => {
       actor.incrementFumble(1);
-      // TODO: display message on fumble
     });
   }
 

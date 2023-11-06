@@ -1,5 +1,4 @@
 export class RyuutamaActorSheet extends ActorSheet {
-  // TODO: deal with damage roll + damage reducing HP
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       classes: ["ryuutama", "sheet", "actor"],
@@ -47,11 +46,9 @@ export class RyuutamaActorSheet extends ActorSheet {
         if (xpAmount !== 0) this.actor.incrementXP(xpAmount);
         break;
       case "characterClass":
-        // TODO: Make Item type Class
         console.log("Class", itemData);
         break;
       case "characterType":
-        // TODO: Make Item type Character Type Magic/Warrior/...
         console.log("type", itemData);
         break;
       default:
@@ -131,7 +128,6 @@ export class RyuutamaActorSheet extends ActorSheet {
       html.find(".stat-item").click(this.onStatSelect.bind(this));
       html.find(".stats-roll").click(this.onStatRoll.bind(this));
       html.find(".equip-toggle").click(this.onEquipItem.bind(this));
-      //  TODO: Add on Init roll
 
       // Skills
       html.find(".rollable .item-image").click(this.onItemUse.bind(this));

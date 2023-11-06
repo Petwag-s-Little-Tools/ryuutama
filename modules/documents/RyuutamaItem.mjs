@@ -15,7 +15,6 @@ export class RyuutamaItem extends Item {
         return await this.displaySkillInChat();
       case "spell":
         return await this.displaySpellInChat();
-      //TODO: Allow equipment ?
       default:
         throw new Error(`No use function for this type: ${this.type}`);
     }
@@ -38,7 +37,6 @@ export class RyuutamaItem extends Item {
   }
 
   async displaySpellInChat() {
-    //TODO: Put correct setup information
     return await this.displayInChat();
   }
 
@@ -58,7 +56,6 @@ export class RyuutamaItem extends Item {
       setup,
     };
 
-    // TODO: use different template for each type of item?
     const html = await renderTemplate(
       "systems/ryuutama/templates/chat/item-card.hbs",
       templateData
@@ -88,7 +85,6 @@ export class RyuutamaItem extends Item {
    * @param {*} html
    */
   static chatListeners(html) {
-    // TODO: add different listener per type of item or add logic in the onChatCardAction function
     html.on("click", ".card-buttons button", this.onChatCardAction.bind(this));
   }
 

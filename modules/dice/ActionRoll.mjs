@@ -25,7 +25,6 @@ export class ActionRoll extends Roll {
   }
 
   async getTooltip() {
-    // TODO: use new type of roll instead of overriding the result
     const parts = this.dice.map((d) => d.getTooltipData());
 
     const overridenParts = parts.map((p) => {

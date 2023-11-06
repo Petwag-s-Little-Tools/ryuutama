@@ -21,7 +21,6 @@ import { RyuutamaActiveEffect } from "./modules/documents/RyuutamaActiveEffect.m
 Hooks.once("init", () => {
   console.log("ryuutama | Starting Ryuutama System");
 
-  // TODO: remove when done
   // CONFIG.debug.hooks = true;
 
   // Make config available
@@ -45,7 +44,6 @@ Hooks.once("init", () => {
   CONFIG.ui.combat = RyuutamaCombatTracker;
   CONFIG.Combatant.documentClass = RyuutamaCombatant;
   CONFIG.Combatant.sheetClass = RyuutamaCombatantConfig;
-  // TODO: Use custom dice roll instead of that hook for init
   CONFIG.Combat.initiative.formula = "1d@stats.dex.die + 1d@stats.int.die";
 
   // Dices & Rolls
