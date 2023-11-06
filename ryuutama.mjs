@@ -32,8 +32,12 @@ Hooks.once("init", () => {
     RyuutamaItem,
   };
 
+  console.log(CONFIG);
+
   CONFIG.Actor.documentClass = RyuutamaActor;
+  CONFIG.Actor.dataModels = {};
   CONFIG.Item.documentClass = RyuutamaItem;
+  CONFIG.Item.dataModels = {};
 
   // Active Effects
   // CONFIG.ActiveEffect.sheetClass = RyuutamaActiveEffectConfig; // To modify the ActiveEffect sheet
