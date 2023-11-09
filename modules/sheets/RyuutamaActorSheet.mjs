@@ -1,3 +1,5 @@
+import { ryuutama } from "../config.mjs";
+
 export class RyuutamaActorSheet extends ActorSheet {
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
@@ -22,7 +24,7 @@ export class RyuutamaActorSheet extends ActorSheet {
   getData() {
     const context = super.getData();
 
-    context.config = CONFIG.ryuutama;
+    context.config = ryuutama;
     context.rollableClass = this.isEditable ? "rollable" : "";
 
     this.stats;

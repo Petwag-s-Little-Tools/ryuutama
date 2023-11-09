@@ -1,3 +1,5 @@
+import { ryuutama } from "../config.mjs";
+
 export class RyuutamaItemSheet extends ItemSheet {
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
@@ -18,9 +20,10 @@ export class RyuutamaItemSheet extends ItemSheet {
   getData() {
     const context = super.getData();
 
+    console.log(context);
     const itemData = context.item;
 
-    context.config = CONFIG.ryuutama;
+    context.config = ryuutama;
     context.system = itemData.system;
 
     context.flags = itemData.flags;
@@ -46,10 +49,10 @@ export class RyuutamaItemSheet extends ItemSheet {
 
   isDurationFieldDisabled(durationUnit) {
     if (!durationUnit) {
-      return !CONFIG.ryuutama.durationUnits["none"].hasNumericValue;
+      return !ryuutama.durationUnits["none"].hasNumericValue;
     }
 
-    return !CONFIG.ryuutama.durationUnits[durationUnit].hasNumericValue;
+    return !ryuutama.durationUnits[durationUnit].hasNumericValue;
   }
 
   /** @inheritdoc */
