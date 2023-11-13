@@ -13,7 +13,8 @@ Hooks.once("init", () => {
 
   console.log("ryuutama | Starting Ryuutama System");
 
-  // CONFIG.debug.hooks = true;
+  CONFIG.debug.hooks = true;
+
   configureGame(CONFIG, Actors, Items);
 
   console.log(CONFIG);

@@ -110,6 +110,7 @@
       "init": "Init"
     },
     "roll": "Roll",
+    "rolls": "Rolls",
     "bonus": "Bonus",
     "formula": "Formula",
     "itemDelete": "Delete Item",
@@ -118,6 +119,7 @@
     "useFumble": "Use Fumble",
     "useMp": "Use Mp",
     "useMpAndFumble": "Use Mp plus Fumble",
-    "amount": "Amount"
+    "amount": "Amount",
+    "standard": "Standard"
   }
 }

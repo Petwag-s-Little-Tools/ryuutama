@@ -1,4 +1,4 @@
-<form class="{{cssClass}}" autocomplete="off">
+<form class="{{cssClass}} skill" autocomplete="off">
   <header class="sheet-header">
     <img
       src="{{item.img}}"
@@ -32,6 +32,46 @@
       editable=editable
     }}
     <h3>{{localize "ryuutama.skill.usableCircumstances"}}</h3>
+    <h3>{{localize "ryuutama.rolls"}}<a class="roll-add">
+        <i class="fas fa-plus"></i>
+      </a></h3>
+
+    <ol class="item-list">
+      {{#each system.rolls as |roll idx|}}
+        <li class="item flexrow">
+          <div class="item-name flexrow">
+            <h4>{{roll.description}}</h4>
+            <select name="../system.rolls.{{idx}}.statA">
+              {{#select ../system.rolls.[idx].statA}}
+                {{#each ../config.stats as |stat id|}}
+                  <option value="{{id}}">{{localize
+                      (concat "ryuutama.stats." id)
+                    }}</option>
+                {{/each}}
+              {{/select}}
+            </select>
+            <select name="../system.rolls.{{idx}}.statB">
+              {{#select ../system.rolls.[idx].statB}}
+                {{#each ../config.stats as |stat id|}}
+                  <option value="{{id}}">{{localize
+                      (concat "ryuutama.stats." id)
+                    }}</option>
+                {{/each}}
+              {{/select}}
+            </select>
+          </div>
+          <div class="item-controls">
+            <a
+              class="item-control flexrow"
+              data-action="delete"
+              title="{{localize 'ryuutama.item.effects'}}"
+            >
+              <i class="fas fa-trash"></i>
+            </a>
+          </div>
+        </li>
+      {{/each}}
+    </ol>
     <h3>{{localize "ryuutama.skill.statUsed"}}</h3>
     <select name="system.statUsed.statA">
       {{#select system.statUsed.statA}}

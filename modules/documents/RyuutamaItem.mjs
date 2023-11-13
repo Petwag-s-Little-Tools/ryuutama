@@ -131,4 +131,15 @@ export class RyuutamaItem extends Item {
 
     return await this.actor.roll(statA, statB, this.name);
   }
+
+  /**
+   * TYPE SPECIFIC FUNCTIONS
+   */
+
+  /** SKILL */
+  addRollToSkill() {
+    const rolls = this.system.rolls;
+    rolls.push({ statA: "none", statB: "none" });
+    this.update({ "system.rolls": rolls });
+  }
 }

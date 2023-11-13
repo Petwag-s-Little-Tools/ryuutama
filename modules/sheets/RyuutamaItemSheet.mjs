@@ -20,7 +20,6 @@ export class RyuutamaItemSheet extends ItemSheet {
   getData() {
     const context = super.getData();
 
-    console.log(context);
     const itemData = context.item;
 
     context.config = ryuutama;
@@ -80,10 +79,7 @@ export class RyuutamaItemSheet extends ItemSheet {
    */
   activateListeners(html) {
     super.activateListeners(html);
-    if (this.isEditable) {
-      html.find(".effect-control").click(this.onEffectControl.bind(this));
-      html.find(".test").change(this.onTestChange.bind(this));
-    }
+    this.activateListeners(html);
   }
 
   /**
@@ -124,5 +120,39 @@ export class RyuutamaItemSheet extends ItemSheet {
 
   onTestChange(event) {
     console.log(event);
+  }
+
+  /**
+   * GETTER
+   */
+  get type() {
+    return this.item.type;
+  }
+
+  /**
+   * SETUP
+   */
+  activateListeners(html) {
+    if (!this.isEditable) return;
+
+    switch (this.type) {
+      case "skill":
+        html.find(".roll-add").click(this.onRollAdd.bind(this));
+        break;
+
+      default:
+        html.find(".effect-control").click(this.onEffectControl.bind(this));
+        html.find(".test").change(this.onTestChange.bind(this));
+        break;
+    }
+  }
+
+  /**
+   * TYPE SPECIFIC FUNCTIONS
+   */
+
+  /** SKILL */
+  onRollAdd(event) {
+    this.item.addRollToSkill();
   }
 }
