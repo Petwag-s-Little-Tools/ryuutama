@@ -18,20 +18,6 @@ export class Skill extends foundry.abstract.DataModel {
           }),
         })
       ),
-      statUsed: new fields.SchemaField({
-        statA: new fields.StringField({
-          required: true,
-          initial: "none",
-        }),
-        statB: new fields.StringField({
-          required: true,
-          initial: "none",
-        }),
-        alternative: new fields.StringField({
-          required: true,
-          initial: "none",
-        }),
-      }),
       targetNumber: new fields.StringField({
         required: true,
         initial: "",

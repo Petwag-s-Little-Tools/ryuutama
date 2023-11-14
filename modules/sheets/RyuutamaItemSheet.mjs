@@ -75,14 +75,6 @@ export class RyuutamaItemSheet extends ItemSheet {
   }
 
   /**
-   * LISTENERS
-   */
-  activateListeners(html) {
-    super.activateListeners(html);
-    this.activateListeners(html);
-  }
-
-  /**
    * ACTIONS
    */
   onEffectControl(event) {
@@ -122,22 +114,25 @@ export class RyuutamaItemSheet extends ItemSheet {
     console.log(event);
   }
 
-  /**
+  /*****************************
    * GETTER
-   */
+   *****************************/
   get type() {
     return this.item.type;
   }
 
-  /**
+  /*****************************
    * SETUP
-   */
+   *****************************/
   activateListeners(html) {
+    super.activateListeners(html);
     if (!this.isEditable) return;
 
     switch (this.type) {
       case "skill":
         html.find(".roll-add").click(this.onRollAdd.bind(this));
+        html.find(".roll").change(this.onSelectStat.bind(this));
+        html.find(".roll-delete").click(this.onRollDelete.bind(this));
         break;
 
       default:
@@ -147,12 +142,34 @@ export class RyuutamaItemSheet extends ItemSheet {
     }
   }
 
-  /**
-   * TYPE SPECIFIC FUNCTIONS
-   */
+  /*****************************
+   * TYPE SPECIFIC ACTIONS
+   *****************************/
 
   /** SKILL */
   onRollAdd(event) {
     this.item.addRollToSkill();
+  }
+
+  onRollDelete(event) {
+    event.preventDefault();
+    const target = event.currentTarget;
+
+    const idx = target.closest("li")?.dataset.idx;
+    if (idx === undefined) return;
+
+    this.item.deleteRollFromSkill(idx);
+  }
+
+  onSelectStat(event) {
+    event.preventDefault();
+    const target = event.currentTarget;
+
+    const idx = target.closest("li")?.dataset.idx;
+    if (idx === undefined) return;
+
+    const field = target.dataset.field;
+
+    this.item.updateRollOfSkill(field, idx, target.value);
   }
 }

@@ -11,17 +11,11 @@
     </div>
 
     <div class="card-buttons">
-        {{#isEqual setup.rollType "oneStat"}}
-            <p>[{{system.statUsed.statA}} + {{system.statUsed.statA}}]</p>
-            <button data-action="roll">{{ localize "ryuutama.roll" }}</button>
-        {{/isEqual}}
-        {{#isEqual setup.rollType "twoStat"}}
-            <p>[{{system.statUsed.statA}} + {{system.statUsed.statB}}]</p>
-            <button data-action="roll">{{ localize "ryuutama.roll" }}</button>
-        {{/isEqual}}
-        {{#isEqual setup.rollType "alternative"}}
-            <p>alternate roll</p>
-        {{/isEqual}}
+        {{#each system.rolls as |roll idx|}}
+            <p>{{roll.description}}</p>
+            <p>[{{roll.statA}} + {{roll.statB}}]</p>
+            <button data-action="roll" data-idx={{idx}}>{{ localize "ryuutama.roll" }}</button>
+        {{/each}}
 
         {{#if hasDamage}}
         <button data-action="damage">

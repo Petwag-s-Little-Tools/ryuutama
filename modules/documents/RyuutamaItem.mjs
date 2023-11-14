@@ -1,5 +1,3 @@
-import { isNull } from "../utils.mjs";
-
 export class RyuutamaItem extends Item {
   equip(enabled) {
     const owner = this.owner;
@@ -21,19 +19,7 @@ export class RyuutamaItem extends Item {
   }
 
   async displaySkillInChat() {
-    let rollType;
-
-    if (!isNull(this.system.statUsed.statA)) {
-      if (isNull(this.system.statUsed.statB)) {
-        rollType = "oneStat";
-      } else {
-        rollType = "twoStat";
-      }
-    } else if (!isNull(this.system.statUsed.alternative)) {
-      rollType = "alternative";
-    }
-
-    return await this.displayInChat({ rollType });
+    return await this.displayInChat();
   }
 
   async displaySpellInChat() {
@@ -80,38 +66,46 @@ export class RyuutamaItem extends Item {
     return card;
   }
 
-  /**
-   * Apply listeners for the item
-   * @param {*} html
-   */
-  static chatListeners(html) {
-    html.on("click", ".card-buttons button", this.onChatCardAction.bind(this));
-  }
-
   static async onChatCardAction(event) {
     const button = event.currentTarget;
     button.disabled = true;
+
+    const dataset = button?.dataset;
+
+    if (dataset === undefined) return;
+
     const card = button.closest(".chat-card");
     const messageId = card.closest(".message").dataset.messageId;
     const message = game.messages.get(messageId);
-    const action = button.dataset.action;
 
-    const actor = await this.getChatCardActor(card);
+    const actor = await this.getActorFromChatCard(card);
     if (!actor) return;
 
     // Validate permission to proceed with the roll
     if (!(game.user.isGM || actor.isOwner)) return;
 
     const item = actor.items.get(card.dataset.itemId);
-
     if (!item) return;
 
-    await item.useSkill();
+    const action = dataset.action;
+
+    switch (action) {
+      case "roll":
+        const { idx } = dataset;
+        await item.useSkill(idx);
+        break;
+
+      default:
+        break;
+    }
 
     button.disabled = false;
   }
 
-  static async getChatCardActor(card) {
+  /*****************************
+   * HELPERS
+   *****************************/
+  static async getActorFromChatCard(card) {
     // Case 1 - a synthetic actor from a Token
     if (card.dataset.tokenId) {
       const token = await fromUuid(card.dataset.tokenId);
@@ -124,22 +118,80 @@ export class RyuutamaItem extends Item {
     return game.actors.get(actorId) || null;
   }
 
-  async useSkill() {
-    const { statA, statB } = this.system.statUsed;
+  /*****************************
+   * GETTER
+   *****************************/
+  get rolls() {
+    if (this.type !== "skill") {
+      throw new Error(`can't access rolls on ${this.type} type of item`);
+    }
+    return this.system.rolls;
+  }
 
-    if (statA === undefined || statA === "" || statA === "none") return;
+  /*****************************
+   * SETUP
+   *****************************/
+
+  /**
+   * Apply listeners for the item
+   * @param {*} html
+   */
+  static chatListeners(html) {
+    html.on("click", ".card-buttons button", this.onChatCardAction.bind(this));
+  }
+
+  /*****************************
+   * ACTIONS
+   *****************************/
+
+  /**
+   *
+   * @param {number} idx
+   * @returns
+   */
+  async useSkill(idx) {
+    const roll = this.rolls[idx];
+
+    if (roll === undefined) return;
+
+    const { statA, statB } = roll;
 
     return await this.actor.roll(statA, statB, this.name);
   }
 
-  /**
-   * TYPE SPECIFIC FUNCTIONS
-   */
+  /*****************************
+   * TYPE SPECIFIC ACTIONS
+   *****************************/
 
   /** SKILL */
   addRollToSkill() {
-    const rolls = this.system.rolls;
+    const rolls = this.rolls;
     rolls.push({ statA: "none", statB: "none" });
+    this.update({ "system.rolls": rolls });
+  }
+
+  deleteRollFromSkill(idx) {
+    const rolls = this.rolls;
+    rolls.splice(idx, 1);
+
+    this.update({ "system.rolls": rolls });
+  }
+
+  /**
+   *
+   * @param {string} field
+   * @param {number} idx
+   * @param {string} statValue
+   * @returns
+   */
+  updateRollOfSkill(field, idx, statValue) {
+    const rolls = this.rolls;
+    const roll = rolls[idx];
+
+    if (roll === undefined) return;
+
+    roll[field] = statValue;
+
     this.update({ "system.rolls": rolls });
   }
 }

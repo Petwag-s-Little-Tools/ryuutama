@@ -38,11 +38,16 @@
 
     <ol class="item-list">
       {{#each system.rolls as |roll idx|}}
-        <li class="item flexrow">
+        <li class="item flexrow" data-idx="{{idx}}">
           <div class="item-name flexrow">
-            <h4>{{roll.description}}</h4>
-            <select name="../system.rolls.{{idx}}.statA">
-              {{#select ../system.rolls.[idx].statA}}
+            <input
+              class="roll"
+              data-field="description"
+              type="text"
+              value="{{roll.description}}"
+            />
+            <select class="roll" data-field="statA">
+              {{#select roll.statA}}
                 {{#each ../config.stats as |stat id|}}
                   <option value="{{id}}">{{localize
                       (concat "ryuutama.stats." id)
@@ -50,8 +55,8 @@
                 {{/each}}
               {{/select}}
             </select>
-            <select name="../system.rolls.{{idx}}.statB">
-              {{#select ../system.rolls.[idx].statB}}
+            <select class="roll" data-field="statB">
+              {{#select roll.statB}}
                 {{#each ../config.stats as |stat id|}}
                   <option value="{{id}}">{{localize
                       (concat "ryuutama.stats." id)
@@ -62,35 +67,20 @@
           </div>
           <div class="item-controls">
             <a
-              class="item-control flexrow"
-              data-action="delete"
+              class="item-control"
               title="{{localize 'ryuutama.item.effects'}}"
             >
-              <i class="fas fa-trash"></i>
+              <i class="fas fa-trash roll-delete"></i>
             </a>
           </div>
         </li>
       {{/each}}
     </ol>
-    <h3>{{localize "ryuutama.skill.statUsed"}}</h3>
-    <select name="system.statUsed.statA">
-      {{#select system.statUsed.statA}}
-        {{#each config.stats as |stat id|}}
-          <option value="{{id}}">{{localize
-              (concat "ryuutama.stats." id)
-            }}</option>
-        {{/each}}
-      {{/select}}
-    </select>
-    <select name="system.statUsed.statB">
-      {{#select system.statUsed.statB}}
-        {{#each config.stats as |stat id|}}
-          <option value="{{id}}">{{localize
-              (concat "ryuutama.stats." id)
-            }}</option>
-        {{/each}}
-      {{/select}}
-    </select>
     <h3>{{localize "ryuutama.skill.targetNumber"}}</h3>
+    <input
+      name="system.targetNumber"
+      type="text"
+      value="{{system.targetNumber}}"
+    />
   </div>
 </form>
