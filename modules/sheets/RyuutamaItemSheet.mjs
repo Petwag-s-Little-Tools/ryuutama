@@ -131,10 +131,17 @@ export class RyuutamaItemSheet extends ItemSheet {
     switch (this.type) {
       case "skill":
         html.find(".roll-add").click(this.onRollAdd.bind(this));
-        html.find(".roll").change(this.onSelectStat.bind(this));
+        html.find(".roll").change(this.onRollUpdateRoll.bind(this));
         html.find(".roll-delete").click(this.onRollDelete.bind(this));
         break;
-
+      case "characterType":
+        html.find(".ability-add").click(this.onCharacterTypeAdd.bind(this));
+        html
+          .find(".ability")
+          .change(this.onCharacterTypeUpdateAbility.bind(this));
+        html
+          .find(".ability-delete")
+          .click(this.onCharacterTypeDelete.bind(this));
       default:
         html.find(".effect-control").click(this.onEffectControl.bind(this));
         html.find(".test").change(this.onTestChange.bind(this));
@@ -161,7 +168,7 @@ export class RyuutamaItemSheet extends ItemSheet {
     this.item.deleteRollFromSkill(idx);
   }
 
-  onSelectStat(event) {
+  onRollUpdateRoll(event) {
     event.preventDefault();
     const target = event.currentTarget;
 
@@ -171,5 +178,32 @@ export class RyuutamaItemSheet extends ItemSheet {
     const field = target.dataset.field;
 
     this.item.updateRollOfSkill(field, idx, target.value);
+  }
+
+  /** CHARACTERTYPE */
+  onCharacterTypeAdd(event) {
+    this.item.addAbilityToCharacterType();
+  }
+
+  onCharacterTypeDelete(event) {
+    event.preventDefault();
+    const target = event.currentTarget;
+
+    const idx = target.closest("li")?.dataset.idx;
+    if (idx === undefined) return;
+
+    this.item.deleteAbilityFromCharacterType(idx);
+  }
+
+  onCharacterTypeUpdateAbility(event) {
+    event.preventDefault();
+    const target = event.currentTarget;
+
+    const idx = target.closest("li")?.dataset.idx;
+    if (idx === undefined) return;
+
+    const field = target.dataset.field;
+
+    this.item.updateAbilityOfCharacterType(field, idx, target.value);
   }
 }

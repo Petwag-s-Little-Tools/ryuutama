@@ -128,6 +128,13 @@ export class RyuutamaItem extends Item {
     return this.system.rolls;
   }
 
+  get abilities() {
+    if (this.type !== "characterType") {
+      throw new Error(`can't access abilities on ${this.type} type of item`);
+    }
+    return this.system.abilities;
+  }
+
   /*****************************
    * SETUP
    *****************************/
@@ -193,5 +200,38 @@ export class RyuutamaItem extends Item {
     roll[field] = statValue;
 
     this.update({ "system.rolls": rolls });
+  }
+
+  /** CHARACTERTYPE */
+  addAbilityToCharacterType() {
+    const abilities = this.abilities;
+    abilities.push({ name: "", effect: "" });
+    this.update({ "system.abilities": abilities });
+  }
+
+  deleteAbilityFromCharacterType(idx) {
+    const abilities = this.abilities;
+    abilities.splice(idx, 1);
+
+    this.update({ "system.abilities": abilities });
+  }
+
+  /**
+   *
+   * @param {string} field
+   * @param {number} idx
+   * @param {string} statValue
+   * @returns
+   */
+  updateAbilityOfCharacterType(field, idx, value) {
+    const abilities = this.abilities;
+    const ability = abilities[idx];
+
+    if (ability === undefined) return;
+
+    ability[field] = value;
+
+    this.update({ "system.abilities": abilities });
+    console.log(this.abilities);
   }
 }

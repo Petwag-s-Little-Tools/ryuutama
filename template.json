@@ -133,8 +133,6 @@
       "templates": ["coreItem"],
       "skills": []
     },
-    "characterType": {
-      "templates": ["coreItem"]
-    }
+    "characterType": {}
   }
 }
