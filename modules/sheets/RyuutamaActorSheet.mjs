@@ -132,8 +132,12 @@ export class RyuutamaActorSheet extends ActorSheet {
         console.log("Class", itemData);
         break;
       case "characterType":
-        console.log("type", itemData);
-        break;
+        const characterTypes = this.actor.itemTypes["characterType"];
+        console.log({ characterTypes });
+
+        if (characterTypes.length >= 2) {
+          break;
+        }
       default:
         items = itemData instanceof Array ? itemData : [itemData];
         return this.actor.createEmbeddedDocuments("Item", items);
