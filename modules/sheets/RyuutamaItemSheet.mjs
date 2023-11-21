@@ -10,13 +10,9 @@ export class RyuutamaItemSheet extends ItemSheet {
     });
   }
 
-  get template() {
-    return `systems/ryuutama/templates/item/${this.item.type}-sheet.hbs`;
-  }
-
-  /**
+  /*****************************
    * DATA
-   */
+   *****************************/
   getData() {
     const context = super.getData();
 
@@ -54,6 +50,48 @@ export class RyuutamaItemSheet extends ItemSheet {
     return !ryuutama.durationUnits[durationUnit].hasNumericValue;
   }
 
+  /*****************************
+   * GETTER
+   *****************************/
+  get template() {
+    return `systems/ryuutama/templates/item/${this.item.type}-sheet.hbs`;
+  }
+
+  get type() {
+    return this.item.type;
+  }
+
+  /*****************************
+   * SETUP
+   *****************************/
+  activateListeners(html) {
+    super.activateListeners(html);
+    if (!this.isEditable) return;
+
+    switch (this.type) {
+      case "skill":
+        html.find(".roll-add").click(this.onRollAdd.bind(this));
+        html.find(".roll").change(this.onRollUpdateRoll.bind(this));
+        html.find(".roll-delete").click(this.onRollDelete.bind(this));
+        break;
+      case "characterType":
+        html.find(".ability-add").click(this.onCharacterTypeAdd.bind(this));
+        html
+          .find(".ability")
+          .change(this.onCharacterTypeUpdateAbility.bind(this));
+        html
+          .find(".ability-delete")
+          .click(this.onCharacterTypeDelete.bind(this));
+      default:
+        html.find(".effect-control").click(this.onEffectControl.bind(this));
+        html.find(".test").change(this.onTestChange.bind(this));
+        break;
+    }
+  }
+
+  /*****************************
+   * ACTIONS
+   *****************************/
   /** @inheritdoc */
   async _onDrop(event) {
     const data = TextEditor.getDragEventData(event);
@@ -74,9 +112,6 @@ export class RyuutamaItemSheet extends ItemSheet {
     const itemData = item.toObject();
   }
 
-  /**
-   * ACTIONS
-   */
   onEffectControl(event) {
     const owner = this.item;
     const a = event.currentTarget;
@@ -112,41 +147,6 @@ export class RyuutamaItemSheet extends ItemSheet {
 
   onTestChange(event) {
     console.log(event);
-  }
-
-  /*****************************
-   * GETTER
-   *****************************/
-  get type() {
-    return this.item.type;
-  }
-
-  /*****************************
-   * SETUP
-   *****************************/
-  activateListeners(html) {
-    super.activateListeners(html);
-    if (!this.isEditable) return;
-
-    switch (this.type) {
-      case "skill":
-        html.find(".roll-add").click(this.onRollAdd.bind(this));
-        html.find(".roll").change(this.onRollUpdateRoll.bind(this));
-        html.find(".roll-delete").click(this.onRollDelete.bind(this));
-        break;
-      case "characterType":
-        html.find(".ability-add").click(this.onCharacterTypeAdd.bind(this));
-        html
-          .find(".ability")
-          .change(this.onCharacterTypeUpdateAbility.bind(this));
-        html
-          .find(".ability-delete")
-          .click(this.onCharacterTypeDelete.bind(this));
-      default:
-        html.find(".effect-control").click(this.onEffectControl.bind(this));
-        html.find(".test").change(this.onTestChange.bind(this));
-        break;
-    }
   }
 
   /*****************************

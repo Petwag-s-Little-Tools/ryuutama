@@ -78,61 +78,11 @@
       "characterType"
     ],
     "htmlFields": ["description"],
-    "templates": {
-      "coreItem": {
-        "description": ""
-      }
-    },
-    "spell": {
-      "templates": ["coreItem"],
-      "magicType": "",
-      "spellType": "",
-      "manaCost": 0,
-      "duration": 0,
-      "durationUnit": "",
-      "target": "",
-      "range": "",
-      "rolls": [],
-      "spellLevel": ""
-    },
-    "skill": {
-      "htmlFields": ["skillEffect"]
-    },
-    "item": {
-      "templates": ["coreItem"],
-      "price": 0,
-      "size": 0,
-      "itemType": "gear",
-      "active": false,
-      "weapon": {
-        "equip": "",
-        "accuracy": "",
-        "damage": ""
-      },
-      "armor": {
-        "equip": "",
-        "defense": 0,
-        "penalty": 0
-      },
-      "shield": {
-        "dodge": ""
-      },
-      "gear": {
-        "type": "",
-        "bonus": ""
-      },
-      "other": {
-        "type": "",
-        "values": {}
-      }
-    },
-    "xp": {
-      "amount": 0
-    },
-    "characterClass": {
-      "templates": ["coreItem"],
-      "skills": []
-    },
+    "spell": {},
+    "skill": { "htmlFields": ["skillEffect"] },
+    "item": {},
+    "xp": {},
+    "characterClass": {},
     "characterType": {}
   }
 }

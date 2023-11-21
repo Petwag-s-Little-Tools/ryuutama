@@ -17,10 +17,9 @@ export class RyuutamaActorSheet extends ActorSheet {
     });
   }
 
-  get template() {
-    return `systems/ryuutama/templates/actor/actor-${this.actor.type}-sheet.hbs`;
-  }
-
+  /*****************************
+   * DATA
+   *****************************/
   getData() {
     const context = super.getData();
 
@@ -40,29 +39,13 @@ export class RyuutamaActorSheet extends ActorSheet {
     return context;
   }
 
-  /** @override */
-  async _onDropItemCreate(itemData) {
-    switch (itemData.type) {
-      case "xp":
-        const xpAmount = itemData.system.amount;
-        if (xpAmount !== 0) this.actor.incrementXP(xpAmount);
-        break;
-      case "characterClass":
-        console.log("Class", itemData);
-        break;
-      case "characterType":
-        console.log("type", itemData);
-        break;
-      default:
-        console.log(itemData);
-        itemData = itemData instanceof Array ? itemData : [itemData];
-        return this.actor.createEmbeddedDocuments("Item", itemData);
-    }
+  /*****************************
+   * GETTER
+   *****************************/
+  get template() {
+    return `systems/ryuutama/templates/actor/actor-${this.actor.type}-sheet.hbs`;
   }
 
-  /**
-   * GETTER
-   **/
   get system() {
     return this.actor.system;
   }
@@ -98,9 +81,6 @@ export class RyuutamaActorSheet extends ActorSheet {
     return skills;
   }
 
-  /**
-   * @returns {{die: number, actual: number}[]}
-   */
   get stats() {
     return this.actor.stats;
   }
@@ -119,9 +99,9 @@ export class RyuutamaActorSheet extends ActorSheet {
     return this.stats.spi.die * 2;
   }
 
-  /**
-   * EVENTS
-   **/
+  /*****************************
+   * SETUP
+   *****************************/
   activateListeners(html) {
     super.activateListeners(html);
 
@@ -135,6 +115,28 @@ export class RyuutamaActorSheet extends ActorSheet {
       html.find(".rollable .item-image").click(this.onItemUse.bind(this));
       html.find(".item-delete").click(this.onItemDelete.bind(this));
       html.find(".item-edit").click(this.onItemEdit.bind(this));
+    }
+  }
+
+  /*****************************
+   * ACTIONS
+   *****************************/
+  /** @override */
+  async _onDropItemCreate(itemData) {
+    switch (itemData.type) {
+      case "xp":
+        const xpAmount = itemData.system.amount;
+        if (xpAmount !== 0) this.actor.incrementXP(xpAmount);
+        break;
+      case "characterClass":
+        console.log("Class", itemData);
+        break;
+      case "characterType":
+        console.log("type", itemData);
+        break;
+      default:
+        items = itemData instanceof Array ? itemData : [itemData];
+        return this.actor.createEmbeddedDocuments("Item", items);
     }
   }
 
