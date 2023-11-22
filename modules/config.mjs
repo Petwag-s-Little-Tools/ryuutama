@@ -134,3 +134,28 @@ ryuutama.stats = {
     statuses: ["exhaustion", "sickness", "shock"],
   },
 };
+
+ryuutama.levels = [
+  { untilXp: 99, level: 1, bonuses: [] },
+  {
+    untilXp: 599,
+    level: 2,
+    bonuses: ["Stat increase", "Feint and Search Combat Actions"],
+  },
+  { untilXp: 1199, level: 3, bonuses: ["Terrain/Weather Specialty"] },
+  {
+    untilXp: 1999,
+    level: 4,
+    bonuses: ["Stat increase", " Status Effect Immunity"],
+  },
+  { untilXp: 2999, level: 5, bonuses: ["Extra Class"] },
+  { untilXp: 4199, level: 6, bonuses: ["Stat increase", "Extra Type"] },
+  { untilXp: 5799, level: 7, bonuses: ["Terrain/Weather Specialty"] },
+  { untilXp: 7499, level: 8, bonuses: ["Stat increase"] },
+  { untilXp: 9999, level: 9, bonuses: ["Favor of the Seasonal Dragons"] },
+  {
+    untilXp: 10000,
+    level: 10,
+    bonuses: ["Stat Increase", "Embark on Legendary Journey"],
+  },
+];

@@ -16,6 +16,8 @@
     />
     <p>{{system.infos.level}}</p>
     <p>XP: {{system.xp}}</p>
+    <p>Level: {{level.level}}</p>
+    <p>Type: {{#each characterTypes as |characterType|}}{{characterType.name}} {{/each}}</p>
     <p>{{system.classes}}</p>
     <p>{{system.infos.type}}</p>
   </header>

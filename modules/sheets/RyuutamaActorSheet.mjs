@@ -32,8 +32,11 @@ export class RyuutamaActorSheet extends ActorSheet {
     context.spells = this.spells;
     context.skills = this.skills;
     context.items = this.items;
+    context.characterTypes = this.characterTypes;
     context.stats = this.stats;
+    context.level = this.level;
 
+    console.log(this.level);
     context.maxHp = this.maxHp;
     context.maxMp = this.maxMp;
     return context;
@@ -51,18 +54,18 @@ export class RyuutamaActorSheet extends ActorSheet {
   }
 
   get spells() {
-    const items = this.actor.items;
-    const spells = items.filter((item) => item.type === "spell");
-    return spells;
+    return this.actor.itemTypes["spell"];
+  }
+
+  get characterTypes() {
+    return this.actor.itemTypes["characterType"];
   }
 
   get items() {
-    const items = this.actor.items;
+    const items = this.actor.itemTypes["item"];
     const itemMap = new Map();
 
     items.forEach((item) => {
-      if (item.type !== "item") return;
-
       const key = item.system.itemType;
 
       if (!itemMap.has(key)) {
@@ -76,13 +79,15 @@ export class RyuutamaActorSheet extends ActorSheet {
   }
 
   get skills() {
-    const items = this.actor.items;
-    const skills = items.filter((item) => item.type === "skill");
-    return skills;
+    return this.actor.itemTypes["skill"];
   }
 
   get stats() {
     return this.actor.stats;
+  }
+
+  get level() {
+    return this.actor.level;
   }
 
   /**
@@ -133,8 +138,6 @@ export class RyuutamaActorSheet extends ActorSheet {
         break;
       case "characterType":
         const characterTypes = this.actor.itemTypes["characterType"];
-        console.log({ characterTypes });
-
         if (characterTypes.length >= 2) {
           break;
         }

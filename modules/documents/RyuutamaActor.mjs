@@ -19,10 +19,6 @@ export class RyuutamaActor extends Actor {
   /*****************************
    * GETTER
    *****************************/
-
-  /**
-   * @returns {{die: number, actual: number}[]}
-   */
   get stats() {
     const system = this.system;
 
@@ -46,6 +42,30 @@ export class RyuutamaActor extends Actor {
     });
 
     return stats;
+  }
+
+  get xp() {
+    return this.system.xp;
+  }
+
+  get level() {
+    const levels = ryuutama.levels;
+
+    const xp = this.xp;
+
+    let idx = 0;
+
+    while (idx < levels.length) {
+      const level = levels[idx];
+
+      if (level.untilXp >= xp) {
+        return level;
+      }
+
+      idx++;
+    }
+
+    return levels[levels.length - 1];
   }
 
   /*****************************
@@ -193,6 +213,8 @@ export class RyuutamaActor extends Actor {
   incrementXP(increment) {
     const xp = this.system.xp;
 
+    this.checkLevel(increment);
+
     // XP can't go under 0
     const newXp = Math.max(xp + increment, 0);
     this.update({ "system.xp": newXp });
@@ -227,5 +249,22 @@ export class RyuutamaActor extends Actor {
     }
 
     return currentDie;
+  }
+
+  /**
+   * Function to check the level up on xp added
+   */
+  checkLevel(xpBonus) {
+    if (xpBonus < 0) {
+      const previousLevel = ryuutama.levels[Math.max(this.level.level - 1, 0)];
+
+      if (this.xp + xpBonus > previousLevel.untilXp) return;
+
+      console.log("Level down");
+    } else {
+      if (this.xp + xpBonus <= this.level.untilXp) return;
+
+      console.log("level UP");
+    }
   }
 }
