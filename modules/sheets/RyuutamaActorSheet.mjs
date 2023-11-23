@@ -34,9 +34,7 @@ export class RyuutamaActorSheet extends ActorSheet {
     context.items = this.items;
     context.characterTypes = this.characterTypes;
     context.stats = this.stats;
-    context.level = this.level;
 
-    console.log(this.level);
     context.maxHp = this.maxHp;
     context.maxMp = this.maxMp;
     return context;
@@ -86,10 +84,6 @@ export class RyuutamaActorSheet extends ActorSheet {
     return this.actor.stats;
   }
 
-  get level() {
-    return this.actor.level;
-  }
-
   /**
    * @returns {number}
    */
@@ -131,7 +125,7 @@ export class RyuutamaActorSheet extends ActorSheet {
     switch (itemData.type) {
       case "xp":
         const xpAmount = itemData.system.amount;
-        if (xpAmount !== 0) this.actor.incrementXP(xpAmount);
+        if (xpAmount !== 0) await this.actor.incrementXP(xpAmount);
         break;
       case "characterClass":
         console.log("Class", itemData);

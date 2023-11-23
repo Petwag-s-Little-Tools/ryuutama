@@ -1,5 +1,6 @@
 import { ryuutama } from "../config.mjs";
 import { ActionRoll } from "../dice/ActionRoll.mjs";
+import { LevelManager } from "../services/LevelManager.mjs";
 import { isNull } from "../utils.mjs";
 
 export class RyuutamaActor extends Actor {
@@ -49,23 +50,7 @@ export class RyuutamaActor extends Actor {
   }
 
   get level() {
-    const levels = ryuutama.levels;
-
-    const xp = this.xp;
-
-    let idx = 0;
-
-    while (idx < levels.length) {
-      const level = levels[idx];
-
-      if (level.untilXp >= xp) {
-        return level;
-      }
-
-      idx++;
-    }
-
-    return levels[levels.length - 1];
+    return this.system.level;
   }
 
   /*****************************
@@ -210,14 +195,15 @@ export class RyuutamaActor extends Actor {
    * It can be a positive or negative value
    * @param {number} increment
    */
-  incrementXP(increment) {
+  async incrementXP(increment) {
     const xp = this.system.xp;
 
-    this.checkLevel(increment);
-
+    const newLevel = await this.checkLevel(increment);
+    console.log({ newLevel, level: this.level });
     // XP can't go under 0
     const newXp = Math.max(xp + increment, 0);
     this.update({ "system.xp": newXp });
+    // this.update({ "system.level": newLevel });
   }
 
   /**
@@ -253,18 +239,31 @@ export class RyuutamaActor extends Actor {
 
   /**
    * Function to check the level up on xp added
+   * @param {number} xpBonus
+   * @returns {Promise<number>}
    */
-  checkLevel(xpBonus) {
+  async checkLevel(xpBonus) {
+    console.log("WHALALA");
+    const levels = ryuutama.levels;
+
+    console.log(this.level);
+    return 1;
+
+    const currentLevel = levels[this.level - 1];
+
     if (xpBonus < 0) {
-      const previousLevel = ryuutama.levels[Math.max(this.level.level - 1, 0)];
+      const previousLevel = ryuutama.levels[Math.max(this.level - 1, 0)];
 
-      if (this.xp + xpBonus > previousLevel.untilXp) return;
+      if (this.xp + xpBonus > previousLevel.untilXp) return this.level;
 
-      console.log("Level down");
+      await LevelManager.levelDown(this);
+
+      return Math.max(this.level - 1, 0);
     } else {
-      if (this.xp + xpBonus <= this.level.untilXp) return;
+      if (this.xp + xpBonus <= currentLevel) return this.level;
 
-      console.log("level UP");
+      await LevelManager.levelUp(this);
+      return Math.min(this.level + 1, 10);
     }
   }
 }
