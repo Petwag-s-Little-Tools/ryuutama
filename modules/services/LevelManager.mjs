@@ -2,6 +2,7 @@ import { ryuutama } from "../config.mjs";
 import { RyuutamaActor } from "../documents/RyuutamaActor.mjs";
 
 export class LevelManager {
+  MAXLEVEL = ryuutama.maxLevel;
   /**
    *
    * @param {RyuutamaActor} actor
@@ -10,27 +11,30 @@ export class LevelManager {
    */
   static async checkLevel(actor, xpBonus) {
     const newXp = Math.max(actor.xp + xpBonus, 0);
+    const newLevel = LevelManager.getLevel(newXp);
 
+    if (newLevel > actor.level) {
+      await LevelManager.levelUp(actor);
+    } else if (newLevel < actor.level) {
+      await LevelManager.levelDown(actor);
+    }
+
+    return { level: newLevel, xp: newXp };
+  }
+
+  /**
+   *
+   * @param {number} xp
+   * @returns {number}
+   */
+  static getLevel(xp) {
     const levels = ryuutama.levels;
 
-    const currentLevel = levels[actor.level - 1];
-
-    if (xpBonus < 0) {
-      const previousLevel = ryuutama.levels[Math.max(actor.level - 1, 0)];
-
-      if (actor.xp + xpBonus > previousLevel.untilXp)
-        return { level: actor.level, xp: newXp };
-
-      await LevelManager.levelDown(actor);
-
-      return { level: Math.max(actor.level - 1, 0), xp: newXp };
-    } else {
-      if (actor.xp + xpBonus <= currentLevel)
-        return { level: actor.level, xp: newXp };
-
-      await LevelManager.levelUp(actor);
-      return { level: Math.min(actor.level + 1, 10), xp: newXp };
+    for (const level of levels) {
+      if (xp <= level.untilXp) return level.level;
     }
+
+    return levels[levels.length - 1].level;
   }
 
   /**
