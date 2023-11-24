@@ -55,7 +55,9 @@ export class LevelManager {
 
     while (level < targetLevel) {
       const title = `level up ${level} -> ${level + 1}`;
-      const content = "<p>Test</p>";
+      const content = ryuutama.levels[level].bonuses.map(
+        (bonus) => `<p>${bonus}</p>`
+      );
       await new Promise((resolve) => {
         new Dialog({
           title,
@@ -86,7 +88,9 @@ export class LevelManager {
     while (level > targetLevel) {
       const title = `level down ${level} -> ${level - 1}`;
 
-      const content = "<p>Test</p>";
+      const content = ryuutama.levels[level - 1].bonuses.map(
+        (bonus) => `<p>${bonus}</p>`
+      );
       await new Promise((resolve) => {
         new Dialog({
           title,

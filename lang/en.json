@@ -122,6 +122,7 @@
     "useMp": "Use Mp",
     "useMpAndFumble": "Use Mp plus Fumble",
     "amount": "Amount",
-    "standard": "Standard"
+    "standard": "Standard",
+    "accept": "Accept"
   }
 }
