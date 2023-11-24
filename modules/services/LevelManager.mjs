@@ -1,6 +1,38 @@
+import { ryuutama } from "../config.mjs";
 import { RyuutamaActor } from "../documents/RyuutamaActor.mjs";
 
 export class LevelManager {
+  /**
+   *
+   * @param {RyuutamaActor} actor
+   * @param {number} xpBonus
+   * @returns {Promise<{level: number, xp: number}>}
+   */
+  static async checkLevel(actor, xpBonus) {
+    const newXp = Math.max(actor.xp + xpBonus, 0);
+
+    const levels = ryuutama.levels;
+
+    const currentLevel = levels[actor.level - 1];
+
+    if (xpBonus < 0) {
+      const previousLevel = ryuutama.levels[Math.max(actor.level - 1, 0)];
+
+      if (actor.xp + xpBonus > previousLevel.untilXp)
+        return { level: actor.level, xp: newXp };
+
+      await LevelManager.levelDown(actor);
+
+      return { level: Math.max(actor.level - 1, 0), xp: newXp };
+    } else {
+      if (actor.xp + xpBonus <= currentLevel)
+        return { level: actor.level, xp: newXp };
+
+      await LevelManager.levelUp(actor);
+      return { level: Math.min(actor.level + 1, 10), xp: newXp };
+    }
+  }
+
   /**
    *
    * @param {RyuutamaActor} actor
@@ -8,7 +40,7 @@ export class LevelManager {
    */
   static async levelUp(actor) {
     const level = actor.level;
-    const title = `level up ${level.level} -> ${level.level + 1}`;
+    const title = `level up ${level} -> ${level + 1}`;
     console.log(title);
     const content = "<p>Test</p>";
     return new Promise((resolve) => {
@@ -34,7 +66,7 @@ export class LevelManager {
    */
   static async levelDown(actor) {
     const level = actor.level;
-    const title = `level down ${level.level} -> ${level.level - 1}`;
+    const title = `level down ${level} -> ${level - 1}`;
 
     const content = "<p>Test</p>";
     return new Promise((resolve) => {

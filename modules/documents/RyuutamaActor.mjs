@@ -196,14 +196,12 @@ export class RyuutamaActor extends Actor {
    * @param {number} increment
    */
   async incrementXP(increment) {
-    const xp = this.system.xp;
+    const levelInfos = await LevelManager.checkLevel(this, increment);
 
-    const newLevel = await this.checkLevel(increment);
-    console.log({ newLevel, level: this.level });
-    // XP can't go under 0
-    const newXp = Math.max(xp + increment, 0);
-    this.update({ "system.xp": newXp });
-    // this.update({ "system.level": newLevel });
+    this.update({
+      "system.xp": levelInfos.xp,
+      "system.level": levelInfos.level,
+    });
   }
 
   /**
@@ -235,35 +233,5 @@ export class RyuutamaActor extends Actor {
     }
 
     return currentDie;
-  }
-
-  /**
-   * Function to check the level up on xp added
-   * @param {number} xpBonus
-   * @returns {Promise<number>}
-   */
-  async checkLevel(xpBonus) {
-    console.log("WHALALA");
-    const levels = ryuutama.levels;
-
-    console.log(this.level);
-    return 1;
-
-    const currentLevel = levels[this.level - 1];
-
-    if (xpBonus < 0) {
-      const previousLevel = ryuutama.levels[Math.max(this.level - 1, 0)];
-
-      if (this.xp + xpBonus > previousLevel.untilXp) return this.level;
-
-      await LevelManager.levelDown(this);
-
-      return Math.max(this.level - 1, 0);
-    } else {
-      if (this.xp + xpBonus <= currentLevel) return this.level;
-
-      await LevelManager.levelUp(this);
-      return Math.min(this.level + 1, 10);
-    }
   }
 }
