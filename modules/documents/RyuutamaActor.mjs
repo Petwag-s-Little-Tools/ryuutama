@@ -196,12 +196,7 @@ export class RyuutamaActor extends Actor {
    * @param {number} increment
    */
   async incrementXP(increment) {
-    const levelInfos = await LevelManager.checkLevel(this, increment);
-
-    this.update({
-      "system.xp": levelInfos.xp,
-      "system.level": levelInfos.level,
-    });
+    await LevelManager.checkLevel(this, increment);
   }
 
   /**

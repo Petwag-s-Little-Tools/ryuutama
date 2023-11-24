@@ -2,7 +2,10 @@ import { ryuutama } from "../config.mjs";
 import { RyuutamaActor } from "../documents/RyuutamaActor.mjs";
 
 export class LevelManager {
-  MAXLEVEL = ryuutama.maxLevel;
+  static get levelMax() {
+    return ryuutama.levels[ryuutama.levels.length - 1].level;
+  }
+
   /**
    *
    * @param {RyuutamaActor} actor
@@ -14,10 +17,15 @@ export class LevelManager {
     const newLevel = LevelManager.getLevel(newXp);
 
     if (newLevel > actor.level) {
-      await LevelManager.levelUp(actor);
+      await LevelManager.levelUp(actor.level, newLevel);
     } else if (newLevel < actor.level) {
-      await LevelManager.levelDown(actor);
+      await LevelManager.levelDown(actor.level, newLevel);
     }
+
+    actor.update({
+      "system.xp": newXp,
+      "system.level": newLevel,
+    });
 
     return { level: newLevel, xp: newXp };
   }
@@ -34,7 +42,7 @@ export class LevelManager {
       if (xp <= level.untilXp) return level.level;
     }
 
-    return levels[levels.length - 1].level;
+    return LevelManager.levelMax;
   }
 
   /**
@@ -42,25 +50,29 @@ export class LevelManager {
    * @param {RyuutamaActor} actor
    * @returns
    */
-  static async levelUp(actor) {
-    const level = actor.level;
-    const title = `level up ${level} -> ${level + 1}`;
-    console.log(title);
-    const content = "<p>Test</p>";
-    return new Promise((resolve) => {
-      new Dialog({
-        title,
-        content,
-        buttons: {
-          accept: {
-            label: game.i18n.localize("ryuutama.roll"),
-            callback: (html) => resolve("youyou"),
+  static async levelUp(initialLevel, targetLevel) {
+    let level = initialLevel;
+
+    while (level < targetLevel) {
+      const title = `level up ${level} -> ${level + 1}`;
+      const content = "<p>Test</p>";
+      await new Promise((resolve) => {
+        new Dialog({
+          title,
+          content,
+          buttons: {
+            accept: {
+              label: game.i18n.localize("ryuutama.roll"),
+              callback: (html) => resolve("youyou"),
+            },
           },
-        },
-        default: "accept",
-        close: () => resolve(null),
-      }).render(true);
-    });
+          default: "accept",
+          close: () => resolve(null),
+        }).render(true);
+      });
+
+      level++;
+    }
   }
 
   /**
@@ -68,24 +80,29 @@ export class LevelManager {
    * @param {RyuutamaActor} actor
    * @returns
    */
-  static async levelDown(actor) {
-    const level = actor.level;
-    const title = `level down ${level} -> ${level - 1}`;
+  static async levelDown(initialLevel, targetLevel) {
+    let level = initialLevel;
 
-    const content = "<p>Test</p>";
-    return new Promise((resolve) => {
-      new Dialog({
-        title,
-        content,
-        buttons: {
-          accept: {
-            label: game.i18n.localize("ryuutama.roll"),
-            callback: (html) => resolve("youyou"),
+    while (level > targetLevel) {
+      const title = `level down ${level} -> ${level - 1}`;
+
+      const content = "<p>Test</p>";
+      await new Promise((resolve) => {
+        new Dialog({
+          title,
+          content,
+          buttons: {
+            accept: {
+              label: game.i18n.localize("ryuutama.roll"),
+              callback: (html) => resolve("youyou"),
+            },
           },
-        },
-        default: "accept",
-        close: () => resolve(null),
-      }).render(true);
-    });
+          default: "accept",
+          close: () => resolve(null),
+        }).render(true);
+      });
+
+      level--;
+    }
   }
 }

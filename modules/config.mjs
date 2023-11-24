@@ -135,7 +135,6 @@ ryuutama.stats = {
   },
 };
 
-ryuutama.maxLevel = 10;
 ryuutama.levels = [
   { untilXp: 99, level: 1, bonuses: [] },
   {
