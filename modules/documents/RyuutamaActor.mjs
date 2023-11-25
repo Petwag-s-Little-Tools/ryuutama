@@ -82,10 +82,36 @@ export class RyuutamaActor extends Actor {
       false
     );
 
-    if (roll.total === 2) {
+    const title = "Choose caracter loss for the day";
+    const content = await renderTemplate(
+      `systems/ryuutama/templates/dialog/condition-fumble.hbs`,
+      {
+        stats: this.stats,
+      }
+    );
+
+    await new Promise((resolve) => {
+      new Dialog({
+        title,
+        content,
+        buttons: {
+          accept: {
+            label: game.i18n.localize("ryuutama.accept"),
+          },
+        },
+        default: "accept",
+        close: (html) => resolve(this.onConditionMalusChoosen(html)),
+      }).render(true);
+    });
+
+    if (roll.isFumble) {
     }
 
     this.update({ "system.condition": roll.total });
+  }
+
+  onConditionMalusChoosen(html) {
+    console.log(html);
   }
 
   async rollAction() {
@@ -106,7 +132,6 @@ export class RyuutamaActor extends Actor {
    * @param {string} title
    */
   async roll(statA, statB, title, fumblullable = true, concentrable = true) {
-    console.log(statA, statB);
     if (isNull(statA) && isNull(statB)) return;
 
     const stats = this.stats;

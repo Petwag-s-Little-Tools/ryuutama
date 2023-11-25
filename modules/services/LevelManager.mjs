@@ -1,6 +1,9 @@
 import { ryuutama } from "../config.mjs";
 import { RyuutamaActor } from "../documents/RyuutamaActor.mjs";
 
+/**
+ * Class in charge of all xp calculation, level up and down
+ */
 export class LevelManager {
   static get levelMax() {
     return ryuutama.levels[ryuutama.levels.length - 1].level;
@@ -64,7 +67,7 @@ export class LevelManager {
           content,
           buttons: {
             accept: {
-              label: game.i18n.localize("ryuutama.roll"),
+              label: game.i18n.localize("ryuutama.accept"),
               callback: (html) => resolve("youyou"),
             },
           },
@@ -97,7 +100,7 @@ export class LevelManager {
           content,
           buttons: {
             accept: {
-              label: game.i18n.localize("ryuutama.roll"),
+              label: game.i18n.localize("ryuutama.accept"),
               callback: (html) => resolve("youyou"),
             },
           },
