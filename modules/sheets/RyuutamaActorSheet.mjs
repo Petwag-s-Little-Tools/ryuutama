@@ -136,7 +136,7 @@ export class RyuutamaActorSheet extends ActorSheet {
           break;
         }
       default:
-        items = itemData instanceof Array ? itemData : [itemData];
+        const items = itemData instanceof Array ? itemData : [itemData];
         return this.actor.createEmbeddedDocuments("Item", items);
     }
   }

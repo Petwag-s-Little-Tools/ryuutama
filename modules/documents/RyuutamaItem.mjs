@@ -1,4 +1,11 @@
+import { ItemUsageManager } from "../services/ItemUsageManager.mjs";
+
 export class RyuutamaItem extends Item {
+  constructor(...args) {
+    super(...args);
+
+    this.itemUsageManager = new ItemUsageManager(this);
+  }
   equip(enabled) {
     const owner = this.owner;
 
@@ -8,62 +15,7 @@ export class RyuutamaItem extends Item {
   }
 
   async use() {
-    switch (this.type) {
-      case "skill":
-        return await this.displaySkillInChat();
-      case "spell":
-        return await this.displaySpellInChat();
-      default:
-        throw new Error(`No use function for this type: ${this.type}`);
-    }
-  }
-
-  async displaySkillInChat() {
-    return await this.displayInChat();
-  }
-
-  async displaySpellInChat() {
-    return await this.displayInChat();
-  }
-
-  /**
-   * Display the item card
-   * @param {{}} [setup={}]
-   * @returns {ChatMessage}
-   */
-  async displayInChat(setup = {}) {
-    const token = this.actor.token;
-
-    const templateData = {
-      actor: this.actor,
-      item: this,
-      tokenId: token?.uuid || null,
-      system: this.system,
-      setup,
-    };
-
-    const html = await renderTemplate(
-      "systems/ryuutama/templates/chat/item-card.hbs",
-      templateData
-    );
-
-    // create chat message
-    const chatData = {
-      user: game.user.id,
-      type: CONST.CHAT_MESSAGE_TYPES.OTHER,
-      content: html,
-      flavor: this.system.flavor,
-      speaker: ChatMessage.getSpeaker({ actor: this.actor, token }),
-      flags: { "core.canPopout": true },
-    };
-
-    // Apply correct visibility
-    ChatMessage.applyRollMode(chatData, game.settings.get("core", "rollMode"));
-
-    // Create the card
-    const card = await ChatMessage.create(chatData);
-
-    return card;
+    this.itemUsageManager.use();
   }
 
   static async onChatCardAction(event) {
