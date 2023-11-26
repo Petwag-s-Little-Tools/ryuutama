@@ -1,11 +1,8 @@
 <form>
-  <div id="stats">
+  <fieldset>
     {{#each stats as |stat id|}}
-      <div class="stat-item" data-stat="{{id}}">
-        <div class="stat-box">
-          <h4>{{localize (concat "ryuutama.stats." id)}}</h4>
-        </div>
-      </div>
+      <input type="radio" id="{{id}}" name="stat" value="{{id}}" />
+      <label for="{{id}}">{{localize (concat "ryuutama.stats." id)}}</label>
     {{/each}}
-  </div>
+  </fieldset>
 </form>

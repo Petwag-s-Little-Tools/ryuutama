@@ -90,28 +90,45 @@ export class RyuutamaActor extends Actor {
       }
     );
 
-    await new Promise((resolve) => {
-      new Dialog({
-        title,
-        content,
-        buttons: {
-          accept: {
-            label: game.i18n.localize("ryuutama.accept"),
-          },
-        },
-        default: "accept",
-        close: (html) => resolve(this.onConditionMalusChoosen(html)),
-      }).render(true);
+    // Reset condition malus
+    Array.from(Object.keys(this.stats)).forEach((stat) => {
+      const key = `system.stats.${stat}.mod`;
+      this.update({ [key]: 0 });
     });
 
     if (roll.isFumble) {
+      await new Promise((resolve) => {
+        new Dialog({
+          title,
+          content,
+          buttons: {
+            accept: {
+              label: game.i18n.localize("ryuutama.accept"),
+            },
+          },
+          default: "accept",
+          close: (html) => resolve(this.onConditionMalusChoosen(html)),
+        }).render(true);
+      });
     }
 
     this.update({ "system.condition": roll.total });
   }
 
   onConditionMalusChoosen(html) {
-    console.log(html);
+    const form = html[0].querySelector("form");
+
+    const selectedStat = form.stat.value;
+
+    if (selectedStat === "") {
+      const array = Array.from(Object.keys(this.stats));
+      const randomElement = array[Math.floor(Math.random() * array.length)];
+      const key = `system.stats.${randomElement}.mod`;
+      this.update({ [key]: this.system.stats[randomElement].mod - 1 });
+    } else {
+      const key = `system.stats.${selectedStat}.mod`;
+      this.update({ [key]: this.system.stats[selectedStat].mod - 1 });
+    }
   }
 
   async rollAction() {
