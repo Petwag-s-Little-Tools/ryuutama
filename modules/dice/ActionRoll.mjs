@@ -2,6 +2,7 @@ import { isNull } from "../utils.mjs";
 
 export class ActionRoll extends Roll {
   _isFumble = undefined;
+  _isCritical = undefined;
 
   get template() {
     return `systems/ryuutama/templates/dialog/action-roll.hbs`;
@@ -18,6 +19,15 @@ export class ActionRoll extends Roll {
       });
     }
     return this._isFumble;
+  }
+
+  get isCritical() {
+    if (this._isCritical === undefined) {
+      this._isCritical = !this.terms.some((term) => {
+        return term instanceof Die && term.total !== term.faces;
+      });
+    }
+    return this._isCritical;
   }
 
   constructor(formula, data, options) {

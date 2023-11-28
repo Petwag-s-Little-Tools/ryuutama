@@ -136,9 +136,12 @@ export class RyuutamaActor extends Actor {
 
     if (selectedStat.length <= 0) return;
 
+    const statA = selectedStat[0];
+    const statB = selectedStat[1];
+
     return await this.roll(
-      selectedStat[0],
-      selectedStat[1],
+      statA ?? statB,
+      statB ?? statA,
       `roll for ${selectedStat}`
     );
   }
@@ -179,10 +182,6 @@ export class RyuutamaActor extends Actor {
 
     await configured.evaluate({ async: true });
 
-    if (fumblullable && configured.isFumble) {
-      Hooks.callAll("onFumble");
-    }
-
     // if concentration has been used reduce whatever value
     if (configured.concentration === "fumble") {
       this.incrementFumble(-1);
@@ -194,6 +193,19 @@ export class RyuutamaActor extends Actor {
     }
 
     await configured.toMessage({ flavor: title });
+
+    if (configured.isCritical) {
+      const html = await renderTemplate(
+        "systems/ryuutama/templates/chat/critical-success.hbs"
+      );
+      const chatData = {
+        user: game.user.id,
+        content: html,
+      };
+      await ChatMessage.create(chatData);
+    } else if (fumblullable && configured.isFumble) {
+      Hooks.callAll("onFumble");
+    }
 
     return configured;
   }
