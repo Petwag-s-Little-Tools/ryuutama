@@ -1,0 +1,20 @@
+<div class="chat-card item-card" data-actor-id="{{actor.id}}" data-item-id="{{item.id}}"
+     {{#if tokenId}}data-token-id="{{tokenId}}"{{/if}}>
+    <header class="card-header flexrow">
+        <img src="{{item.img}}" title="{{item.name}}" width="36" height="36"/>
+        <h3 class="item-name">{{item.name}}</h3>
+    </header>
+
+    <div class="card-content">
+        {{{system.description}}}
+        {{{system.skillEffect}}}
+    </div>
+
+    <div class="card-buttons">
+        {{#each system.rolls as |roll idx|}}
+            <p>{{roll.description}}</p>
+            <p>[{{roll.statA}} + {{roll.statB}}]</p>
+            <button data-action="roll" data-idx={{idx}}>{{ localize "ryuutama.roll" }}</button>
+        {{/each}}
+    </div>
+</div>
