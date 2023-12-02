@@ -1,4 +1,5 @@
 import { RyuutamaActor } from "./modules/documents/RyuutamaActor.mjs";
+import { activateItemsListeners } from "./modules/services/Items/Listeners/index.mjs";
 import { configureGame } from "./modules/setup/index.mjs";
 import {
   preloadHandlerbarsTemplates,
@@ -23,12 +24,8 @@ Hooks.once("init", () => {
 });
 
 // Other Hooks
-// Hooks.on("renderChatLog", (app, html, data) =>
-//   RyuutamaItem.chatListeners(html)
-// );
-// Hooks.on("renderChatPopout", (app, html, data) =>
-//   RyuutamaItem.chatListeners(html)
-// );
+Hooks.on("renderChatLog", (app, html, data) => activateItemsListeners(html));
+Hooks.on("renderChatPopout", (app, html, data) => activateItemsListeners(html));
 Hooks.on("onFumble", (app, html, data) => {
   RyuutamaActor.onFumble();
 });
