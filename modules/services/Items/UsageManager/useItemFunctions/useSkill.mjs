@@ -1,4 +1,13 @@
-import { RyuutamaItem } from "../../documents/RyuutamaItem.mjs";
+import { RyuutamaItem } from "../../../../documents/RyuutamaItem.mjs";
+
+/**
+ *
+ * @param {RyuutamaItem} item
+ * @returns
+ */
+export const useSkill = async (item) => {
+  return await displayInChat(item);
+};
 
 /**
  * Display the item card
@@ -6,7 +15,7 @@ import { RyuutamaItem } from "../../documents/RyuutamaItem.mjs";
  * @param {{}} [setup={}]
  * @returns {ChatMessage}
  */
-export const displayInChat = async (item, setup = {}) => {
+const displayInChat = async (item, setup = {}) => {
   const token = item.actor.token;
 
   const templateData = {

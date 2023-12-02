@@ -1,4 +1,4 @@
-import { ItemUsageManager } from "../services/ItemUsageManager.mjs";
+import { ItemUsageManager } from "../services/Items/UsageManager/ItemUsageManager.mjs";
 
 export class RyuutamaItem extends Item {
   constructor(...args) {
