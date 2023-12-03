@@ -12,9 +12,7 @@ export class SkillListener {
     switch (action) {
       case "roll":
         const { idx } = dataset;
-        await this.roll(item, idx);
-        break;
-
+        return await this.roll(item, idx);
       default:
         break;
     }

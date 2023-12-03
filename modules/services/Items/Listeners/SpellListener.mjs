@@ -8,8 +8,16 @@ export class SpellListener {
     const action = dataset.action;
 
     switch (action) {
+      case "cast":
+        return await this.cast(item);
       default:
         break;
     }
+  }
+
+  static async cast(item) {
+    const cost = item.system.manaCost;
+
+    console.log(cost);
   }
 }

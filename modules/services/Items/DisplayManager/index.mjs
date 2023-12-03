@@ -1,35 +1,36 @@
 import { RyuutamaItem } from "../../../documents/RyuutamaItem.mjs";
-import { useSkill } from "./useItemFunctions/useSkill.mjs";
-import { useSpell } from "./useItemFunctions/useSpell.mjs";
+import { displaySkill } from "./displaySkill.mjs";
+import { displaySpell } from "./displaySpell.mjs";
 
-export class ItemUsageManager {
+export class DisplayManager {
   /**
-   *
+   * Class in charge of item usage from actor
+   * to choose how to display in chat
    * @param {RyuutamaItem} item
    */
   constructor(item) {
     this._item = item;
-    this._useItem = ItemUsageManager.getUseItemFunction(item.type);
+    this._displayItem = DisplayManager.getDisplayFunction(item.type);
   }
 
   get item() {
     return this._item;
   }
 
-  async use() {
-    return await this._useItem(this._item);
+  async display() {
+    return await this._displayItem(this._item);
   }
 
   /**
    * Get the item use function depending on the type of the item
    * @param {string} type
    */
-  static getUseItemFunction(type) {
+  static getDisplayFunction(type) {
     switch (type) {
       case "skill":
-        return useSkill;
+        return displaySkill;
       case "spell":
-        return useSpell;
+        return displaySpell;
       default:
         return () => {
           throw new Error(`No use function for this type: ${type}`);

@@ -1,9 +1,9 @@
-import { ItemUsageManager } from "../services/Items/UsageManager/ItemUsageManager.mjs";
+import { DisplayManager } from "../services/Items/DisplayManager/index.mjs";
 
 export class RyuutamaItem extends Item {
   constructor(...args) {
     super(...args);
-    this.itemUsageManager = new ItemUsageManager(this);
+    this.itemDisplayManager = new DisplayManager(this);
   }
   equip(enabled) {
     const owner = this.actor;
@@ -14,7 +14,7 @@ export class RyuutamaItem extends Item {
   }
 
   async use() {
-    this.itemUsageManager.use();
+    this.itemDisplayManager.display();
   }
 
   /*****************************

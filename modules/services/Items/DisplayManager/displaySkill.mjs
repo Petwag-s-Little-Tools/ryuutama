@@ -1,11 +1,11 @@
-import { RyuutamaItem } from "../../../../documents/RyuutamaItem.mjs";
+import { RyuutamaItem } from "../../../documents/RyuutamaItem.mjs";
 
 /**
  *
  * @param {RyuutamaItem} item
  * @returns
  */
-export const useSpell = async (item) => {
+export const displaySkill = async (item) => {
   return await displayInChat(item);
 };
 
@@ -18,8 +18,6 @@ export const useSpell = async (item) => {
 const displayInChat = async (item, setup = {}) => {
   const token = item.actor.token;
 
-  console.log()
-
   const templateData = {
     actor: item.actor,
     item: item,
@@ -29,7 +27,7 @@ const displayInChat = async (item, setup = {}) => {
   };
 
   const html = await renderTemplate(
-    "systems/ryuutama/templates/chat/spell-card.hbs",
+    "systems/ryuutama/templates/chat/skill-card.hbs",
     templateData
   );
 
@@ -38,7 +36,7 @@ const displayInChat = async (item, setup = {}) => {
     user: game.user.id,
     type: CONST.CHAT_MESSAGE_TYPES.OTHER,
     content: html,
-    flavor: "spell",
+    flavor: item.system.flavor,
     speaker: ChatMessage.getSpeaker({ actor: item.actor, token }),
     flags: { "core.canPopout": true },
   };

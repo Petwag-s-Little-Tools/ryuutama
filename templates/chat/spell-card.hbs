@@ -7,14 +7,9 @@
 
     <div class="card-content">
         {{{system.description}}}
-        {{{system.skillEffect}}}
     </div>
 
     <div class="card-buttons">
-        {{#each system.rolls as |roll idx|}}
-            <p>{{roll.description}}</p>
-            <p>[{{roll.statA}} + {{roll.statB}}]</p>
-            <button data-action="roll" data-idx={{idx}}>{{ localize "ryuutama.roll" }}</button>
-        {{/each}}
+        <button data-action="cast">{{ localize "ryuutama.cast" }}</button>
     </div>
 </div>
