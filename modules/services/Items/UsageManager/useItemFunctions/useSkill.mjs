@@ -27,7 +27,7 @@ const displayInChat = async (item, setup = {}) => {
   };
 
   const html = await renderTemplate(
-    "systems/ryuutama/templates/chat/item-card.hbs",
+    "systems/ryuutama/templates/chat/skill-card.hbs",
     templateData
   );
 

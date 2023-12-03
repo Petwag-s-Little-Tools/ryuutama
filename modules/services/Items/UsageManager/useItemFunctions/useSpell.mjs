@@ -18,6 +18,8 @@ export const useSpell = async (item) => {
 const displayInChat = async (item, setup = {}) => {
   const token = item.actor.token;
 
+  console.log()
+
   const templateData = {
     actor: item.actor,
     item: item,
@@ -27,7 +29,7 @@ const displayInChat = async (item, setup = {}) => {
   };
 
   const html = await renderTemplate(
-    "systems/ryuutama/templates/chat/item-card.hbs",
+    "systems/ryuutama/templates/chat/spell-card.hbs",
     templateData
   );
 
@@ -36,7 +38,7 @@ const displayInChat = async (item, setup = {}) => {
     user: game.user.id,
     type: CONST.CHAT_MESSAGE_TYPES.OTHER,
     content: html,
-    flavor: item.system.flavor,
+    flavor: "spell",
     speaker: ChatMessage.getSpeaker({ actor: item.actor, token }),
     flags: { "core.canPopout": true },
   };

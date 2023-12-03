@@ -3,11 +3,10 @@ import { ItemUsageManager } from "../services/Items/UsageManager/ItemUsageManage
 export class RyuutamaItem extends Item {
   constructor(...args) {
     super(...args);
-
     this.itemUsageManager = new ItemUsageManager(this);
   }
   equip(enabled) {
-    const owner = this.owner;
+    const owner = this.actor;
 
     if (owner === null) return;
 
@@ -33,25 +32,6 @@ export class RyuutamaItem extends Item {
       throw new Error(`can't access abilities on ${this.type} type of item`);
     }
     return this.system.abilities;
-  }
-
-  /*****************************
-   * ACTIONS
-   *****************************/
-
-  /**
-   *
-   * @param {number} idx
-   * @returns
-   */
-  async useSkill(idx) {
-    const roll = this.rolls[idx];
-
-    if (roll === undefined) return;
-
-    const { statA, statB } = roll;
-
-    return await this.actor.roll(statA, statB, this.name);
   }
 
   /*****************************

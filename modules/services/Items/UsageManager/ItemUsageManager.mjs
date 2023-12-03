@@ -1,5 +1,6 @@
 import { RyuutamaItem } from "../../../documents/RyuutamaItem.mjs";
-import { useSkill, useSpell } from "./useItemFunctions/index.mjs";
+import { useSkill } from "./useItemFunctions/useSkill.mjs";
+import { useSpell } from "./useItemFunctions/useSpell.mjs";
 
 export class ItemUsageManager {
   /**
