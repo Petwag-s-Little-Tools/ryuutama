@@ -240,8 +240,8 @@ export class RyuutamaActor extends Actor {
    * @param {number} increment
    */
   incrementMp(increment) {
-    const mp = this.system.mp.current;
-    this.update({ "system.mp.current": mp + increment });
+    const mp = Math.max(this.system.mp.current + increment, 0);
+    this.update({ "system.mp.current": mp });
   }
 
   /**

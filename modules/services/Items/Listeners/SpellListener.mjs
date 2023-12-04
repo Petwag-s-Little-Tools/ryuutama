@@ -18,6 +18,6 @@ export class SpellListener {
   static async cast(item) {
     const cost = item.system.manaCost;
 
-    console.log(cost);
+    item.actor.incrementMp(-cost);
   }
 }
