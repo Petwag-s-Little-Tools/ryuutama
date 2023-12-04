@@ -18,6 +18,12 @@ export class SpellListener {
   static async cast(item) {
     const cost = item.system.manaCost;
 
-    item.actor.incrementMp(-cost);
+    const currentMp = item.actor.mp;
+
+    if (cost > currentMp) {
+      console.log("not enough mana");
+    } else {
+      item.actor.incrementMp(-cost);
+    }
   }
 }

@@ -10,6 +10,10 @@
     </div>
 
     <div class="card-buttons">
+        {{#if canCast}}
         <button data-action="cast">{{ localize "ryuutama.cast" }}</button>
+        {{else}}
+        <p>Not enough Mana, require {{item.system.manaCost}}, currently have {{actor.mp}}</p>
+        {{/if}}
     </div>
 </div>

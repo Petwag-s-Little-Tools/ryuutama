@@ -49,6 +49,10 @@ export class RyuutamaActor extends Actor {
     return this.system.xp;
   }
 
+  get mp() {
+    return this.system.mp.current;
+  }
+
   get level() {
     return this.system.level;
   }
@@ -240,7 +244,7 @@ export class RyuutamaActor extends Actor {
    * @param {number} increment
    */
   incrementMp(increment) {
-    const mp = Math.max(this.system.mp.current + increment, 0);
+    const mp = Math.max(this.mp + increment, 0);
     this.update({ "system.mp.current": mp });
   }
 

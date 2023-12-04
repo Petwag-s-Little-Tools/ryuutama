@@ -20,6 +20,7 @@ const displayInChat = async (item, setup = {}) => {
 
   const templateData = {
     actor: item.actor,
+    canCast: item.actor.mp >= item.system.manaCost,
     item: item,
     tokenId: token?.uuid || null,
     system: item.system,
