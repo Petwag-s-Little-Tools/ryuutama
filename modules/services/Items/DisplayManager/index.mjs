@@ -1,4 +1,5 @@
 import { RyuutamaItem } from "../../../documents/RyuutamaItem.mjs";
+import { displayItem } from "./displayItem.mjs";
 import { displaySkill } from "./displaySkill.mjs";
 import { displaySpell } from "./displaySpell.mjs";
 
@@ -31,6 +32,8 @@ export class DisplayManager {
         return displaySkill;
       case "spell":
         return displaySpell;
+      case "item":
+        return displayItem;
       default:
         return () => {
           throw new Error(`No use function for this type: ${type}`);
