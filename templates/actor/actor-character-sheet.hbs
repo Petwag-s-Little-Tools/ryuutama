@@ -1,4 +1,4 @@
-<form class="{{cssClass}}" autocomplete="off">
+<form class="{{cssClass}} character-sheet" autocomplete="off">
   <header class="sheet-header">
     <img
       class="profile-img"
@@ -14,12 +14,24 @@
       value="{{actor.name}}"
       placeholder="{{localize 'Name'}}"
     />
-    <p>{{system.infos.level}}</p>
     <p>XP: {{system.xp}}</p>
     <p>Level: {{system.level}}</p>
-    <p>Type: {{#each characterTypes as |characterType|}}{{characterType.name}} {{/each}}</p>
+    <div class="character-types flewrow">
+      <h4>Types</h4>
+      {{#each characterTypes as |characterType|}}
+        <div class="flexrow item" data-item-id="{{characterType.id}}">
+          <p>{{characterType.name}}</p>
+          <a
+          class="item-control item-delete"
+          data-action="itemDelete"
+          data-tooltip="ryuutama.itemDelete"
+        >
+          <i class="fas fa-trash"></i>
+        </a>
+        </div> 
+      {{/each}}
+    </div>
     <p>{{system.classes}}</p>
-    <p>{{system.infos.type}}</p>
   </header>
 
   <nav class="sheet-tabs tabs" data-group="primary">

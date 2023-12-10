@@ -72,6 +72,14 @@
   border-bottom: none;
 }
 
+.character-sheet .character-types {
+  flex-direction: column;
+}
+.character-sheet .character-types div {
+  justify-content: space-between;
+  flex: 2;
+}
+
 .chat-card {
   font-style: normal;
   font-size: 12px;

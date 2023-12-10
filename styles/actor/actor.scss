@@ -2,4 +2,13 @@
 //   @import "items.scss";
 // }
 
+.character-sheet {
+  .character-types {
+    flex-direction: column;
 
+    div {
+      justify-content: space-between;
+      flex: 2;
+    }
+  }
+}
