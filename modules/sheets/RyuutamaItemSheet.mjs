@@ -110,6 +110,9 @@ export class RyuutamaItemSheet extends ItemSheet {
     if (item.type !== "skill") return;
 
     const itemData = item.toObject();
+
+    console.log(this.item);
+    return this.item.createEmbeddedDocuments("Item", [itemData]);
   }
 
   onEffectControl(event) {

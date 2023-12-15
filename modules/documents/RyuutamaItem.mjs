@@ -5,6 +5,7 @@ export class RyuutamaItem extends Item {
     super(...args);
     this.itemDisplayManager = new DisplayManager(this);
   }
+
   equip(enabled) {
     const owner = this.actor;
 
