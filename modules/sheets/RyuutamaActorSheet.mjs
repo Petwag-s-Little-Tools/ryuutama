@@ -29,11 +29,13 @@ export class RyuutamaActorSheet extends ActorSheet {
     this.stats;
 
     context.system = this.system;
+    context.stats = this.stats;
+
     context.spells = this.spells;
     context.skills = this.skills;
     context.items = this.items;
     context.characterTypes = this.characterTypes;
-    context.stats = this.stats;
+    context.characterClasses = this.characterClasses;
 
     context.maxHp = this.maxHp;
     context.maxMp = this.maxMp;
@@ -57,6 +59,10 @@ export class RyuutamaActorSheet extends ActorSheet {
 
   get characterTypes() {
     return this.actor.itemTypes["characterType"];
+  }
+
+  get characterClasses() {
+    return this.actor.itemTypes["characterClass"];
   }
 
   get items() {
@@ -128,8 +134,11 @@ export class RyuutamaActorSheet extends ActorSheet {
         if (xpAmount !== 0) await this.actor.incrementXP(xpAmount);
         break;
       case "characterClass":
-        console.log("Class", itemData);
-        break;
+        const characterClasses = this.actor.itemTypes["characterClass"];
+        console.log({ characterClasses });
+        if (characterClasses.length >= 1) {
+          break;
+        }
       case "characterType":
         const characterTypes = this.actor.itemTypes["characterType"];
         if (characterTypes.length >= 2) {

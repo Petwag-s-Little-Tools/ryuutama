@@ -16,7 +16,7 @@
     />
     <p>XP: {{system.xp}}</p>
     <p>Level: {{system.level}}</p>
-    <div class="character-types flewrow">
+    <div class="character-types">
       <h4>Types</h4>
       {{#each characterTypes as |characterType|}}
         <div class="flexrow item" data-item-id="{{characterType.id}}">
@@ -31,7 +31,21 @@
         </div> 
       {{/each}}
     </div>
-    <p>{{system.classes}}</p>
+    <div class="character-classes">
+      <h4>Classes</h4>
+      {{#each characterClasses as |characterClass|}}
+        <div class="flexrow item" data-item-id="{{characterClass.id}}">
+          <p>{{characterClass.name}}</p>
+          <a
+          class="item-control item-delete"
+          data-action="itemDelete"
+          data-tooltip="ryuutama.itemDelete"
+        >
+          <i class="fas fa-trash"></i>
+        </a>
+        </div> 
+      {{/each}}
+    </div>
   </header>
 
   <nav class="sheet-tabs tabs" data-group="primary">
