@@ -47,6 +47,6 @@ On fumble, all the players will earn one fumble point
 
 ## Equipment Usage
 
-# Item Types
+## Item Types
 
-# Character Types
+## Character Types
