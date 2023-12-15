@@ -31,7 +31,6 @@ On drop of a character type on a character sheet, the abilities will be added to
 TODO:
 
 - check that the character doesn't already have the same type two avoid duplicates
-- allow type deletion (remove abilities if applied)
 - apply the abilities to the character sheet (ActiveEffect? Adjust directly the stat of the character sheet)
 
 ## Skill usage
