@@ -5,6 +5,8 @@ Ryuutama system for FoundryVTT
 - Dependency manager : pnpm
 - Style Sheet : Sass
 
+Ticket tracker : https://trello.com/b/0NBRFMG5/ryuutama
+
 # Functionalities
 
 ## Xp management
