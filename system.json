@@ -2,7 +2,7 @@
   "id": "ryuutama",
   "title": "Ryuutama",
   "description": "A system for playing Ryuutama in Foundry VTT.",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "url": "https://github.com/Petwag-s-Little-Tools/Ryuutama",
   "manifest": "https://github.com/Petwag-s-Little-Tools/Ryuutama/blob/main/system.json",
   "license": "LICENSE.txt",
