@@ -27,6 +27,11 @@
       "name": "skills",
       "label": "Skills",
       "type": "Item"
+    },
+    {
+      "name": "spells",
+      "label": "Spells",
+      "type": "Item"
     }
   ],
   "languages": [
