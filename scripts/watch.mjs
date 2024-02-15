@@ -1,8 +1,9 @@
 import * as esbuild from "esbuild";
 
-const result = await esbuild.build({
+const ctx = await esbuild.context({
   entryPoints: ["modules/index.mjs"],
   bundle: true,
   outfile: "ryuutama.mjs",
 });
-console.log(result);
+
+ctx.watch();
