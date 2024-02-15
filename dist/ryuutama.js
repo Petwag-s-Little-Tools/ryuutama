@@ -1644,7 +1644,7 @@
     configureDiceAndRoll(config);
   };
 
-  // modules/index.mjs
+  // ryuutama.mjs
   Hooks.once("init", () => {
     if (game.release.generation < 11) {
       throw new Error("The system does not support version previous to 11");
