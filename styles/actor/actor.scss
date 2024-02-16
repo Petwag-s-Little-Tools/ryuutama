@@ -2,6 +2,38 @@
 //   @import "items.scss";
 // }
 
+#stats {
+  --size: 60px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+  align-items: center;
+  justify-items: center;
+
+  .stat-item {
+    display: flex;
+    justify-content: center;
+    border: black 1px solid;
+    width: var(--size);
+    height: var(--size);
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0 0 8px var(--color-shadow-primary);
+    }
+
+    &.selected {
+      background-color: var(--color-shadow-primary);
+    }
+  }
+
+  .stat-roll {
+    cursor: pointer;
+    &:hover {
+      text-shadow: 0 0 8px var(--color-shadow-primary);
+    }
+  }
+}
+
 .character-sheet {
   .character-types {
     flex-direction: column;

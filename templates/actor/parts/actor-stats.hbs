@@ -1,25 +1,23 @@
 <h2>{{localize "ryuutama.character.stats"}}</h2>
-<div id="stats">
+<section id="stats">
   {{#each stats as |stat id|}}
     <div class="stat-item {{#ifIn ../system.selectedStat id}}selected{{/ifIn}}" data-stat="{{id}}">
-      <div class="stat-box">
-        <div>
-          <h4>{{localize (concat "ryuutama.stats." id)}}</h4>
-          <p> {{localize (concat "ryuutama.dice.d" stat.actual)}}</p>
-        </div>
-        <div
-          class="stat-image"
-          tabindex="0"
-          role="button"
-          aria-label="{{../actor.name}}"
-          style="background-image: url('{{../actor.img}}')"
-        ></div>
+      <div>
+        <h4>{{localize (concat "ryuutama.stats." id)}}</h4>
+        <p> {{localize (concat "ryuutama.dice.d" stat.actual)}}</p>
       </div>
+      <div
+        class="stat-image"
+        tabindex="0"
+        role="button"
+        aria-label="{{../actor.name}}"
+        style="background-image: url('{{../actor.img}}')"
+      ></div>
     </div>
   {{/each}}
-  <a class="stats-roll"><i class="fas fa-dice"></i></a>
+  <i class="stat-roll fas fa-dice fa-2xl"></i>
 
-</div>
+</section>
 <table>
   <tr>
     <th>{{localize "ryuutama.character.hp"}}</th>

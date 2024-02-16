@@ -2,23 +2,13 @@
 @import "actor/actor.scss";
 @import "chat/card.scss";
 
-#stats {
-  display: grid;
-  grid-template-columns: repeat(4, 3fr) 2fr;
-}
-
-.stat-item {
-  display: flex;
-  justify-content: center;
-}
-
-.stat-item.selected > .stat-box {
-  background-color: #ff0;
+:root {
+  --color-shadow-primary: #adffbb;
 }
 
 .stat-box {
   display: flex;
-  border: black 1px solid;
+
   height: 60px;
   width: 60px;
 }
