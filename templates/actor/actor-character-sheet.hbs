@@ -1,50 +1,32 @@
-<form class="{{cssClass}} character-sheet" autocomplete="off">
+<form class="{{cssClass}}" autocomplete="off">
   <header class="sheet-header">
-    <img
-      class="profile-img"
-      src="{{actor.img}}"
-      data-edit="img"
-      title="{{actor.name}}"
-      height="100"
-      width="100"
-    />
-    <input
-      name="name"
-      type="text"
-      value="{{actor.name}}"
-      placeholder="{{localize 'Name'}}"
-    />
-    <p>XP: {{system.xp}}</p>
-    <p>Level: {{system.level}}</p>
-    <div class="character-types">
-      <h4>Types</h4>
-      {{#each characterTypes as |characterType|}}
+    <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" />
+    <div>
+      <input name="name" type="text" value="{{actor.name}}" placeholder="{{localize 'Name'}}" />
+      <p>XP: {{system.xp}}</p>
+      <p>Level: {{system.level}}</p>
+      <div class="character-types">
+        <h4>Types</h4>
+        {{#each characterTypes as |characterType|}}
         <div class="flexrow item" data-item-id="{{characterType.id}}">
           <p>{{characterType.name}}</p>
-          <a
-          class="item-control item-delete"
-          data-action="itemDelete"
-          data-tooltip="ryuutama.itemDelete"
-        >
-          <i class="fas fa-trash"></i>
-        </a>
-        </div> 
-      {{/each}}
-    </div>
-    <div class="character-classes">
-      <h4>Classes</h4>
-      {{#each characterClasses as |characterClass|}}
+          <a class="item-control item-delete" data-action="itemDelete" data-tooltip="ryuutama.itemDelete">
+            <i class="fas fa-trash"></i>
+          </a>
+        </div>
+        {{/each}}
+      </div>
+      <div class="character-classes">
+        <h4>Classes</h4>
+        {{#each characterClasses as |characterClass|}}
         <div class="flexrow item" data-item-id="{{characterClass.id}}">
           <p>{{characterClass.name}}</p>
-          <a
-          class="item-control item-delete"
-          data-action="itemDelete"
-          data-tooltip="ryuutama.itemDelete"
-        >
-          <i class="fas fa-trash"></i>
-        </a>
-        </div> 
-      {{/each}}
+          <a class="item-control item-delete" data-action="itemDelete" data-tooltip="ryuutama.itemDelete">
+            <i class="fas fa-trash"></i>
+          </a>
+        </div>
+        {{/each}}
+      </div>
     </div>
   </header>
 

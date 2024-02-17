@@ -72,14 +72,36 @@
   border-bottom: none;
 }
 
-#stats {
+.ryuutama.sheet.actor .window-content {
+  background: none;
+  background-color: white;
+  border: 9px double black;
+}
+.ryuutama.sheet.actor .sheet-header {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+.ryuutama.sheet.actor .sheet-header .profile-img {
+  height: auto;
+  margin: 0px;
+}
+.ryuutama.sheet.actor .character-types {
+  flex-direction: column;
+}
+.ryuutama.sheet.actor .character-types div {
+  justify-content: space-between;
+  flex: 2;
+}
+
+.stats {
   --size: 60px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
   align-items: center;
   justify-items: center;
 }
-#stats .stat-item {
+.stats .stat-item {
   display: flex;
   justify-content: center;
   border: black 1px solid;
@@ -87,25 +109,17 @@
   height: var(--size);
   cursor: pointer;
 }
-#stats .stat-item:hover {
-  box-shadow: 0 0 8px var(--color-shadow-primary);
+.stats .stat-item:hover {
+  box-shadow: 0 0 8px var(--ryuutama-green);
 }
-#stats .stat-item.selected {
-  background-color: var(--color-shadow-primary);
+.stats .stat-item.selected {
+  background-color: var(--ryuutama-green);
 }
-#stats .stat-roll {
+.stats .stat-roll {
   cursor: pointer;
 }
-#stats .stat-roll:hover {
-  text-shadow: 0 0 8px var(--color-shadow-primary);
-}
-
-.character-sheet .character-types {
-  flex-direction: column;
-}
-.character-sheet .character-types div {
-  justify-content: space-between;
-  flex: 2;
+.stats .stat-roll:hover {
+  text-shadow: 0 0 8px var(--ryuutama-green);
 }
 
 .chat-card {
@@ -150,7 +164,7 @@
 }
 
 :root {
-  --color-shadow-primary: #adffbb;
+  --ryuutama-green: #adffbb;
 }
 
 .stat-box {

@@ -2,7 +2,35 @@
 //   @import "items.scss";
 // }
 
-#stats {
+.ryuutama.sheet.actor {
+  .window-content {
+    background: none;
+    background-color: white;
+    border: 9px double black;
+  }
+
+  .sheet-header {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+
+    .profile-img {
+      height: auto;
+      margin: 0px;
+    }
+  }
+
+  .character-types {
+    flex-direction: column;
+
+    div {
+      justify-content: space-between;
+      flex: 2;
+    }
+  }
+}
+
+.stats {
   --size: 60px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
@@ -18,29 +46,18 @@
     cursor: pointer;
 
     &:hover {
-      box-shadow: 0 0 8px var(--color-shadow-primary);
+      box-shadow: 0 0 8px var(--ryuutama-green);
     }
 
     &.selected {
-      background-color: var(--color-shadow-primary);
+      background-color: var(--ryuutama-green);
     }
   }
 
   .stat-roll {
     cursor: pointer;
     &:hover {
-      text-shadow: 0 0 8px var(--color-shadow-primary);
-    }
-  }
-}
-
-.character-sheet {
-  .character-types {
-    flex-direction: column;
-
-    div {
-      justify-content: space-between;
-      flex: 2;
+      text-shadow: 0 0 8px var(--ryuutama-green);
     }
   }
 }
