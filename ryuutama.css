@@ -93,33 +93,69 @@
   justify-content: space-between;
   flex: 2;
 }
-
-.stats {
-  --size: 60px;
+.ryuutama.sheet.actor .stats {
+  --size: 70px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
   align-items: center;
   justify-items: center;
 }
-.stats .stat-item {
-  display: flex;
-  justify-content: center;
-  border: black 1px solid;
+.ryuutama.sheet.actor .stats .stat-item {
+  padding: 8px;
+  text-align: center;
   width: var(--size);
   height: var(--size);
   cursor: pointer;
+  position: relative;
 }
-.stats .stat-item:hover {
+.ryuutama.sheet.actor .stats .stat-item p {
+  border-bottom: 1px solid;
+  margin: 0.25em 0.85em;
+}
+.ryuutama.sheet.actor .stats .stat-item h2 {
+  border: none;
+}
+.ryuutama.sheet.actor .stats .stat-item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: transparent url("static/icon.png") no-repeat top center/contain;
+  z-index: 10;
+}
+.ryuutama.sheet.actor .stats .stat-item:hover {
   box-shadow: 0 0 8px var(--ryuutama-green);
 }
-.stats .stat-item.selected {
-  background-color: var(--ryuutama-green);
+.ryuutama.sheet.actor .stats .stat-item.selected {
+  box-shadow: 0 0 8px var(--ryuutama-green);
 }
-.stats .stat-roll {
+.ryuutama.sheet.actor .stats .stat-roll {
   cursor: pointer;
 }
-.stats .stat-roll:hover {
+.ryuutama.sheet.actor .stats .stat-roll:hover {
   text-shadow: 0 0 8px var(--ryuutama-green);
+}
+.ryuutama.sheet.actor .conditions .A {
+  position: relative;
+}
+.ryuutama.sheet.actor .conditions .A div {
+  position: absolute;
+  top: 16px;
+  right: 138px;
+}
+.ryuutama.sheet.actor .conditions .A div:hover {
+  display: block;
+}
+.ryuutama.sheet.actor .conditions meter {
+  width: 200px;
+  height: 50px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  position: relative;
+}
+.ryuutama.sheet.actor .conditions meter::-webkit-meter-bar {
+  background: none; /* Required to get rid of the default background property */
+  background-color: whiteSmoke;
+  box-shadow: 0 5px 5px -5px #333 inset;
 }
 
 .chat-card {

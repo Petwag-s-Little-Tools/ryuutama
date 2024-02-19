@@ -28,36 +28,85 @@
       flex: 2;
     }
   }
-}
 
-.stats {
-  --size: 60px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
-  align-items: center;
-  justify-items: center;
+  .stats {
+    --size: 70px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+    align-items: center;
+    justify-items: center;
 
-  .stat-item {
-    display: flex;
-    justify-content: center;
-    border: black 1px solid;
-    width: var(--size);
-    height: var(--size);
-    cursor: pointer;
+    .stat-item {
+      padding: 8px;
+      text-align: center;
+      width: var(--size);
+      height: var(--size);
+      cursor: pointer;
+      position: relative;
 
-    &:hover {
-      box-shadow: 0 0 8px var(--ryuutama-green);
+      p {
+        border-bottom: 1px solid;
+        margin: 0.25em 0.85em;
+      }
+
+      h2 {
+        border: none;
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: transparent url("static/icon.png") no-repeat top center /
+          contain;
+        z-index: 10;
+      }
+
+      &:hover {
+        box-shadow: 0 0 8px var(--ryuutama-green);
+      }
+
+      &.selected {
+        box-shadow: 0 0 8px var(--ryuutama-green);
+      }
     }
 
-    &.selected {
-      background-color: var(--ryuutama-green);
+    .stat-roll {
+      cursor: pointer;
+      &:hover {
+        text-shadow: 0 0 8px var(--ryuutama-green);
+      }
     }
   }
 
-  .stat-roll {
-    cursor: pointer;
-    &:hover {
-      text-shadow: 0 0 8px var(--ryuutama-green);
+  .conditions {
+    .A {
+      position: relative;
+
+      div {
+        position: absolute;
+        // display: none;
+        top: 16px;
+        right: 138px;
+
+        &:hover {
+          display: block;
+        }
+      }
+    }
+
+    meter {
+      width: 200px;
+      height: 50px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      position: relative;
+    }
+
+    meter::-webkit-meter-bar {
+      background: none; /* Required to get rid of the default background property */
+      background-color: whiteSmoke;
+      box-shadow: 0 5px 5px -5px #333 inset;
     }
   }
 }

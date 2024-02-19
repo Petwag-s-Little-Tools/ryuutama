@@ -6,7 +6,7 @@ export class RyuutamaActorSheet extends ActorSheet {
       classes: ["ryuutama", "sheet", "actor"],
       template: "systems/ryuutama/templates/actor/actor-sheet.hbs",
       width: 600,
-      height: 800,
+      height: 1050,
       tabs: [
         {
           navSelector: ".sheet-tabs",
