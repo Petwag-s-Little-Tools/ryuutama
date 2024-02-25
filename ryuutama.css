@@ -139,12 +139,57 @@
 .ryuutama.sheet.actor .sheet-header .mp meter::-webkit-meter-optimum-value {
   background-color: var(--ryuutama-blue);
 }
-.ryuutama.sheet.actor .character-types {
-  flex-direction: column;
+.ryuutama.sheet.actor .sheet-header .character-classes {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: baseline;
 }
-.ryuutama.sheet.actor .character-types div {
-  justify-content: space-between;
-  flex: 2;
+.ryuutama.sheet.actor .sheet-header .character-classes .classes {
+  display: flex;
+}
+.ryuutama.sheet.actor .sheet-header .character-classes .classes h4 {
+  margin: 0;
+}
+.ryuutama.sheet.actor .sheet-header .character-classes .classes p {
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  border-right: 1px solid black;
+  padding-right: 5px;
+  padding-left: 5px;
+}
+.ryuutama.sheet.actor .sheet-header .character-classes .classes p:first-child {
+  padding-left: 0;
+}
+.ryuutama.sheet.actor .sheet-header .character-classes .classes p:last-child {
+  border-right: none;
+  padding-right: 0;
+}
+.ryuutama.sheet.actor .character-types {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: baseline;
+}
+.ryuutama.sheet.actor .character-types .types {
+  display: flex;
+}
+.ryuutama.sheet.actor .character-types .types h4 {
+  margin: 0;
+}
+.ryuutama.sheet.actor .character-types .types p {
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  border-right: 1px solid black;
+  padding-right: 5px;
+  padding-left: 5px;
+}
+.ryuutama.sheet.actor .character-types .types p:first-child {
+  padding-left: 0;
+}
+.ryuutama.sheet.actor .character-types .types p:last-child {
+  border-right: none;
+  padding-right: 0;
 }
 .ryuutama.sheet.actor .stats {
   --size: 70px;

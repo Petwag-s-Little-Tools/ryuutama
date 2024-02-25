@@ -1350,6 +1350,18 @@
         html.find(".stat-item").click(this.onStatSelect.bind(this));
         html.find(".stats-roll").click(this.onStatRoll.bind(this));
         html.find(".equip-toggle").click(this.onEquipItem.bind(this));
+        const deleteLabel = game.i18n.localize("ryuutama.effectDelete");
+        const editMenu = [
+          {
+            icon: `<i class="fas fa-trash" title="${deleteLabel}"></i>`,
+            name: "",
+            callback: (t) => {
+              this._deleteOwnedItemById(t.data("item-id"));
+            }
+          }
+        ];
+        new ContextMenu(html, ".class-delete", editMenu);
+        new ContextMenu(html, ".type-delete", editMenu);
         html.find(".rollable .item-image").click(this.onItemUse.bind(this));
         html.find(".item-delete").click(this.onItemDelete.bind(this));
         html.find(".item-edit").click(this.onItemEdit.bind(this));
@@ -1368,15 +1380,18 @@
           break;
         case "characterClass":
           const characterClasses = this.actor.itemTypes["characterClass"];
-          console.log({ characterClasses });
-          if (characterClasses.length >= 1) {
+          if (characterClasses.length >= 2) {
             break;
           }
+          const classes = itemData instanceof Array ? itemData : [itemData];
+          return this.actor.createEmbeddedDocuments("Item", classes);
         case "characterType":
           const characterTypes = this.actor.itemTypes["characterType"];
           if (characterTypes.length >= 2) {
             break;
           }
+          const types = itemData instanceof Array ? itemData : [itemData];
+          return this.actor.createEmbeddedDocuments("Item", types);
         default:
           const items = itemData instanceof Array ? itemData : [itemData];
           return this.actor.createEmbeddedDocuments("Item", items);
@@ -1421,6 +1436,10 @@
       if (item === void 0)
         return;
       return item.deleteDialog();
+    }
+    async _deleteOwnedItemById(_itemId) {
+      const item = this.actor.items.get(_itemId);
+      await item.deleteDialog();
     }
     onItemEdit(event) {
       const item = this.getItem(event);

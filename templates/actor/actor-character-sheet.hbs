@@ -20,26 +20,23 @@
         </div>
       </div>
       <div class="character-types">
-        <h4>Types</h4>
-        {{#each characterTypes as |characterType|}}
-        <div class="flexrow item" data-item-id="{{characterType.id}}">
-          <p>{{characterType.name}}</p>
-          <a class="item-control item-delete" data-action="itemDelete" data-tooltip="ryuutama.itemDelete">
-            <i class="fas fa-trash"></i>
-          </a>
+        <h4>Types: </h4>
+        <div class="types">
+          {{#each characterTypes as |characterType|}}
+          <p class="type-delete" data-action="type-delete item" data-item-id="{{characterType.id}}">
+            {{characterType.name}}
+          </p>
+          {{/each}}
         </div>
-        {{/each}}
       </div>
       <div class="character-classes">
-        <h4>Classes</h4>
-        {{#each characterClasses as |characterClass|}}
-        <div class="flexrow item" data-item-id="{{characterClass.id}}">
-          <p>{{characterClass.name}}</p>
-          <a class="item-control item-delete" data-action="itemDelete" data-tooltip="ryuutama.itemDelete">
-            <i class="fas fa-trash"></i>
-          </a>
+        <h4>Classes: </h4>
+        <div class="classes">
+          {{#each characterClasses as |characterClass|}}
+          <p class="class-delete" data-action="class-delete item" data-item-id="{{characterClass.id}}">
+            {{characterClass.name}}</p>
+          {{/each}}
         </div>
-        {{/each}}
       </div>
     </div>
   </header>
