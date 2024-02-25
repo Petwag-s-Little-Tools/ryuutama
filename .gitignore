@@ -1,3 +1,8 @@
 node_modules
 
-packs/*/*
+packs/**/*.log
+packs/**/*.ldb
+packs/**/CURRENT
+packs/**/LOCK
+packs/**/LOG
+packs/**/MANIFEST-*
