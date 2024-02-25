@@ -1,0 +1,38 @@
+{
+  "name": "Etiquette",
+  "type": "skill",
+  "_id": "QzVoDsQQqv6oDFcG",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "description": "<p>Due to your long years of tutelage and experience in noble society, you are aware of the importance of proper etiquette. When speaking to someone of rank or status, you are able to leave them with a positive impression of you when you win a contested Etiquette check.</p>",
+    "skillEffect": "<p>Leave a positive impression on someone of high rank or status.</p>",
+    "rolls": [
+      {
+        "statA": "dex",
+        "statB": "int",
+        "description": "Standard"
+      }
+    ],
+    "targetNumber": "contested",
+    "usableCircumstances": "Conversing with someone of rank or status"
+  },
+  "effects": [],
+  "folder": null,
+  "flags": {
+    "core": {}
+  },
+  "_stats": {
+    "systemId": "ryuutama",
+    "systemVersion": "0.0.2",
+    "coreVersion": "11.315",
+    "createdTime": 1700004785703,
+    "modifiedTime": 1708727802296,
+    "lastModifiedBy": "YGXn48bHOBjcgvWf"
+  },
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "YGXn48bHOBjcgvWf": 3
+  },
+  "_key": "!items!QzVoDsQQqv6oDFcG"
+}

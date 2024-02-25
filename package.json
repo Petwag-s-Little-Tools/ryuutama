@@ -3,9 +3,9 @@
   "version": "0.0.2",
   "description": "FoundryVTT system for Ryuutama TTRPG",
   "scripts": {
-    "sass": "sass --watch styles/ryuutama.scss ryuutama.css",
-    "build": "node scripts/build.mjs",
-    "watch:js": "node scripts/watch.mjs"
+    "watch:css": "sass --watch styles/ryuutama.scss ryuutama.css",
+    "watch:js": "node scripts/watch.mjs",
+    "build": "node scripts/build.mjs"
   },
   "author": "Petwag <https://github.com/Petwag>",
   "license": "ISC",

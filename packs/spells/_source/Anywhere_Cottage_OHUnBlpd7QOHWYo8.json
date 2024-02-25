@@ -1,0 +1,35 @@
+{
+  "folder": "qLtkLfybwAPB2ESH",
+  "name": "Anywhere Cottage",
+  "type": "spell",
+  "_id": "OHUnBlpd7QOHWYo8",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "description": "<p>Creates a cottage large enough for seven people. Characters who sleep in the cottage receive a +2 bonus on their Camp Check, but if more than seven people enter the cottage, it will disappear.</p>",
+    "magicType": "incantation",
+    "spellType": "ritual",
+    "manaCost": 10,
+    "duration": 12,
+    "durationUnit": "hour",
+    "target": "Airspace",
+    "range": "Touch",
+    "rolls": [],
+    "spellLevel": "high"
+  },
+  "effects": [],
+  "flags": {},
+  "_stats": {
+    "systemId": "ryuutama",
+    "systemVersion": "0.0.2",
+    "coreVersion": "11.315",
+    "createdTime": 1702936086818,
+    "modifiedTime": 1708728467919,
+    "lastModifiedBy": "YGXn48bHOBjcgvWf"
+  },
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "YGXn48bHOBjcgvWf": 3
+  },
+  "_key": "!items!OHUnBlpd7QOHWYo8"
+}

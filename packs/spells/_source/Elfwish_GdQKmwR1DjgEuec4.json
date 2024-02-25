@@ -1,0 +1,35 @@
+{
+  "folder": "qLtkLfybwAPB2ESH",
+  "name": "Elfwish",
+  "type": "spell",
+  "_id": "GdQKmwR1DjgEuec4",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "description": "<p>After the ritual is complete, little elves appear while the caster is sleeping to work on a simple project of the caster’s choice. They will do work equal to what a 6 year old child can do.</p>",
+    "magicType": "incantation",
+    "spellType": "ritual",
+    "manaCost": 4,
+    "duration": 0,
+    "durationUnit": "overnight",
+    "target": "1 work in progress",
+    "range": "Caster",
+    "rolls": [],
+    "spellLevel": "mid"
+  },
+  "effects": [],
+  "flags": {},
+  "_stats": {
+    "systemId": "ryuutama",
+    "systemVersion": "0.0.2",
+    "coreVersion": "11.315",
+    "createdTime": 1702935238385,
+    "modifiedTime": 1708728467919,
+    "lastModifiedBy": "YGXn48bHOBjcgvWf"
+  },
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "YGXn48bHOBjcgvWf": 3
+  },
+  "_key": "!items!GdQKmwR1DjgEuec4"
+}

@@ -1,0 +1,35 @@
+{
+  "folder": "qLtkLfybwAPB2ESH",
+  "name": "Rainbow Drop Bridge",
+  "type": "spell",
+  "_id": "4AwNl9stSO4da5qO",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "description": "<p>Creates a rainbow bridge that spans up to 50m horizontally and up to 20m vertically. The bridge must be anchored on solid ground at both ends, and may be used by anyone.</p>",
+    "magicType": "incantation",
+    "spellType": "ritual",
+    "manaCost": 4,
+    "duration": 12,
+    "durationUnit": "hour",
+    "target": "Airspace",
+    "range": "Touch",
+    "rolls": [],
+    "spellLevel": "high"
+  },
+  "effects": [],
+  "flags": {},
+  "_stats": {
+    "systemId": "ryuutama",
+    "systemVersion": "0.0.2",
+    "coreVersion": "11.315",
+    "createdTime": 1702935986957,
+    "modifiedTime": 1708728467919,
+    "lastModifiedBy": "YGXn48bHOBjcgvWf"
+  },
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "YGXn48bHOBjcgvWf": 3
+  },
+  "_key": "!items!4AwNl9stSO4da5qO"
+}

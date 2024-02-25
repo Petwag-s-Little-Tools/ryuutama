@@ -1,7 +1,1 @@
 node_modules
-
-packs/**/*.log
-packs/**/CURRENT
-packs/**/MANIFEST*
-packs/**/LOG*
-packs/**/LOCK*

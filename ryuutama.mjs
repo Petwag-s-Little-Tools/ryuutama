@@ -1453,6 +1453,7 @@
       context.config = ryuutama;
       context.system = itemData.system;
       context.flags = itemData.flags;
+      console.log(context);
       return foundry.utils.mergeObject(context, {
         labels: this.getLabels(itemData),
         effects: context.item.getEmbeddedCollection("ActiveEffect")

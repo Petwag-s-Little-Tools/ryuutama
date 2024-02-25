@@ -22,7 +22,18 @@
   ],
   "esmodules": ["ryuutama.mjs"],
   "styles": ["ryuutama.css"],
-  "packs": [],
+  "packs": [
+    {
+      "name": "skills",
+      "label": "Skills",
+      "type": "Item"
+    },
+    {
+      "name": "spells",
+      "label": "Spells",
+      "type": "Item"
+    }
+  ],
   "languages": [
     {
       "lang": "en",

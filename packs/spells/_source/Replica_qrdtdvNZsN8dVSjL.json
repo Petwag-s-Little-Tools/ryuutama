@@ -1,0 +1,35 @@
+{
+  "folder": "qLtkLfybwAPB2ESH",
+  "name": "Replica",
+  "type": "spell",
+  "_id": "qrdtdvNZsN8dVSjL",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "description": "<p>Replicates an item for the duration of the spell. The replica item has the same size, effect, etc. as the original. If, before the spell ends, one of the items is destroyed or lost, the other will be destroyed as well.</p>",
+    "magicType": "incantation",
+    "spellType": "ritual",
+    "manaCost": 10,
+    "duration": 12,
+    "durationUnit": "hour",
+    "target": "1 item",
+    "range": "Touch",
+    "rolls": [],
+    "spellLevel": "high"
+  },
+  "effects": [],
+  "flags": {},
+  "_stats": {
+    "systemId": "ryuutama",
+    "systemVersion": "0.0.2",
+    "coreVersion": "11.315",
+    "createdTime": 1702936195309,
+    "modifiedTime": 1708728467919,
+    "lastModifiedBy": "YGXn48bHOBjcgvWf"
+  },
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "YGXn48bHOBjcgvWf": 3
+  },
+  "_key": "!items!qrdtdvNZsN8dVSjL"
+}

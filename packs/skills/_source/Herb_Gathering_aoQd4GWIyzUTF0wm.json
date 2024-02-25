@@ -1,0 +1,38 @@
+{
+  "name": "Herb Gathering",
+  "type": "skill",
+  "_id": "aoQd4GWIyzUTF0wm",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "description": "<p>You know where to find potent Healing Herbs. Once each morning, when you succeed on this Skill Check, you can explore the wilderness to obtain a Healing Herb. The Healing Herb obtained depends on the current terrain. See the Healing Herb list in the Item Section for more information. Healing Herbs are only good for one day, unless you use a disposable herb bottle to keep it fresh for up to a week.</p>",
+    "skillEffect": "<p>Find a single Healing Herb.</p>\n<ul>\n<li>Critical: Find 3 Healing Herbs.</li>\n<li>Fumble: Afflicted with [Poison: 6]</li>\n</ul>",
+    "rolls": [
+      {
+        "statA": "str",
+        "statB": "int",
+        "description": "Standard"
+      }
+    ],
+    "targetNumber": "Topography",
+    "usableCircumstances": "Once each morning, before the Travel check"
+  },
+  "effects": [],
+  "folder": null,
+  "flags": {
+    "core": {}
+  },
+  "_stats": {
+    "systemId": "ryuutama",
+    "systemVersion": "0.0.2",
+    "coreVersion": "11.315",
+    "createdTime": 1700003884378,
+    "modifiedTime": 1708727802296,
+    "lastModifiedBy": "YGXn48bHOBjcgvWf"
+  },
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "YGXn48bHOBjcgvWf": 3
+  },
+  "_key": "!items!aoQd4GWIyzUTF0wm"
+}

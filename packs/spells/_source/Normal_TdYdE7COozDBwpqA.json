@@ -1,0 +1,19 @@
+{
+  "name": "Normal",
+  "sorting": "a",
+  "folder": "cOWqu4Igvn4bxrJ0",
+  "type": "Item",
+  "_id": "TdYdE7COozDBwpqA",
+  "sort": 0,
+  "color": null,
+  "flags": {},
+  "_stats": {
+    "systemId": "ryuutama",
+    "systemVersion": "0.0.2",
+    "coreVersion": "11.315",
+    "createdTime": 1702934890766,
+    "modifiedTime": 1708728467875,
+    "lastModifiedBy": "YGXn48bHOBjcgvWf"
+  },
+  "_key": "!folders!TdYdE7COozDBwpqA"
+}
