@@ -5,6 +5,20 @@
       <input name="name" type="text" value="{{actor.name}}" placeholder="{{localize 'Name'}}" />
       <p>XP: {{system.xp}}</p>
       <p>Level: {{system.level}}</p>
+      <div class="hp">
+        <meter max="{{maxHp}}" value="{{system.hp.current}}" title="HP"></meter>
+        <div>
+          <input name="system.hp.current" type="number" min='0' max={{maxHp}} value="{{system.hp.current}}" />
+          <span>/{{maxHp}} {{localize "ryuutama.character.hp"}}</span>
+        </div>
+      </div>
+      <div class="mp">
+        <meter max="{{maxMp}}" value="{{system.mp.current}}" title="MP"></meter>
+        <div>
+          <input name="system.mp.current" type="number" min='0' max={{maxMp}} value="{{system.mp.current}}" />
+          <span>/{{maxMp}} {{localize "ryuutama.character.mp"}}</span>
+        </div>
+      </div>
       <div class="character-types">
         <h4>Types</h4>
         {{#each characterTypes as |characterType|}}

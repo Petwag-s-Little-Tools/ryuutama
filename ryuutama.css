@@ -93,6 +93,52 @@
   height: auto;
   margin: 0px;
 }
+.ryuutama.sheet.actor .sheet-header .hp,
+.ryuutama.sheet.actor .sheet-header .mp {
+  position: relative;
+}
+.ryuutama.sheet.actor .sheet-header .hp div,
+.ryuutama.sheet.actor .sheet-header .mp div {
+  position: absolute;
+  top: 16px;
+  left: 0;
+  width: 200px;
+  display: grid;
+  grid-template-columns: 94px 106px;
+}
+.ryuutama.sheet.actor .sheet-header .hp div input,
+.ryuutama.sheet.actor .sheet-header .mp div input {
+  padding: 0;
+  background: none;
+  border: none;
+  text-align: right;
+  height: auto;
+}
+.ryuutama.sheet.actor .sheet-header .hp div input:hover, .ryuutama.sheet.actor .sheet-header .hp div input:focus,
+.ryuutama.sheet.actor .sheet-header .mp div input:hover,
+.ryuutama.sheet.actor .sheet-header .mp div input:focus {
+  cursor: pointer;
+  box-shadow: none;
+}
+.ryuutama.sheet.actor .sheet-header .hp meter,
+.ryuutama.sheet.actor .sheet-header .mp meter {
+  width: 200px;
+  height: 50px;
+  border-radius: 3px;
+  position: relative;
+}
+.ryuutama.sheet.actor .sheet-header .hp meter::-webkit-meter-bar,
+.ryuutama.sheet.actor .sheet-header .mp meter::-webkit-meter-bar {
+  background: none; /* Required to get rid of the default background property */
+  background-color: rgba(0, 0, 0, 0.05);
+  box-shadow: 0 5px 5px -5px #333 inset;
+}
+.ryuutama.sheet.actor .sheet-header .hp meter::-webkit-meter-optimum-value {
+  background-color: var(--ryuutama-green);
+}
+.ryuutama.sheet.actor .sheet-header .mp meter::-webkit-meter-optimum-value {
+  background-color: var(--ryuutama-blue);
+}
 .ryuutama.sheet.actor .character-types {
   flex-direction: column;
 }
@@ -140,29 +186,6 @@
 }
 .ryuutama.sheet.actor .stats .stat-roll:hover {
   text-shadow: 0 0 8px var(--ryuutama-green);
-}
-.ryuutama.sheet.actor .conditions .A {
-  position: relative;
-}
-.ryuutama.sheet.actor .conditions .A div {
-  position: absolute;
-  top: 16px;
-  right: 138px;
-}
-.ryuutama.sheet.actor .conditions .A div:hover {
-  display: block;
-}
-.ryuutama.sheet.actor .conditions meter {
-  width: 200px;
-  height: 50px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  position: relative;
-}
-.ryuutama.sheet.actor .conditions meter::-webkit-meter-bar {
-  background: none; /* Required to get rid of the default background property */
-  background-color: whiteSmoke;
-  box-shadow: 0 5px 5px -5px #333 inset;
 }
 
 .ryuutama.sheet.item .window-content {
@@ -214,6 +237,7 @@
 
 :root {
   --ryuutama-green: #adffbb;
+  --ryuutama-blue: #adf3ff;
 }
 
 .stat-box {

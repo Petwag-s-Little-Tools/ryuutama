@@ -18,6 +18,59 @@
       height: auto;
       margin: 0px;
     }
+
+    .hp,
+    .mp {
+      position: relative;
+
+      div {
+        position: absolute;
+        top: 16px;
+        left: 0;
+        width: 200px;
+        display: grid;
+        grid-template-columns: 94px 106px;
+
+        input {
+          padding: 0;
+          background: none;
+          border: none;
+          text-align: right;
+          height: auto;
+
+          &:hover,
+          &:focus {
+            cursor: pointer;
+            box-shadow: none;
+          }
+        }
+      }
+
+      meter {
+        width: 200px;
+        height: 50px;
+        border-radius: 3px;
+        position: relative;
+      }
+
+      meter::-webkit-meter-bar {
+        background: none; /* Required to get rid of the default background property */
+        background-color: rgba(0, 0, 0, 0.05);
+        box-shadow: 0 5px 5px -5px #333 inset;
+      }
+    }
+
+    .hp {
+      meter::-webkit-meter-optimum-value {
+        background-color: var(--ryuutama-green);
+      }
+    }
+
+    .mp {
+      meter::-webkit-meter-optimum-value {
+        background-color: var(--ryuutama-blue);
+      }
+    }
   }
 
   .character-types {
@@ -76,37 +129,6 @@
       &:hover {
         text-shadow: 0 0 8px var(--ryuutama-green);
       }
-    }
-  }
-
-  .conditions {
-    .A {
-      position: relative;
-
-      div {
-        position: absolute;
-        // display: none;
-        top: 16px;
-        right: 138px;
-
-        &:hover {
-          display: block;
-        }
-      }
-    }
-
-    meter {
-      width: 200px;
-      height: 50px;
-      border: 1px solid #ccc;
-      border-radius: 3px;
-      position: relative;
-    }
-
-    meter::-webkit-meter-bar {
-      background: none; /* Required to get rid of the default background property */
-      background-color: whiteSmoke;
-      box-shadow: 0 5px 5px -5px #333 inset;
     }
   }
 }
