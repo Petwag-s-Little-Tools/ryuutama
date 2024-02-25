@@ -72,6 +72,13 @@
   border-bottom: none;
 }
 
+.ryuutama.sheet .editor.prosemirror {
+  min-height: 150px;
+}
+.ryuutama.sheet img {
+  background-color: var(--ryuutama-green);
+}
+
 .ryuutama.sheet.actor .window-content {
   background: none;
   background-color: white;
@@ -156,6 +163,12 @@
   background: none; /* Required to get rid of the default background property */
   background-color: whiteSmoke;
   box-shadow: 0 5px 5px -5px #333 inset;
+}
+
+.ryuutama.sheet.item .window-content {
+  background: none;
+  background-color: white;
+  border: 9px double black;
 }
 
 .chat-card {
