@@ -1,0 +1,37 @@
+{
+  "folder": null,
+  "name": "Bloodbath Blades",
+  "type": "spell",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "description": "<p>Summons countless magical spinning blades that slash through the air. All characters and all monsters take damage equal to [INT + SPI]. The caster alone is unaffected by this spell.</p>",
+    "magicType": "incantation",
+    "spellType": "normal",
+    "manaCost": 10,
+    "duration": 0,
+    "durationUnit": "instant",
+    "target": "All area",
+    "range": "Caster",
+    "rolls": [],
+    "spellLevel": "high"
+  },
+  "effects": [],
+  "flags": {
+    "core": {}
+  },
+  "_stats": {
+    "systemId": "ryuutama",
+    "systemVersion": "0.0.2",
+    "coreVersion": "11.315",
+    "createdTime": 1702935939323,
+    "modifiedTime": 1708990177404,
+    "lastModifiedBy": "YGXn48bHOBjcgvWf"
+  },
+  "_id": "fWIcKjynn6zFSavE",
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "YGXn48bHOBjcgvWf": 3
+  },
+  "_key": "!items!fWIcKjynn6zFSavE"
+}

@@ -48,6 +48,10 @@ ryuutama.durationUnits = {
     value: "ryuutama.durationUnits.untilCured",
     hasNumericValue: false,
   },
+  untilThawed: {
+    value: "ryuutama.durationUnits.untilThawed",
+    hasNumericValue: false,
+  },
   flightDuration: {
     value: "ryuutama.durationUnits.flightDuration",
     hasNumericValue: false,

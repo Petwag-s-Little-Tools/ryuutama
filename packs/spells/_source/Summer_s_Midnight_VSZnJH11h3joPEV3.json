@@ -1,0 +1,35 @@
+{
+  "folder": null,
+  "name": "Summer’s Midnight",
+  "type": "spell",
+  "_id": "VSZnJH11h3joPEV3",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "description": "<p>The most beautiful event in the Summer is Midnight, a time of illusion and calm. This spell can only be used at night. While the spell is in effect, the caster’s form becomes a transparent, glowing silhouette that can pass through walls and man-made obstacles. The caster may not pass through natural landscape features, trees, stones, etc. and may not speak or interact with objects. While the spell is in effect, the caster’s true body lies sleeping; when the spell’s duration ends, the caster returns to their body automatically.</p>",
+    "magicType": "summer",
+    "spellType": "ritual",
+    "manaCost": 10,
+    "duration": 1,
+    "durationUnit": "hour",
+    "target": "Caster",
+    "range": "Caster",
+    "rolls": [],
+    "spellLevel": "high"
+  },
+  "effects": [],
+  "flags": {},
+  "_stats": {
+    "systemId": "ryuutama",
+    "systemVersion": "0.0.2",
+    "coreVersion": "11.315",
+    "createdTime": 1708988259614,
+    "modifiedTime": 1708990177404,
+    "lastModifiedBy": "YGXn48bHOBjcgvWf"
+  },
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "YGXn48bHOBjcgvWf": 3
+  },
+  "_key": "!items!VSZnJH11h3joPEV3"
+}

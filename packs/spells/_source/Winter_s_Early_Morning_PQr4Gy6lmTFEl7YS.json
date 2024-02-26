@@ -1,0 +1,35 @@
+{
+  "folder": null,
+  "name": "Winter’s Early Morning",
+  "type": "spell",
+  "_id": "PQr4Gy6lmTFEl7YS",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "description": "<p>The most wonderful experience of winter is the early morning, a time when nature is still and folk are filled with a quiet tension. Just like Winter’s early morning, the caster silences the area around him. For the duration of the spell, no sound can be heard in the caster’s area, and magic has no effect there.</p>",
+    "magicType": "winter",
+    "spellType": "normal",
+    "manaCost": 4,
+    "duration": 6,
+    "durationUnit": "round",
+    "target": "Caster's Area",
+    "range": "Caster",
+    "rolls": [],
+    "spellLevel": "high"
+  },
+  "effects": [],
+  "flags": {},
+  "_stats": {
+    "systemId": "ryuutama",
+    "systemVersion": "0.0.2",
+    "coreVersion": "11.315",
+    "createdTime": 1708990053307,
+    "modifiedTime": 1708990177404,
+    "lastModifiedBy": "YGXn48bHOBjcgvWf"
+  },
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "YGXn48bHOBjcgvWf": 3
+  },
+  "_key": "!items!PQr4Gy6lmTFEl7YS"
+}

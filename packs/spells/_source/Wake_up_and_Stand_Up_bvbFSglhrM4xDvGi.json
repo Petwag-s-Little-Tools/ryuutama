@@ -1,0 +1,35 @@
+{
+  "folder": null,
+  "name": "Wake up and Stand Up",
+  "type": "spell",
+  "_id": "bvbFSglhrM4xDvGi",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "description": "<p>Anyone sleeping in the area immediately awakens and stands up. Anyone awake but lying down will immediately stand up. This only affects living things with 2 legs.</p>",
+    "magicType": "spring",
+    "spellType": "normal",
+    "manaCost": 2,
+    "duration": 0,
+    "durationUnit": "instant",
+    "target": "1 area",
+    "range": "Close Area",
+    "rolls": [],
+    "spellLevel": "low"
+  },
+  "effects": [],
+  "flags": {},
+  "_stats": {
+    "systemId": "ryuutama",
+    "systemVersion": "0.0.2",
+    "coreVersion": "11.315",
+    "createdTime": 1708904392728,
+    "modifiedTime": 1708990177404,
+    "lastModifiedBy": "YGXn48bHOBjcgvWf"
+  },
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "YGXn48bHOBjcgvWf": 3
+  },
+  "_key": "!items!bvbFSglhrM4xDvGi"
+}

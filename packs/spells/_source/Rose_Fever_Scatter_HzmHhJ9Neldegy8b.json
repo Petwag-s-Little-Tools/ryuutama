@@ -1,0 +1,35 @@
+{
+  "folder": null,
+  "name": "Rose Fever Scatter",
+  "type": "spell",
+  "_id": "HzmHhJ9Neldegy8b",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "description": "<p>Allergenic pollen is scattered through the air, causing eyes to water and noses to run. All creatures within the same target area receive [Poison: 6] no matter how high their Condition is, as long as the caster doesn’t fumble the Casting Check.</p>",
+    "magicType": "spring",
+    "spellType": "normal",
+    "manaCost": 4,
+    "duration": 0,
+    "durationUnit": "untilCured",
+    "target": "1 Area",
+    "range": "Close Area",
+    "rolls": [],
+    "spellLevel": "mid"
+  },
+  "effects": [],
+  "flags": {},
+  "_stats": {
+    "systemId": "ryuutama",
+    "systemVersion": "0.0.2",
+    "coreVersion": "11.315",
+    "createdTime": 1708986840389,
+    "modifiedTime": 1708990177404,
+    "lastModifiedBy": "YGXn48bHOBjcgvWf"
+  },
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "YGXn48bHOBjcgvWf": 3
+  },
+  "_key": "!items!HzmHhJ9Neldegy8b"
+}

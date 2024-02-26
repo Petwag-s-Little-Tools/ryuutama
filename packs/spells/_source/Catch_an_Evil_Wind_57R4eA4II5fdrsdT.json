@@ -1,0 +1,35 @@
+{
+  "folder": null,
+  "name": "Catch an Evil Wind",
+  "type": "spell",
+  "_id": "57R4eA4II5fdrsdT",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "description": "<p>This spell summons an illness which causes headache, fever, coughing, and all other symptoms of a bad cold. The target suffers [Sick: 6], no matter their Condition, as long as the caster doesn’t fumble the Magic Check. In the world of Ryuutama, when someone catches a cold, some people say “Oh dear! An evil wind snuck up on you!”</p>",
+    "magicType": "winter",
+    "spellType": "normal",
+    "manaCost": 4,
+    "duration": 0,
+    "durationUnit": "untilCured",
+    "target": "1 Person",
+    "range": "Touch",
+    "rolls": [],
+    "spellLevel": "mid"
+  },
+  "effects": [],
+  "flags": {},
+  "_stats": {
+    "systemId": "ryuutama",
+    "systemVersion": "0.0.2",
+    "coreVersion": "11.315",
+    "createdTime": 1708989697201,
+    "modifiedTime": 1708990177404,
+    "lastModifiedBy": "YGXn48bHOBjcgvWf"
+  },
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "YGXn48bHOBjcgvWf": 3
+  },
+  "_key": "!items!57R4eA4II5fdrsdT"
+}

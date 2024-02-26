@@ -1,0 +1,35 @@
+{
+  "folder": null,
+  "name": "Grateful Scarecrow",
+  "type": "spell",
+  "_id": "146SjU5oZt02cI3j",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "description": "<p>A scarecrow appears and draws an enemy’s attacks. The target has a 50% chance of targeting the dummy scarecrow with all magic, attacks, and special attacks, but area attacks are not affected. Though the dummy is virtually indestructible, if hit with a fire attack, it becomes a “Flaming Scarecrow.”</p>",
+    "magicType": "autumn",
+    "spellType": "normal",
+    "manaCost": 4,
+    "duration": 6,
+    "durationUnit": "round",
+    "target": "1 Person",
+    "range": "Close Area",
+    "rolls": [],
+    "spellLevel": "mid"
+  },
+  "effects": [],
+  "flags": {},
+  "_stats": {
+    "systemId": "ryuutama",
+    "systemVersion": "0.0.2",
+    "coreVersion": "11.315",
+    "createdTime": 1708988980488,
+    "modifiedTime": 1708990177404,
+    "lastModifiedBy": "YGXn48bHOBjcgvWf"
+  },
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "YGXn48bHOBjcgvWf": 3
+  },
+  "_key": "!items!146SjU5oZt02cI3j"
+}

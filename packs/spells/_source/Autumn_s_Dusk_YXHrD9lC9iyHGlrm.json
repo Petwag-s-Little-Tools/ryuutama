@@ -1,0 +1,35 @@
+{
+  "folder": null,
+  "name": "Autumn’s Dusk",
+  "type": "spell",
+  "_id": "YXHrD9lC9iyHGlrm",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "description": "<p>The most beautiful sight to behold in autumn is dusk, when the subtlety and elegance of all things in nature can be felt the most; even crows in the sky. The targets may fly with a flock of migrating birds. Calling a flock of migrating birds from a range of one kilometer, the targets may fly to the same destination as the flock. The spell’s effect wears off when the birds land. Details such as whether and how many birds are nearby, and how far they are flying are left up to the GM.</p>",
+    "magicType": "autumn",
+    "spellType": "ritual",
+    "manaCost": 10,
+    "duration": 0,
+    "durationUnit": "flightDuration",
+    "target": "Up to 7 People",
+    "range": "Touch",
+    "rolls": [],
+    "spellLevel": "high"
+  },
+  "effects": [],
+  "flags": {},
+  "_stats": {
+    "systemId": "ryuutama",
+    "systemVersion": "0.0.2",
+    "coreVersion": "11.315",
+    "createdTime": 1708989341885,
+    "modifiedTime": 1708990177404,
+    "lastModifiedBy": "YGXn48bHOBjcgvWf"
+  },
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "YGXn48bHOBjcgvWf": 3
+  },
+  "_key": "!items!YXHrD9lC9iyHGlrm"
+}

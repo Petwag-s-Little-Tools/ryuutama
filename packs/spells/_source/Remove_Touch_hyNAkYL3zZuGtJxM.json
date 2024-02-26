@@ -1,0 +1,37 @@
+{
+  "folder": null,
+  "name": "Remove Touch",
+  "type": "spell",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "description": "<p>Restores the target’s body and mind to a state of equilibrium. A target suffering a status effect may reroll their Condition Check and use the new one if it is higher.</p>",
+    "magicType": "incantation",
+    "spellType": "normal",
+    "manaCost": 4,
+    "duration": 0,
+    "durationUnit": "instant",
+    "target": "1 person",
+    "range": "Touch",
+    "rolls": [],
+    "spellLevel": "mid"
+  },
+  "effects": [],
+  "flags": {
+    "core": {}
+  },
+  "_stats": {
+    "systemId": "ryuutama",
+    "systemVersion": "0.0.2",
+    "coreVersion": "11.315",
+    "createdTime": 1702935123957,
+    "modifiedTime": 1708990177404,
+    "lastModifiedBy": "YGXn48bHOBjcgvWf"
+  },
+  "_id": "hyNAkYL3zZuGtJxM",
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "YGXn48bHOBjcgvWf": 3
+  },
+  "_key": "!items!hyNAkYL3zZuGtJxM"
+}

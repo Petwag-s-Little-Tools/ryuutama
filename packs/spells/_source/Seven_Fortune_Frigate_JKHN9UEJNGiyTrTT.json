@@ -1,0 +1,35 @@
+{
+  "folder": null,
+  "name": "Seven Fortune Frigate",
+  "type": "spell",
+  "_id": "JKHN9UEJNGiyTrTT",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "description": "<p>A treasure-laden boat bearing seven legendary heroes arrives from the East to bless the caster and his companions. While the spell lasts, any character that is blessed turns any Fumbles into Criticals. Roll a d8 to see what class is blessed. If a class is blessed but the party lacks characters of that class, the heroes bless nobody and leave disappointed.</p><p></p><p>1: Merchant 2: Farmer 3: Minstrel 4: Hunter 5: Artisan 6: Healer 7: Noble 8: All Classes</p>",
+    "magicType": "winter",
+    "spellType": "ritual",
+    "manaCost": 10,
+    "duration": 12,
+    "durationUnit": "hour",
+    "target": "Various",
+    "range": "Caster",
+    "rolls": [],
+    "spellLevel": "high"
+  },
+  "effects": [],
+  "flags": {},
+  "_stats": {
+    "systemId": "ryuutama",
+    "systemVersion": "0.0.2",
+    "coreVersion": "11.315",
+    "createdTime": 1708990121386,
+    "modifiedTime": 1708990177404,
+    "lastModifiedBy": "YGXn48bHOBjcgvWf"
+  },
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "YGXn48bHOBjcgvWf": 3
+  },
+  "_key": "!items!JKHN9UEJNGiyTrTT"
+}

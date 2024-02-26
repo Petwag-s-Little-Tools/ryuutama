@@ -1,0 +1,35 @@
+{
+  "folder": null,
+  "name": "Spirit of Obon",
+  "type": "spell",
+  "_id": "NMdfEiEgX61EvWfp",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "description": "<p>Obon is the Fall festival where the spirits of the dead return home. This spell releases the soul of an undead-type monster from our world, returning it to the other side. An undead monster that has its soul released by this spell falls to the ground and disappears. However, in order for the soul to be released, this spell must be cast twice - though these castings do not need to be consecutive. There may be some rare undead whose souls will never return, or some undead who refuse to rest even after their soul has been returned, requiring other means of release...</p>",
+    "magicType": "autumn",
+    "spellType": "normal",
+    "manaCost": 4,
+    "duration": 0,
+    "durationUnit": "instant",
+    "target": "1 Person",
+    "range": "All Areas",
+    "rolls": [],
+    "spellLevel": "mid"
+  },
+  "effects": [],
+  "flags": {},
+  "_stats": {
+    "systemId": "ryuutama",
+    "systemVersion": "0.0.2",
+    "coreVersion": "11.315",
+    "createdTime": 1708989101502,
+    "modifiedTime": 1708990177404,
+    "lastModifiedBy": "YGXn48bHOBjcgvWf"
+  },
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "YGXn48bHOBjcgvWf": 3
+  },
+  "_key": "!items!NMdfEiEgX61EvWfp"
+}

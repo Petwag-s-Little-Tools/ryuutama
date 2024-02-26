@@ -1,0 +1,37 @@
+{
+  "folder": null,
+  "name": "Type Wild",
+  "type": "spell",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "description": "<p>Summons a magical stuffed animal that allows the party to escape from an encounter with a phantom beast or animal monster, unless the GM decides otherwise. Because the caster has to carry around the cumbersome stuffed animal all day, their DEX is reduced by 1 dice size while the spell is in effect.</p>",
+    "magicType": "incantation",
+    "spellType": "ritual",
+    "manaCost": 10,
+    "duration": 12,
+    "durationUnit": "hour",
+    "target": "Up to 7 people",
+    "range": "Touch",
+    "rolls": [],
+    "spellLevel": "mid"
+  },
+  "effects": [],
+  "flags": {
+    "core": {}
+  },
+  "_stats": {
+    "systemId": "ryuutama",
+    "systemVersion": "0.0.2",
+    "coreVersion": "11.315",
+    "createdTime": 1702935331472,
+    "modifiedTime": 1708990177404,
+    "lastModifiedBy": "YGXn48bHOBjcgvWf"
+  },
+  "_id": "emK6gM3sHo2IOj1D",
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "YGXn48bHOBjcgvWf": 3
+  },
+  "_key": "!items!emK6gM3sHo2IOj1D"
+}

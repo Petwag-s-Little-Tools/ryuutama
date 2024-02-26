@@ -1,0 +1,37 @@
+{
+  "folder": null,
+  "name": "Shooting Star",
+  "type": "spell",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "description": "<p>Shoots a blast of heat from the caster’s palm that slams into the target. Caster rolls [SPI] (1 die) and deals damage to target equal to that amount.</p>",
+    "magicType": "incantation",
+    "spellType": "normal",
+    "manaCost": 4,
+    "duration": 0,
+    "durationUnit": "instant",
+    "target": "1 person",
+    "range": "All Areas",
+    "rolls": [],
+    "spellLevel": "low"
+  },
+  "effects": [],
+  "flags": {
+    "core": {}
+  },
+  "_stats": {
+    "systemId": "ryuutama",
+    "systemVersion": "0.0.2",
+    "coreVersion": "11.315",
+    "createdTime": 1702850884084,
+    "modifiedTime": 1708990177404,
+    "lastModifiedBy": "YGXn48bHOBjcgvWf"
+  },
+  "_id": "ZPP2FO50lnfcrstp",
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "YGXn48bHOBjcgvWf": 3
+  },
+  "_key": "!items!ZPP2FO50lnfcrstp"
+}

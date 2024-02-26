@@ -1,0 +1,37 @@
+{
+  "folder": null,
+  "name": "Alert Bell Alarm",
+  "type": "spell",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "description": "<p>Causes a magical bell to appear. The bell will sound an alarm if a monster comes within 10 m. The bell cannot be moved. This spell is recommended for new players. Grants +1 on Camp Checks.</p>",
+    "magicType": "incantation",
+    "spellType": "normal",
+    "manaCost": 4,
+    "duration": 12,
+    "durationUnit": "hour",
+    "target": "10 sqm area",
+    "range": "Touch",
+    "rolls": [],
+    "spellLevel": "low"
+  },
+  "effects": [],
+  "flags": {
+    "core": {}
+  },
+  "_stats": {
+    "systemId": "ryuutama",
+    "systemVersion": "0.0.2",
+    "coreVersion": "11.315",
+    "createdTime": 1702850668641,
+    "modifiedTime": 1708990177404,
+    "lastModifiedBy": "YGXn48bHOBjcgvWf"
+  },
+  "_id": "D8pKrY5yxG7HvZGy",
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "YGXn48bHOBjcgvWf": 3
+  },
+  "_key": "!items!D8pKrY5yxG7HvZGy"
+}
