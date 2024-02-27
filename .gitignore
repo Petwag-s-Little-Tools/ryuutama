@@ -9,3 +9,5 @@ packs/**/LOG.old
 packs/**/MANIFEST-*
 
 *.zip
+
+tmpPacks

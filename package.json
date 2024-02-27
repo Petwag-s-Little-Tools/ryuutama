@@ -13,6 +13,7 @@
   "author": "Petwag <https://github.com/Petwag>",
   "license": "ISC",
   "devDependencies": {
+    "@foundryvtt/foundryvtt-cli": "1.0.2",
     "adm-zip": "0.5.10",
     "esbuild": "0.20.0",
     "sass": "1.67.0"

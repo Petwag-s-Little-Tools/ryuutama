@@ -1,3 +1,4 @@
+import { compilePack } from "@foundryvtt/foundryvtt-cli";
 import AdmZip from "adm-zip";
 
 const zip = new AdmZip();
@@ -19,5 +20,12 @@ const folders = ["./lang", "./static", "./templates"];
 folders.forEach((folder) => {
   zip.addLocalFolder(folder, folder);
 });
+
+const packs = ["skills", "spells"];
+
+packs.forEach((pack) => {
+  compilePack(`./packs/${pack}`, `./tmpPacks/${pack}`);
+});
+zip.addLocalFolder("./tmpPacks", "./packs");
 
 zip.writeZip("./release.zip");
