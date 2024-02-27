@@ -7,11 +7,13 @@
     "watch:js": "node scripts/watch.mjs",
     "build:js": "node scripts/build.mjs",
     "build:css": "sass styles/ryuutama.scss ryuutama.css",
-    "build": "npm run build:js && npm run build:css"
+    "build": "npm run build:js && npm run build:css",
+    "zip": "node scripts/zip.mjs"
   },
   "author": "Petwag <https://github.com/Petwag>",
   "license": "ISC",
   "devDependencies": {
+    "adm-zip": "0.5.10",
     "esbuild": "0.20.0",
     "sass": "1.67.0"
   }

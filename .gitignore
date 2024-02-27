@@ -7,3 +7,5 @@ packs/**/LOCK
 packs/**/LOG
 packs/**/LOG.old
 packs/**/MANIFEST-*
+
+*.zip
