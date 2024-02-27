@@ -5,7 +5,9 @@
   "scripts": {
     "watch:css": "sass --watch styles/ryuutama.scss ryuutama.css",
     "watch:js": "node scripts/watch.mjs",
-    "build": "node scripts/build.mjs"
+    "build:js": "node scripts/build.mjs",
+    "build:css": "sass styles/ryuutama.scss ryuutama.css",
+    "build": "npm run build:js && npm run build:css"
   },
   "author": "Petwag <https://github.com/Petwag>",
   "license": "ISC",
