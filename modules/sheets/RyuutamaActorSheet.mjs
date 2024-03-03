@@ -113,7 +113,7 @@ export class RyuutamaActorSheet extends ActorSheet {
     if (this.actor.isOwner) {
       html.find(".condition-roll").click(this.onConditionRoll.bind(this));
       html.find(".stat-item").click(this.onStatSelect.bind(this));
-      html.find(".stats-roll").click(this.onStatRoll.bind(this));
+      html.find(".stat-roll").click(this.onStatRoll.bind(this));
       html.find(".equip-toggle").click(this.onEquipItem.bind(this));
 
       const deleteLabel = game.i18n.localize("ryuutama.effectDelete");
