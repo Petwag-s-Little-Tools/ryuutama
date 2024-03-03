@@ -1,0 +1,35 @@
+{
+  "folder": null,
+  "name": "Cure Plus Plus",
+  "type": "spell",
+  "_id": "ZVin4pesTwlvr7WC",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "description": "<p>This is cast at the same time as Cure Touch (only one Magic Check required) and makes that magic stronger. Add 1d6 to the effect of Cure Touch. This spell may not be cast separately.</p>",
+    "magicType": "spring",
+    "spellType": "normal",
+    "manaCost": 2,
+    "duration": 0,
+    "durationUnit": "instant",
+    "target": "1 Person",
+    "range": "Touch",
+    "rolls": [],
+    "spellLevel": "low"
+  },
+  "effects": [],
+  "flags": {},
+  "_stats": {
+    "systemId": "ryuutama",
+    "systemVersion": "0.0.2",
+    "coreVersion": "11.315",
+    "createdTime": 1708904578716,
+    "modifiedTime": 1708990177404,
+    "lastModifiedBy": "YGXn48bHOBjcgvWf"
+  },
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "YGXn48bHOBjcgvWf": 3
+  },
+  "_key": "!items!ZVin4pesTwlvr7WC"
+}

@@ -1,50 +1,43 @@
-<form class="{{cssClass}} character-sheet" autocomplete="off">
+<form class="{{cssClass}}" autocomplete="off">
   <header class="sheet-header">
-    <img
-      class="profile-img"
-      src="{{actor.img}}"
-      data-edit="img"
-      title="{{actor.name}}"
-      height="100"
-      width="100"
-    />
-    <input
-      name="name"
-      type="text"
-      value="{{actor.name}}"
-      placeholder="{{localize 'Name'}}"
-    />
-    <p>XP: {{system.xp}}</p>
-    <p>Level: {{system.level}}</p>
-    <div class="character-types">
-      <h4>Types</h4>
-      {{#each characterTypes as |characterType|}}
-        <div class="flexrow item" data-item-id="{{characterType.id}}">
-          <p>{{characterType.name}}</p>
-          <a
-          class="item-control item-delete"
-          data-action="itemDelete"
-          data-tooltip="ryuutama.itemDelete"
-        >
-          <i class="fas fa-trash"></i>
-        </a>
-        </div> 
-      {{/each}}
-    </div>
-    <div class="character-classes">
-      <h4>Classes</h4>
-      {{#each characterClasses as |characterClass|}}
-        <div class="flexrow item" data-item-id="{{characterClass.id}}">
-          <p>{{characterClass.name}}</p>
-          <a
-          class="item-control item-delete"
-          data-action="itemDelete"
-          data-tooltip="ryuutama.itemDelete"
-        >
-          <i class="fas fa-trash"></i>
-        </a>
-        </div> 
-      {{/each}}
+    <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" />
+    <div>
+      <input name="name" type="text" value="{{actor.name}}" placeholder="{{localize 'Name'}}" />
+      <p>XP: {{system.xp}}</p>
+      <p>Level: {{system.level}}</p>
+      <div class="hp">
+        <meter max="{{maxHp}}" value="{{system.hp.current}}" title="HP"></meter>
+        <div>
+          <input name="system.hp.current" type="number" min='0' max={{maxHp}} value="{{system.hp.current}}" />
+          <span>/{{maxHp}} {{localize "ryuutama.character.hp"}}</span>
+        </div>
+      </div>
+      <div class="mp">
+        <meter max="{{maxMp}}" value="{{system.mp.current}}" title="MP"></meter>
+        <div>
+          <input name="system.mp.current" type="number" min='0' max={{maxMp}} value="{{system.mp.current}}" />
+          <span>/{{maxMp}} {{localize "ryuutama.character.mp"}}</span>
+        </div>
+      </div>
+      <div class="character-types">
+        <h4>Types: </h4>
+        <div class="types">
+          {{#each characterTypes as |characterType|}}
+          <p class="type-delete" data-action="type-delete item" data-item-id="{{characterType.id}}">
+            {{characterType.name}}
+          </p>
+          {{/each}}
+        </div>
+      </div>
+      <div class="character-classes">
+        <h4>Classes: </h4>
+        <div class="classes">
+          {{#each characterClasses as |characterClass|}}
+          <p class="class-delete" data-action="class-delete item" data-item-id="{{characterClass.id}}">
+            {{characterClass.name}}</p>
+          {{/each}}
+        </div>
+      </div>
     </div>
   </header>
 
@@ -57,23 +50,23 @@
   </nav>
 
   <section class="sheet-body">
-    <div class="tab stats" data-group="primary" data-tab="stats">
+    <div class="tab" data-group="primary" data-tab="stats">
       {{> "ryuutama.actor-stats"}}
     </div>
 
-    <div class="tab items" data-group="primary" data-tab="items">
+    <div class="tab" data-group="primary" data-tab="items">
       {{> "ryuutama.actor-items"}}
     </div>
 
-    <div class="tab magic" data-group="primary" data-tab="magic">
+    <div class="tab" data-group="primary" data-tab="magic">
       {{> "ryuutama.actor-magic"}}
     </div>
 
-    <div class="tab bio" data-group="primary" data-tab="bio">
+    <div class="tab" data-group="primary" data-tab="bio">
       {{> "ryuutama.actor-bio"}}
     </div>
 
-    <div class="tab edit" data-group="primary" data-tab="edit">
+    <div class="tab" data-group="primary" data-tab="edit">
       {{> "ryuutama.actor-edit"}}
     </div>
   </section>

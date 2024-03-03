@@ -1,0 +1,32 @@
+{
+  "name": "Robust",
+  "type": "skill",
+  "_id": "X7aDkmn88WENZsFw",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "description": "<p>Thanks to your healthy lifestyle, your body is sturdy, and you are in tune with its natural rhythm. You are naturally resistant to ill effects and can carry more items.</p>",
+    "skillEffect": "<p>&nbsp;+1 bonus to Condition Checks. +3 bonus to Carrying Capacity</p>",
+    "rolls": [],
+    "targetNumber": "",
+    "usableCircumstances": ""
+  },
+  "effects": [],
+  "folder": null,
+  "flags": {
+    "core": {}
+  },
+  "_stats": {
+    "systemId": "ryuutama",
+    "systemVersion": "0.0.2",
+    "coreVersion": "11.315",
+    "createdTime": 1700004080702,
+    "modifiedTime": 1708727802296,
+    "lastModifiedBy": "YGXn48bHOBjcgvWf"
+  },
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "YGXn48bHOBjcgvWf": 3
+  },
+  "_key": "!items!X7aDkmn88WENZsFw"
+}

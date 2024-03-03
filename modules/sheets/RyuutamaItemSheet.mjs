@@ -5,7 +5,7 @@ export class RyuutamaItemSheet extends ItemSheet {
     return mergeObject(super.defaultOptions, {
       classes: ["ryuutama", "sheet", "item"],
       width: 600,
-      height: 400,
+      height: 650,
       dragDrop: [{ dragSelector: null, dropSelector: null }],
     });
   }
@@ -22,6 +22,8 @@ export class RyuutamaItemSheet extends ItemSheet {
     context.system = itemData.system;
 
     context.flags = itemData.flags;
+
+    console.log(context);
 
     return foundry.utils.mergeObject(context, {
       labels: this.getLabels(itemData),

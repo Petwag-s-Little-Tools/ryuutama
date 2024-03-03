@@ -1,0 +1,38 @@
+{
+  "name": "Trader",
+  "type": "skill",
+  "_id": "W6mDkM6SrrTTQPPc",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "description": "<p>When you go shopping, you can buy items cheaply and sell items at a higher price. However, in order to do so, you must buy or sell at least four items of the same type at once. When buying, you must have enough money to buy all the items at their normal price. If you succeed on the check, the price of the items will change. If you fail a check when buying, you cannot cancel the deal: You must buy the goods at full price. There may be times when supplies are short or shop owners refuse to deal with you, and you cannot use this skill. You may not use Trader to sell items in the same town that you have bought them.</p>",
+    "skillEffect": "<p>&nbsp;You may buy items at a reduced price or sell items at an increased value.</p>\n<table style=\"width: 100%; height: 34px;\" border=\"1\"><colgroup><col style=\"width: 18.7713%;\"><col style=\"width: 18.7713%;\"><col style=\"width: 12.116%;\"><col style=\"width: 16.7235%;\"><col style=\"width: 16.732%;\"><col style=\"width: 16.5445%;\"><col style=\"width: 0.170648%;\"></colgroup>\n<tbody>\n<tr style=\"height: 17px;\">\n<td style=\"height: 17px;\">Check Result</td>\n<td style=\"height: 17px;\">6-7</td>\n<td style=\"height: 17px;\">8-9</td>\n<td style=\"height: 17px;\">10-13</td>\n<td style=\"height: 17px;\">14-17</td>\n<td style=\"height: 17px;\">18+</td>\n<td style=\"height: 17px;\">&nbsp;</td>\n</tr>\n<tr style=\"height: 17px;\">\n<td style=\"height: 17px;\">% in price change</td>\n<td style=\"height: 17px;\">10%</td>\n<td style=\"height: 17px;\">20%</td>\n<td style=\"height: 17px;\">40%</td>\n<td style=\"height: 17px;\">60%</td>\n<td style=\"height: 17px;\">80%</td>\n<td style=\"height: 17px;\">&nbsp;</td>\n</tr>\n</tbody>\n</table>",
+    "rolls": [
+      {
+        "statA": "int",
+        "statB": "spi",
+        "description": "Standard"
+      }
+    ],
+    "targetNumber": "See table",
+    "usableCircumstances": "When selling/buying 4 or more of the same item"
+  },
+  "effects": [],
+  "folder": null,
+  "flags": {
+    "core": {}
+  },
+  "_stats": {
+    "systemId": "ryuutama",
+    "systemVersion": "0.0.2",
+    "coreVersion": "11.315",
+    "createdTime": 1700002773723,
+    "modifiedTime": 1708727802296,
+    "lastModifiedBy": "YGXn48bHOBjcgvWf"
+  },
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "YGXn48bHOBjcgvWf": 3
+  },
+  "_key": "!items!W6mDkM6SrrTTQPPc"
+}

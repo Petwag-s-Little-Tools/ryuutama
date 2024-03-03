@@ -1,41 +1,16 @@
 <h2>{{localize "ryuutama.character.stats"}}</h2>
-<div id="stats">
+<section class="stats">
   {{#each stats as |stat id|}}
-    <div class="stat-item {{#ifIn ../system.selectedStat id}}selected{{/ifIn}}" data-stat="{{id}}">
-      <div class="stat-box">
-        <div>
-          <h4>{{localize (concat "ryuutama.stats." id)}}</h4>
-          <p> {{localize (concat "ryuutama.dice.d" stat.actual)}}</p>
-        </div>
-        <div
-          class="stat-image"
-          tabindex="0"
-          role="button"
-          aria-label="{{../actor.name}}"
-          style="background-image: url('{{../actor.img}}')"
-        ></div>
-      </div>
-    </div>
+  <div class="stat-item {{#ifIn ../system.selectedStat id}}selected{{/ifIn}}" data-stat="{{id}}">
+    <p>{{localize (concat "ryuutama.stats." id)}}</p>
+    <h2> {{localize (concat "ryuutama.dice.d" stat.actual)}}</h2>
+  </div>
   {{/each}}
-  <a class="stats-roll"><i class="fas fa-dice"></i></a>
+  <i class="stat-roll fas fa-dice fa-2xl"></i>
 
-</div>
-<table>
-  <tr>
-    <th>{{localize "ryuutama.character.hp"}}</th>
-    <td>
-      <input
-        name="system.hp.current"
-        type="number"
-        value="{{system.hp.current}}"
-      />/{{maxHp}}</td>
-    <th>{{localize "ryuutama.character.mp"}}</th>
-    <td><input
-        name="system.mp.current"
-        type="number"
-        value="{{system.mp.current}}"
-      />/{{maxMp}}</td>
-  </tr>
+</section>
+
+<table class="conditions">
   <tr>
     <th>{{localize "ryuutama.character.condition"}}</th>
     <td>{{system.condition}}</td>
@@ -58,17 +33,17 @@
 
 <section>
   <h3>{{localize "ryuutama.character.skills"}}</h3>
-{{> "ryuutama.actor-section-skills"}}
+  {{> "ryuutama.actor-section-skills"}}
 </section>
 
 <section>
   <h3>{{localize "ryuutama.character.statusEffects"}}</h3>
   <div id="statuses">
     {{#each system.statuses as |value id|}}
-      <div>
-        <div>{{localize (concat "ryuutama.statuses." id)}}</div>
-        <p>{{value}}</p>
-      </div>
+    <div>
+      <div>{{localize (concat "ryuutama.statuses." id)}}</div>
+      <p>{{value}}</p>
+    </div>
     {{/each}}
   </div>
 </section>
@@ -76,10 +51,10 @@
 <section>
   <h3>{{localize "ryuutama.character.abilities"}}</h3>
   <ol>
-  {{#each characterTypes as |characterType|}}
+    {{#each characterTypes as |characterType|}}
     {{#each characterType.abilities as |ability|}}
-      <li>{{ability.name}} | {{ability.effect}}</li>
+    <li>{{ability.name}} | {{ability.effect}}</li>
     {{/each}}
-  {{/each}}
+    {{/each}}
   </ol>
 </section>

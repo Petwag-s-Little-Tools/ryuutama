@@ -1,0 +1,38 @@
+{
+  "name": "Trapping",
+  "type": "skill",
+  "_id": "S9gcJi1o2RYCVFPJ",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "description": "<p>You are able to harvest valuable materials, such as leather or food, from defeated monsters. The type of item you receive on a success is shown in the Monster’s entry in the Dragonica.</p>",
+    "skillEffect": "<p>Harvest materials from a defeated Monster</p>",
+    "rolls": [
+      {
+        "statA": "dex",
+        "statB": "int",
+        "description": "Standard"
+      }
+    ],
+    "targetNumber": "Monster level x2",
+    "usableCircumstances": "After defeating a monster"
+  },
+  "effects": [],
+  "folder": null,
+  "flags": {
+    "core": {}
+  },
+  "_stats": {
+    "systemId": "ryuutama",
+    "systemVersion": "0.0.2",
+    "coreVersion": "11.315",
+    "createdTime": 1700003146236,
+    "modifiedTime": 1708727802296,
+    "lastModifiedBy": "YGXn48bHOBjcgvWf"
+  },
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "YGXn48bHOBjcgvWf": 3
+  },
+  "_key": "!items!S9gcJi1o2RYCVFPJ"
+}

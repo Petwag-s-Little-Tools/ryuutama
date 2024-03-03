@@ -1,0 +1,35 @@
+{
+  "folder": null,
+  "name": "The Illness of May",
+  "type": "spell",
+  "_id": "entvADmt5sdOD1G8",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "description": "<p>This spell brings upon enemies the magical force known as “Gogatsubyo”, or “May Sickness”, which saps one’s will to do anything other than mope. Though the normal Magic Check is required, the target suffers [Tired: 6], no matter what their Condition is.</p>",
+    "magicType": "summer",
+    "spellType": "normal",
+    "manaCost": 4,
+    "duration": 0,
+    "durationUnit": "untilCured",
+    "target": "1 Person",
+    "range": "Close Area",
+    "rolls": [],
+    "spellLevel": "mid"
+  },
+  "effects": [],
+  "flags": {},
+  "_stats": {
+    "systemId": "ryuutama",
+    "systemVersion": "0.0.2",
+    "coreVersion": "11.315",
+    "createdTime": 1708987739880,
+    "modifiedTime": 1708990177404,
+    "lastModifiedBy": "YGXn48bHOBjcgvWf"
+  },
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "YGXn48bHOBjcgvWf": 3
+  },
+  "_key": "!items!entvADmt5sdOD1G8"
+}

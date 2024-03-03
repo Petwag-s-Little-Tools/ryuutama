@@ -1,0 +1,43 @@
+{
+  "name": "Healing",
+  "type": "skill",
+  "_id": "WZpPoPmO6b28KzTb",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "description": "<p>You heal a companion’s injuries by creating a secret remedy from Healing Herbs and water.  Any Healing Herb may be used, but the process takes time, so this skill is less effective if used during combat.</p>",
+    "skillEffect": "<p>Target character recovers HP equal to the result of [INT + SPI]. During&nbsp;combat, recover only the result of [INT] (only 1 die.)</p>",
+    "rolls": [
+      {
+        "statA": "int",
+        "statB": "spi",
+        "description": "Standard"
+      },
+      {
+        "statA": "int",
+        "statB": "none",
+        "description": "Combat"
+      }
+    ],
+    "targetNumber": "None",
+    "usableCircumstances": "Spend 1 Healing Herb"
+  },
+  "effects": [],
+  "folder": null,
+  "flags": {
+    "core": {}
+  },
+  "_stats": {
+    "systemId": "ryuutama",
+    "systemVersion": "0.0.2",
+    "coreVersion": "11.315",
+    "createdTime": 1700003610999,
+    "modifiedTime": 1708727802296,
+    "lastModifiedBy": "YGXn48bHOBjcgvWf"
+  },
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "YGXn48bHOBjcgvWf": 3
+  },
+  "_key": "!items!WZpPoPmO6b28KzTb"
+}

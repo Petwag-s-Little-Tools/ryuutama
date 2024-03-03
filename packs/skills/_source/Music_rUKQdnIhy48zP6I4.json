@@ -1,0 +1,38 @@
+{
+  "name": "Music",
+  "type": "skill",
+  "_id": "rUKQdnIhy48zP6I4",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "description": "<p>You can play music that reinvigorates your companions. Once per scenario you may choose one terrain or weather type you are currently traveling through and gain it as a song. For example, if your character is currently in a rainy grassland, they might learn “Rain Song” or “Ballad of the Grassland,” but not “Desert Rumba.” You may later use the song only if it matches the specific condition in which it was acquired: for example, “Rain Song” can be used anytime it is raining, regardless of terrain.<br />You can name your song whatever you like (the above names are only examples).</p>",
+    "skillEffect": "<p>Give all party members a +1 bonus to their next roll.</p>\n<ul>\n<li>Critical: +3 bonus</li>\n<li>Fumble: Any PCs with Condition of 6 or less gain the [Muddled: 6] status effect.</li>\n</ul>",
+    "rolls": [
+      {
+        "statA": "dex",
+        "statB": "spi",
+        "description": "Standard"
+      }
+    ],
+    "targetNumber": "Topography",
+    "usableCircumstances": "Usable when in a suitable area. Each use reduces the Minstrel’s HP by 1"
+  },
+  "effects": [],
+  "folder": null,
+  "flags": {
+    "core": {}
+  },
+  "_stats": {
+    "systemId": "ryuutama",
+    "systemVersion": "0.0.2",
+    "coreVersion": "11.315",
+    "createdTime": 1700002325506,
+    "modifiedTime": 1708727802296,
+    "lastModifiedBy": "YGXn48bHOBjcgvWf"
+  },
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "YGXn48bHOBjcgvWf": 3
+  },
+  "_key": "!items!rUKQdnIhy48zP6I4"
+}

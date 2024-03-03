@@ -88,3 +88,12 @@
   }
 }
 
+.ryuutama.sheet {
+  .editor.prosemirror {
+    min-height: 150px;
+  }
+
+  img {
+    background-color: var(--ryuutama-green);
+  }
+}

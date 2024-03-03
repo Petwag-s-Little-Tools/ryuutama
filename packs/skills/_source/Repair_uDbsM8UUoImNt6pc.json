@@ -1,0 +1,38 @@
+{
+  "name": "Repair",
+  "type": "skill",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "description": "<p>You can repair damaged items, restoring their durability to full. Use the table below to determine the Repair Check target number. This costs 10% of the item’s value, regardless of success or failure. You may retry a failed skill check, but you must pay the cost again.</p>",
+    "skillEffect": "<p>Repair an item and return its durability to its original value</p>\n<table style=\"width: 100%;\" border=\"1\"><colgroup><col style=\"width: 5.62181%;\"><col style=\"width: 15.8433%;\"><col style=\"width: 15.4988%;\"><col style=\"width: 18.5728%;\"><col style=\"width: 28.109%;\"><col style=\"width: 16.3543%;\"></colgroup>\n<tbody>\n<tr>\n<td>Item price</td>\n<td>100g or less</td>\n<td>1000g or less</td>\n<td>10000g or less</td>\n<td>100000g or less</td>\n<td>More</td>\n</tr>\n<tr>\n<td>TN</td>\n<td>6</td>\n<td>8</td>\n<td>10</td>\n<td>14</td>\n<td>18</td>\n</tr>\n</tbody>\n</table>",
+    "rolls": [
+      {
+        "statA": "str",
+        "statB": "dex",
+        "description": "Standard"
+      }
+    ],
+    "targetNumber": "See table",
+    "usableCircumstances": "Anytime you have the time (1 day per size) and materials (10% the gold cost)"
+  },
+  "effects": [],
+  "folder": null,
+  "flags": {
+    "core": {}
+  },
+  "_stats": {
+    "systemId": "ryuutama",
+    "systemVersion": "0.0.2",
+    "coreVersion": "11.315",
+    "createdTime": 1700004373285,
+    "modifiedTime": 1708727802296,
+    "lastModifiedBy": "YGXn48bHOBjcgvWf"
+  },
+  "_id": "uDbsM8UUoImNt6pc",
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "YGXn48bHOBjcgvWf": 3
+  },
+  "_key": "!items!uDbsM8UUoImNt6pc"
+}

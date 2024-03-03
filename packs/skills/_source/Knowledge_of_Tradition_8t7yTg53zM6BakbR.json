@@ -1,0 +1,38 @@
+{
+  "name": "Knowledge of Tradition",
+  "type": "skill",
+  "_id": "8t7yTg53zM6BakbR",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "description": "<p>The people you have met on your travels have taught you their old songs and legends. You have learned a great deal about the world in this way.</p>",
+    "skillEffect": "<p>You can get more information about the things you see and hear.</p>",
+    "rolls": [
+      {
+        "statA": "int",
+        "statB": "int",
+        "description": "Standard"
+      }
+    ],
+    "targetNumber": "GM’s discretion",
+    "usableCircumstances": "Anytime you come across something interesting"
+  },
+  "effects": [],
+  "folder": null,
+  "flags": {
+    "core": {}
+  },
+  "_stats": {
+    "systemId": "ryuutama",
+    "systemVersion": "0.0.2",
+    "coreVersion": "11.315",
+    "createdTime": 1700002161923,
+    "modifiedTime": 1708727802296,
+    "lastModifiedBy": "YGXn48bHOBjcgvWf"
+  },
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "YGXn48bHOBjcgvWf": 3
+  },
+  "_key": "!items!8t7yTg53zM6BakbR"
+}

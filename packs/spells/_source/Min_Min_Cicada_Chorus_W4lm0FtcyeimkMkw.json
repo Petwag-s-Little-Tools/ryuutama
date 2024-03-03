@@ -1,0 +1,35 @@
+{
+  "folder": null,
+  "name": "Min-Min Cicada Chorus",
+  "type": "spell",
+  "_id": "W4lm0FtcyeimkMkw",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "description": "<p>The loud cries of cicadas (which make a sound like “MIN MIN MIN MIN MIN”) fill the area, disrupting concentration. For the duration of the spell, anyone who attempts to cast a spell must first beat the caster in a contested [SPI + SPI] check. If the person attempting to cast a new spell loses, their spell automatically fails. Because the sound is loudest near the caster, the caster may not cast any other spells while this spell is active. Plugging one’s ears does not stop the effect.</p>",
+    "magicType": "summer",
+    "spellType": "normal",
+    "manaCost": 4,
+    "duration": 6,
+    "durationUnit": "round",
+    "target": "All Area",
+    "range": "Caster",
+    "rolls": [],
+    "spellLevel": "low"
+  },
+  "effects": [],
+  "flags": {},
+  "_stats": {
+    "systemId": "ryuutama",
+    "systemVersion": "0.0.2",
+    "coreVersion": "11.315",
+    "createdTime": 1708987393899,
+    "modifiedTime": 1708990177404,
+    "lastModifiedBy": "YGXn48bHOBjcgvWf"
+  },
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "YGXn48bHOBjcgvWf": 3
+  },
+  "_key": "!items!W4lm0FtcyeimkMkw"
+}

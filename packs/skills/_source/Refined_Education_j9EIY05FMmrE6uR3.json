@@ -1,0 +1,38 @@
+{
+  "name": "Refined Education",
+  "type": "skill",
+  "_id": "j9EIY05FMmrE6uR3",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "description": "<p>After years of study under a learned tutor, you have memorized facts and trivia about many aspects of the world. You know more than the average person about history, famous people and well-traveled places.</p>",
+    "skillEffect": "<p>Know detailed information about the things you see or hear.</p>",
+    "rolls": [
+      {
+        "statA": "int",
+        "statB": "int",
+        "description": "Standard"
+      }
+    ],
+    "targetNumber": "GM’s discretion",
+    "usableCircumstances": "Seeing or hearing something."
+  },
+  "effects": [],
+  "folder": null,
+  "flags": {
+    "core": {}
+  },
+  "_stats": {
+    "systemId": "ryuutama",
+    "systemVersion": "0.0.2",
+    "coreVersion": "11.315",
+    "createdTime": 1700004884938,
+    "modifiedTime": 1708727802296,
+    "lastModifiedBy": "YGXn48bHOBjcgvWf"
+  },
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "YGXn48bHOBjcgvWf": 3
+  },
+  "_key": "!items!j9EIY05FMmrE6uR3"
+}

@@ -1,0 +1,35 @@
+{
+  "folder": null,
+  "name": "Spring’s Daybreak",
+  "type": "spell",
+  "_id": "llRE7QdXqUdtERTV",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "description": "<p>The most beautiful moment of Spring is Daybreak, when the beauty of nature fills one’s heart. The target may roll their Condition Check twice and take the better roll. This spell may only be used just before the target rolls their Condition Check.</p>",
+    "magicType": "spring",
+    "spellType": "ritual",
+    "manaCost": 4,
+    "duration": 0,
+    "durationUnit": "instant",
+    "target": "1 Person",
+    "range": "Touch",
+    "rolls": [],
+    "spellLevel": "high"
+  },
+  "effects": [],
+  "flags": {},
+  "_stats": {
+    "systemId": "ryuutama",
+    "systemVersion": "0.0.2",
+    "coreVersion": "11.315",
+    "createdTime": 1708987110572,
+    "modifiedTime": 1708990177404,
+    "lastModifiedBy": "YGXn48bHOBjcgvWf"
+  },
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "YGXn48bHOBjcgvWf": 3
+  },
+  "_key": "!items!llRE7QdXqUdtERTV"
+}

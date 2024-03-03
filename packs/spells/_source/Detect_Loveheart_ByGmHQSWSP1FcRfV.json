@@ -1,0 +1,35 @@
+{
+  "folder": null,
+  "name": "Detect Loveheart",
+  "type": "spell",
+  "_id": "ByGmHQSWSP1FcRfV",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "description": "<p>This spell reveals to the caster any “hearts in love” within sight. This knowledge comes softly to the caster, and is revealed to no one else. However, the spell does not reveal the object of the person’s affections. Obviously, this spell only affects beings that are capable of love.</p>",
+    "magicType": "spring",
+    "spellType": "normal",
+    "manaCost": 2,
+    "duration": 0,
+    "durationUnit": "instant",
+    "target": "Loving Heart",
+    "range": "All",
+    "rolls": [],
+    "spellLevel": "mid"
+  },
+  "effects": [],
+  "flags": {},
+  "_stats": {
+    "systemId": "ryuutama",
+    "systemVersion": "0.0.2",
+    "coreVersion": "11.315",
+    "createdTime": 1708986749762,
+    "modifiedTime": 1708990177404,
+    "lastModifiedBy": "YGXn48bHOBjcgvWf"
+  },
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "YGXn48bHOBjcgvWf": 3
+  },
+  "_key": "!items!ByGmHQSWSP1FcRfV"
+}

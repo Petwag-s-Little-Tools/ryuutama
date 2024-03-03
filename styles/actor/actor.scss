@@ -2,13 +2,180 @@
 //   @import "items.scss";
 // }
 
-.character-sheet {
-  .character-types {
-    flex-direction: column;
+.ryuutama.sheet.actor {
+  .window-content {
+    background: none;
+    background-color: white;
+    border: 9px double black;
+  }
 
-    div {
-      justify-content: space-between;
-      flex: 2;
+  .sheet-header {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+
+    .profile-img {
+      height: auto;
+      margin: 0px;
+    }
+
+    .hp,
+    .mp {
+      position: relative;
+
+      div {
+        position: absolute;
+        top: 16px;
+        left: 0;
+        width: 200px;
+        display: grid;
+        grid-template-columns: 94px 106px;
+
+        input {
+          padding: 0;
+          background: none;
+          border: none;
+          text-align: right;
+          height: auto;
+
+          &:hover,
+          &:focus {
+            cursor: pointer;
+            box-shadow: none;
+          }
+        }
+      }
+
+      meter {
+        width: 200px;
+        height: 50px;
+        border-radius: 3px;
+        position: relative;
+      }
+
+      meter::-webkit-meter-bar {
+        background: none; /* Required to get rid of the default background property */
+        background-color: rgba(0, 0, 0, 0.05);
+        box-shadow: 0 5px 5px -5px #333 inset;
+      }
+    }
+
+    .hp {
+      meter::-webkit-meter-optimum-value {
+        background-color: var(--ryuutama-green);
+      }
+    }
+
+    .mp {
+      meter::-webkit-meter-optimum-value {
+        background-color: var(--ryuutama-blue);
+      }
+    }
+
+    .character-classes {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      align-items: baseline;
+
+      .classes {
+        display: flex;
+        h4 {
+          margin: 0;
+        }
+        p {
+          cursor: pointer;
+          padding: 0;
+          margin: 0;
+          border-right: 1px solid black;
+          padding-right: 5px;
+          padding-left: 5px;
+        }
+        p:first-child {
+          padding-left: 0;
+        }
+        p:last-child {
+          border-right: none;
+          padding-right: 0;
+        }
+      }
+    }
+  }
+
+  .character-types {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-items: baseline;
+
+    .types {
+      display: flex;
+      h4 {
+        margin: 0;
+      }
+      p {
+        cursor: pointer;
+        padding: 0;
+        margin: 0;
+        border-right: 1px solid black;
+        padding-right: 5px;
+        padding-left: 5px;
+      }
+      p:first-child {
+        padding-left: 0;
+      }
+      p:last-child {
+        border-right: none;
+        padding-right: 0;
+      }
+    }
+  }
+
+  .stats {
+    --size: 70px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+    align-items: center;
+    justify-items: center;
+
+    .stat-item {
+      padding: 8px;
+      text-align: center;
+      width: var(--size);
+      height: var(--size);
+      cursor: pointer;
+      position: relative;
+
+      p {
+        border-bottom: 1px solid;
+        margin: 0.25em 0.85em;
+      }
+
+      h2 {
+        border: none;
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: transparent url("static/icon.png") no-repeat top center /
+          contain;
+        z-index: 10;
+      }
+
+      &:hover {
+        box-shadow: 0 0 8px var(--ryuutama-green);
+      }
+
+      &.selected {
+        box-shadow: 0 0 8px var(--ryuutama-green);
+      }
+    }
+
+    .stat-roll {
+      cursor: pointer;
+      &:hover {
+        text-shadow: 0 0 8px var(--ryuutama-green);
+      }
     }
   }
 }

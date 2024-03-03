@@ -1,0 +1,35 @@
+{
+  "folder": null,
+  "name": "Call Squall Code",
+  "type": "spell",
+  "_id": "GlwV9wq7Xgm1AEby",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "description": "<p>This spell summons a sudden and powerful but extremely accurate rain shower, pouring down water as if a barrel was up-ended. The water is drinkable, and fills all available water skins and barrels.</p>",
+    "magicType": "summer",
+    "spellType": "ritual",
+    "manaCost": 10,
+    "duration": 10,
+    "durationUnit": "minute",
+    "target": "5 SQM",
+    "range": "Caster",
+    "rolls": [],
+    "spellLevel": "mid"
+  },
+  "effects": [],
+  "flags": {},
+  "_stats": {
+    "systemId": "ryuutama",
+    "systemVersion": "0.0.2",
+    "coreVersion": "11.315",
+    "createdTime": 1708987842630,
+    "modifiedTime": 1708990177404,
+    "lastModifiedBy": "YGXn48bHOBjcgvWf"
+  },
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "YGXn48bHOBjcgvWf": 3
+  },
+  "_key": "!items!GlwV9wq7Xgm1AEby"
+}

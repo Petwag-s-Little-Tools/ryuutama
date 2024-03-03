@@ -1,0 +1,32 @@
+{
+  "name": "Side-Job",
+  "type": "skill",
+  "_id": "h4cIf13vECMZMNpN",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "description": "<p>Since a farmer’s life can be tough without extra money in the off-season, you’ve taken up another job on the side. When you choose the Farmer Class, choose a single Skill from any other class that requires a Skill Check. You may use that skill as if you were a member of that class. However, you aren’t as practiced as a person of that class, so you will always have a -1 penalty to the check.</p>",
+    "skillEffect": "<p>Use a single skill from another class with a -1 penalty</p>",
+    "rolls": [],
+    "targetNumber": "Depends on the skill",
+    "usableCircumstances": "Depends on the skill"
+  },
+  "effects": [],
+  "folder": null,
+  "flags": {
+    "core": {}
+  },
+  "_stats": {
+    "systemId": "ryuutama",
+    "systemVersion": "0.0.2",
+    "coreVersion": "11.315",
+    "createdTime": 1700004200080,
+    "modifiedTime": 1708727802296,
+    "lastModifiedBy": "YGXn48bHOBjcgvWf"
+  },
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "YGXn48bHOBjcgvWf": 3
+  },
+  "_key": "!items!h4cIf13vECMZMNpN"
+}

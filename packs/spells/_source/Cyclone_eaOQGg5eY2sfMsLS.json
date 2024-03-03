@@ -1,0 +1,35 @@
+{
+  "folder": null,
+  "name": "Cyclone",
+  "type": "spell",
+  "_id": "eaOQGg5eY2sfMsLS",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "description": "<p>Calls upon the calamitous power of thunderstorms in the form of a cyclone. Deals [DEX + SPI] damage to both the target and the caster.</p>",
+    "magicType": "summer",
+    "spellType": "normal",
+    "manaCost": 4,
+    "duration": 0,
+    "durationUnit": "instant",
+    "target": "1 Person + Caster",
+    "range": "Touch",
+    "rolls": [],
+    "spellLevel": "high"
+  },
+  "effects": [],
+  "flags": {},
+  "_stats": {
+    "systemId": "ryuutama",
+    "systemVersion": "0.0.2",
+    "coreVersion": "11.315",
+    "createdTime": 1708988112195,
+    "modifiedTime": 1708990177404,
+    "lastModifiedBy": "YGXn48bHOBjcgvWf"
+  },
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "YGXn48bHOBjcgvWf": 3
+  },
+  "_key": "!items!eaOQGg5eY2sfMsLS"
+}

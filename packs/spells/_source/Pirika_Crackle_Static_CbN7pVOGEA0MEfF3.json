@@ -1,0 +1,35 @@
+{
+  "folder": null,
+  "name": "Pirika Crackle-Static",
+  "type": "spell",
+  "_id": "CbN7pVOGEA0MEfF3",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "description": "<p>A powerful charge of static electricity zaps anyone who attacks the caster. Anybody whom the caster touches or attacks, or anyone who attacks the caster suffers [SPI] (1 die) damage. The caster also suffers this damage once, when the spell is cast.</p>",
+    "magicType": "winter",
+    "spellType": "normal",
+    "manaCost": 2,
+    "duration": 6,
+    "durationUnit": "round",
+    "target": "Touched Person",
+    "range": "Caster",
+    "rolls": [],
+    "spellLevel": "mid"
+  },
+  "effects": [],
+  "flags": {},
+  "_stats": {
+    "systemId": "ryuutama",
+    "systemVersion": "0.0.2",
+    "coreVersion": "11.315",
+    "createdTime": 1708989654811,
+    "modifiedTime": 1708990177404,
+    "lastModifiedBy": "YGXn48bHOBjcgvWf"
+  },
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "YGXn48bHOBjcgvWf": 3
+  },
+  "_key": "!items!CbN7pVOGEA0MEfF3"
+}
