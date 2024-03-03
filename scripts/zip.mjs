@@ -1,5 +1,6 @@
 import { compilePack } from "@foundryvtt/foundryvtt-cli";
 import AdmZip from "adm-zip";
+import p from "../package.json" assert { type: "json" };
 
 const zip = new AdmZip();
 
@@ -28,4 +29,4 @@ packs.forEach((pack) => {
 });
 zip.addLocalFolder("./tmpPacks", "./packs");
 
-zip.writeZip("./release.zip");
+zip.writeZip(`./ryuutama-release-${p.version}.zip`);
