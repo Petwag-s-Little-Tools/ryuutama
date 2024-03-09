@@ -1,6 +1,6 @@
 {
   "name": "ryuutama",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "FoundryVTT system for Ryuutama TTRPG",
   "scripts": {
     "watch:css": "sass --watch styles/ryuutama.scss ryuutama.css",
