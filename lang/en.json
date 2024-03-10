@@ -94,7 +94,8 @@
       "description": "Description",
       "effects": "Effects",
       "effectEdit": "Edit",
-      "effectDelete": "Delete"
+      "effectDelete": "Delete",
+      "price": "Price"
     },
     "character": {
       "statusEffects": "Status Effects",

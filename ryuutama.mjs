@@ -1069,7 +1069,7 @@
       const fields = foundry.data.fields;
       return {
         description: new fields.HTMLField(),
-        prize: new fields.NumberField({
+        price: new fields.NumberField({
           required: true,
           initial: 0
         }),
