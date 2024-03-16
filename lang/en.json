@@ -87,7 +87,7 @@
       "armor": "Armor",
       "shield": "Shield",
       "gear": "Gear",
-      "other": "Other"
+      "other": "General Item"
     },
     "item": {
       "name": "Name",
@@ -109,6 +109,14 @@
       },
       "shield": {
         "dodge": "Shield Dodge Value"
+      },
+      "gear": {
+        "type": "Type of Gear",
+        "bonus": "Bonus (+1)"
+      },
+      "other": {
+        "type": "Type of Item",
+        "values": "Effect/Explanation"
       }
     },
     "character": {
