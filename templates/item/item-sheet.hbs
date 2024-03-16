@@ -1,8 +1,19 @@
 <form class="{{cssClass}}" autocomplete="off">
   <header class="sheet-header">
     <img src="{{item.img}}" data-edit="img" title="{{item.name}}" height="64" width="64" />
-    <input name="name" type="text" value="{{item.name}}" placeholder="{{localize 'Name'}}" />
+    <div>
+      <input name="name" type="text" value="{{item.name}}" placeholder="{{localize 'Name'}}" />
+      <select name="system.itemType">
+        {{#select system.itemType}}
+        {{#each config.itemTypes as |value id|}}
+        <option value="{{id}}">{{localize value}}</option>
+        {{/each}}
+        {{/select}}
+      </select>
+    </div>
   </header>
+
+  <h2>{{localize (concat "ryuutama.itemTypes." system.itemType)}}</h2>
 
   <label for="system.price">{{localize 'ryuutama.item.price'}}</label>
   <input name="system.price" type="number" value="{{system.price}}" placeholder="{{localize 'ryuutama.item.price'}}" />
@@ -10,13 +21,8 @@
   <label for="system.size">{{localize 'ryuutama.item.size'}}</label>
   <input name="system.size" type="number" value="{{system.size}}" placeholder="{{localize 'ryuutama.item.size'}}" />
 
-  <select name="system.itemType">
-    {{#select system.itemType}}
-    {{#each config.itemTypes as |value id|}}
-    <option value="{{id}}">{{localize value}}</option>
-    {{/each}}
-    {{/select}}
-  </select>
+
+
   {{> (concat "ryuutama.item-" system.itemType)}}
 
   <h3>{{localize "ryuutama.item.description"}}</h3>

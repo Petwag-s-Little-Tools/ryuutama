@@ -96,7 +96,20 @@
       "effectEdit": "Edit",
       "effectDelete": "Delete",
       "price": "Price",
-      "size": "Size"
+      "size": "Size",
+      "weapon": {
+        "equip": "Equip",
+        "accuracy": "Accuracy",
+        "damage": "Damage"
+      },
+      "armor": {
+        "equip": "Equip",
+        "defense": "Defense Points",
+        "penalty": "Penalty"
+      },
+      "shield": {
+        "dodge": "Shield Dodge Value"
+      }
     },
     "character": {
       "statusEffects": "Status Effects",
